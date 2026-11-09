@@ -394,6 +394,12 @@ def main():
     except Exception as exc:
         log(f"出场与杠杆模拟失败 {exc}")
         raise
+    try:
+        from analysis.run_search import main as search_main
+        search_main()
+    except Exception as exc:
+        log(f"策略搜索失败 {exc}")
+        raise
 
 
 def FEE_NOTE():
