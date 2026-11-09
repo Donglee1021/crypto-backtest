@@ -300,36 +300,156 @@
     box.scrollTop = box.scrollHeight;
   }
 
-  function drawCurve(animate) {
-    const host = $('eqChart');
-    const points = (pub.equity_curve || []).filter(p => Number.isFinite(p.value));
-    if (points.length < 2) {
-      host.innerHTML = '<p class="help">权益曲线会在任务多跑几次之后出现。</p>';
-      return;
+  const TFS = {
+    '1m': { okx: '1m', binance: '1m', sec: 60 },
+    '5m': { okx: '5m', binance: '5m', sec: 300 },
+    '15m': { okx: '15m', binance: '15m', sec: 900 },
+    '1h': { okx: '1H', binance: '1h', sec: 3600 },
+    '4h': { okx: '4H', binance: '4h', sec: 14400 },
+    '1D': { okx: '1D', binance: '1d', sec: 86400 }
+  };
+  let tf = '15m';
+  const kcharts = {};
+
+  function candleBars(rows, pick) {
+    return rows.map(pick).filter(bar => [bar.open, bar.high, bar.low, bar.close].every(Number.isFinite))
+      .sort((a, b) => a.time - b.time);
+  }
+  async function fetchOkx(coin, spec) {
+    const url = 'https://www.okx.com/api/v5/market/candles?instId=' + coin + '-USDT-SWAP&bar=' + spec.okx + '&limit=200';
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('okx');
+    const data = await res.json();
+    if (!data || data.code !== '0' || !data.data) throw new Error('okx');
+    return candleBars(data.data, row => ({
+      time: Math.floor(Number(row[0]) / 1000),
+      open: Number(row[1]), high: Number(row[2]), low: Number(row[3]), close: Number(row[4])
+    }));
+  }
+  async function fetchBinance(coin, spec) {
+    const url = 'https://fapi.binance.com/fapi/v1/klines?symbol=' + coin + 'USDT&interval=' + spec.binance + '&limit=200';
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('binance');
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error('binance');
+    return candleBars(data, row => ({
+      time: Math.floor(Number(row[0]) / 1000),
+      open: Number(row[1]), high: Number(row[2]), low: Number(row[3]), close: Number(row[4])
+    }));
+  }
+  function markersFor(coin, sec) {
+    const rows = ((pub && pub.log) || []).filter(row => row.coin === coin && (row.action === '开仓' || row.action === '平仓' || row.action === '减仓'));
+    const seen = {};
+    const out = [];
+    rows.forEach(row => {
+      const ts = Math.floor(Date.parse(row.ts) / 1000);
+      if (!Number.isFinite(ts)) return;
+      const time = Math.floor(ts / sec) * sec;
+      const key = time + row.action;
+      if (seen[key]) return;
+      seen[key] = 1;
+      const text = row.reason || '';
+      const long = text.indexOf('做多') >= 0;
+      const short = text.indexOf('做空') >= 0;
+      if (row.action === '开仓') {
+        out.push({
+          time: time,
+          position: short && !long ? 'aboveBar' : 'belowBar',
+          color: short && !long ? '#d64545' : '#128a52',
+          shape: short && !long ? 'arrowDown' : 'arrowUp',
+          text: long ? '开多' : short ? '开空' : '开仓'
+        });
+      } else if (row.action === '减仓') {
+        out.push({ time: time, position: 'aboveBar', color: '#e08a12', shape: 'circle', text: '减仓' });
+      } else {
+        out.push({ time: time, position: 'aboveBar', color: '#1d6fe8', shape: 'circle', text: '平仓' });
+      }
+    });
+    out.sort((a, b) => a.time - b.time);
+    return out;
+  }
+  function ensureChart(coin) {
+    if (kcharts[coin] || typeof LightweightCharts === 'undefined') return kcharts[coin];
+    const el = $('chart' + coin);
+    if (!el) return null;
+    el.innerHTML = '';
+    const chart = LightweightCharts.createChart(el, {
+      width: el.clientWidth || 280,
+      height: 240,
+      layout: { background: { type: 'solid', color: '#ffffff' }, textColor: '#667085' },
+      grid: { vertLines: { color: '#eef1f4' }, horzLines: { color: '#eef1f4' } },
+      rightPriceScale: { borderColor: '#e3e7ee' },
+      timeScale: { borderColor: '#e3e7ee', timeVisible: true, secondsVisible: false },
+      crosshair: { vertLine: { color: '#c5ccd6' }, horzLine: { color: '#c5ccd6' } }
+    });
+    const series = chart.addCandlestickSeries({
+      upColor: '#128a52', downColor: '#d64545',
+      borderUpColor: '#128a52', borderDownColor: '#d64545',
+      wickUpColor: '#128a52', wickDownColor: '#d64545'
+    });
+    kcharts[coin] = { chart: chart, series: series, bars: [], sec: 900, stopLine: null };
+    return kcharts[coin];
+  }
+  function paintMarks(coin) {
+    const slot = kcharts[coin];
+    if (!slot) return;
+    slot.series.setMarkers(markersFor(coin, slot.sec));
+    if (slot.stopLine) {
+      slot.series.removePriceLine(slot.stopLine);
+      slot.stopLine = null;
     }
-    const w = 600;
-    const h = 180;
-    const pad = 16;
-    let min = points[0].value;
-    let max = points[0].value;
-    points.forEach(p => { if (p.value < min) min = p.value; if (p.value > max) max = p.value; });
-    if (max - min < 1) { min -= 1; max += 1; }
-    const x = i => pad + (i / (points.length - 1)) * (w - pad * 2);
-    const y = v => pad + (1 - (v - min) / (max - min)) * (h - pad * 2);
-    let d = '';
-    points.forEach((p, i) => { d += (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p.value).toFixed(1) + ' '; });
-    const area = d + 'L' + x(points.length - 1).toFixed(1) + ' ' + (h - pad) + ' L' + x(0).toFixed(1) + ' ' + (h - pad) + ' Z';
-    host.innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none"><path class="eq-area" d="' + area + '"></path><path class="eq-line" id="eqLine" d="' + d + '"></path></svg>';
-    const line = $('eqLine');
-    const len = line.getTotalLength();
-    line.style.strokeDasharray = String(len);
-    line.style.strokeDashoffset = animate && !reduced ? String(len) : '0';
-    if (animate && !reduced) {
-      requestAnimationFrame(() => {
-        line.style.transition = 'stroke-dashoffset 1.15s ease';
-        line.style.strokeDashoffset = '0';
+    const pos = ((pub && pub.positions) || []).filter(item => item.coin === coin)[0];
+    if (pos && Number.isFinite(Number(pos.stop))) {
+      slot.stopLine = slot.series.createPriceLine({
+        price: Number(pos.stop),
+        color: '#d64545',
+        lineWidth: 1,
+        lineStyle: 2,
+        axisLabelVisible: true,
+        title: '止损'
       });
     }
+  }
+  async function loadCandles(coin, fit) {
+    const spec = TFS[tf];
+    const el = $('chart' + coin);
+    try {
+      let bars;
+      try { bars = await fetchOkx(coin, spec); }
+      catch (e) { bars = await fetchBinance(coin, spec); }
+      if (!bars.length) throw new Error('empty');
+      const slot = ensureChart(coin);
+      if (!slot) return;
+      slot.bars = bars;
+      slot.sec = spec.sec;
+      slot.series.setData(bars);
+      paintMarks(coin);
+      if (fit) slot.chart.timeScale().fitContent();
+      slot.chart.applyOptions({ width: el.clientWidth || 280 });
+    } catch (e) {
+      if (el && !kcharts[coin]) el.innerHTML = '<p class="help">K 线暂时取不到。</p>';
+    }
+  }
+  function refreshCandles(fit) {
+    return Promise.all(['BTC', 'ETH'].map(coin => loadCandles(coin, fit)));
+  }
+  function resizeCharts() {
+    ['BTC', 'ETH'].forEach(coin => {
+      const slot = kcharts[coin];
+      const el = $('chart' + coin);
+      if (slot && el) slot.chart.applyOptions({ width: el.clientWidth || 280 });
+    });
+  }
+  function touchCandle(coin, price) {
+    const slot = kcharts[coin];
+    if (!slot || !slot.bars.length || !Number.isFinite(price)) return;
+    const last = slot.bars[slot.bars.length - 1];
+    const bucket = Math.floor(Date.now() / 1000 / slot.sec) * slot.sec;
+    if (last.time !== bucket) return;
+    last.close = price;
+    last.high = Math.max(last.high, price);
+    last.low = Math.min(last.low, price);
+    slot.series.update(last);
   }
 
   async function replay() {
@@ -351,7 +471,8 @@
     }
     if (token !== replayToken) return;
     slideTrade();
-    drawCurve(true);
+    paintMarks('BTC');
+    paintMarks('ETH');
     await typeLogs(token);
   }
 
@@ -369,6 +490,7 @@
       el.classList.add(price >= prev ? 'flash-up' : 'flash-down');
     }
     if (pub && pub.positions && pub.positions.length) refreshOpenPnl();
+    touchCandle(coin, price);
   }
 
   function connectSocket() {
@@ -459,7 +581,20 @@
   seedPrices();
   poll();
   setInterval(poll, 60000);
+  const tfSeg = $('tfSeg');
+  if (tfSeg) {
+    tfSeg.addEventListener('click', ev => {
+      const button = ev.target.closest('button');
+      if (!button || !TFS[button.dataset.tf]) return;
+      tf = button.dataset.tf;
+      tfSeg.querySelectorAll('button').forEach(item => item.classList.toggle('on', item === button));
+      refreshCandles(true);
+    });
+  }
+  refreshCandles(true);
+  setInterval(() => refreshCandles(false), 20000);
   window.addEventListener('resize', () => {
+    resizeCharts();
     if (!pub) return;
     const plan = pathFor(pub);
     moveToken(plan.steps[plan.steps.length - 1]);
