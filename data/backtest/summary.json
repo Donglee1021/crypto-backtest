@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T18:32:27.546276+00:00",
+  "generated": "2026-11-09T18:52:11.538528+00:00",
   "fee": "OKX 永续吃单 0.05% / 边。有资金费率历史时，按持仓方向和 K 线占 8 小时的比例计入。",
   "dropped_factors": [
     "新闻",
@@ -21,6 +21,7 @@
     "参数只在前 70% K 线里按夏普挑选，后 30% 留作样本外。走步检验把样本切成 4 段，每次只用前面的数据重选参数，再看下一段。样本内更好看，通常就是过拟合。",
     "经典策略（EMA 交叉、RSI 均值回归、布林突破、MACD）只作为对照，同样收手续费和资金费，不用 ATR 止损。",
     "买入持有是同期价格涨跌，不含手续费和资金费。策略净值从 1 起算，已经扣过这两项。",
+    "减仓和平仓是出场研究的分类，不是让你减掉多少，也不是开仓建议。杠杆模拟只是把固定规则套在历史上，不推荐任何倍数。",
     "这是历史研究，不构成投资建议，也不提供仓位或杠杆建议。过去的收益不代表以后。"
   ],
   "leaderboard": [
@@ -33,19 +34,19 @@
       "params": "阈值 ±3，ATR 止损 1.5 倍",
       "train": {
         "total_return": -0.9989,
-        "bench_return": -0.3172,
+        "bench_return": -0.315,
         "max_drawdown": -0.9989,
-        "sharpe": -17.958,
+        "sharpe": -17.951,
         "win_rate": 0.1809,
-        "trades": 5268,
+        "trades": 5267,
         "profit_factor": 0.369,
         "avg_hold_hours": 1.12
       },
       "test": {
         "total_return": -0.937,
-        "bench_return": 0.0221,
+        "bench_return": 0.0233,
         "max_drawdown": -0.9429,
-        "sharpe": -18.722,
+        "sharpe": -18.73,
         "win_rate": 0.1749,
         "trades": 2253,
         "profit_factor": 0.456,
@@ -69,19 +70,19 @@
       "params": "阈值 ±4，不止损",
       "train": {
         "total_return": -0.9935,
-        "bench_return": -0.3172,
+        "bench_return": -0.315,
         "max_drawdown": -0.9937,
-        "sharpe": -14.687,
+        "sharpe": -14.693,
         "win_rate": 0.2033,
-        "trades": 4805,
+        "trades": 4806,
         "profit_factor": 0.459,
         "avg_hold_hours": 1.0
       },
       "test": {
         "total_return": -0.9031,
-        "bench_return": 0.0221,
+        "bench_return": 0.0233,
         "max_drawdown": -0.913,
-        "sharpe": -17.288,
+        "sharpe": -17.291,
         "win_rate": 0.1838,
         "trades": 2116,
         "profit_factor": 0.473,
@@ -326,19 +327,19 @@
       "params": "阈值 ±2.5，ATR 止损 1.5 倍",
       "train": {
         "total_return": -1.0,
-        "bench_return": -0.3017,
+        "bench_return": -0.3041,
         "max_drawdown": -1.0,
-        "sharpe": -30.197,
+        "sharpe": -30.202,
         "win_rate": 0.1618,
-        "trades": 8164,
+        "trades": 8163,
         "profit_factor": 0.287,
         "avg_hold_hours": 0.6
       },
       "test": {
         "total_return": -0.9811,
-        "bench_return": 0.0097,
+        "bench_return": 0.0114,
         "max_drawdown": -0.9817,
-        "sharpe": -28.697,
+        "sharpe": -28.698,
         "win_rate": 0.2064,
         "trades": 3232,
         "profit_factor": 0.439,
@@ -361,20 +362,20 @@
       "variant": "样本内最优",
       "params": "阈值 ±6，不止损",
       "train": {
-        "total_return": -0.9814,
-        "bench_return": -0.3017,
+        "total_return": -0.9813,
+        "bench_return": -0.3041,
         "max_drawdown": -0.9814,
-        "sharpe": -18.296,
+        "sharpe": -18.289,
         "win_rate": 0.2385,
         "trades": 3837,
         "profit_factor": 0.334,
         "avg_hold_hours": 0.36
       },
       "test": {
-        "total_return": -0.6239,
-        "bench_return": 0.0097,
-        "max_drawdown": -0.6283,
-        "sharpe": -14.663,
+        "total_return": -0.6242,
+        "bench_return": 0.0114,
+        "max_drawdown": -0.6286,
+        "sharpe": -14.677,
         "win_rate": 0.2381,
         "trades": 907,
         "profit_factor": 0.4,
@@ -860,19 +861,19 @@
       "params": "阈值 ±3，ATR 止损 1.5 倍",
       "train": {
         "total_return": -0.9993,
-        "bench_return": -0.2096,
+        "bench_return": -0.2059,
         "max_drawdown": -0.9993,
-        "sharpe": -12.506,
-        "win_rate": 0.199,
-        "trades": 5281,
+        "sharpe": -12.511,
+        "win_rate": 0.1992,
+        "trades": 5282,
         "profit_factor": 0.581,
         "avg_hold_hours": 1.12
       },
       "test": {
-        "total_return": -0.9517,
-        "bench_return": 0.0671,
+        "total_return": -0.9518,
+        "bench_return": 0.0686,
         "max_drawdown": -0.9572,
-        "sharpe": -14.761,
+        "sharpe": -14.77,
         "win_rate": 0.1744,
         "trades": 2294,
         "profit_factor": 0.513,
@@ -896,19 +897,19 @@
       "params": "阈值 ±3，不止损",
       "train": {
         "total_return": -0.9945,
-        "bench_return": -0.2096,
+        "bench_return": -0.2059,
         "max_drawdown": -0.9946,
-        "sharpe": -8.948,
-        "win_rate": 0.2176,
-        "trades": 5197,
-        "profit_factor": 0.666,
+        "sharpe": -8.953,
+        "win_rate": 0.2178,
+        "trades": 5198,
+        "profit_factor": 0.665,
         "avg_hold_hours": 1.16
       },
       "test": {
-        "total_return": -0.9053,
-        "bench_return": 0.0671,
+        "total_return": -0.9055,
+        "bench_return": 0.0686,
         "max_drawdown": -0.9192,
-        "sharpe": -11.567,
+        "sharpe": -11.575,
         "win_rate": 0.1861,
         "trades": 2257,
         "profit_factor": 0.576,
@@ -1153,19 +1154,19 @@
       "params": "阈值 ±2.5，ATR 止损 1.5 倍",
       "train": {
         "total_return": -1.0,
-        "bench_return": -0.1998,
+        "bench_return": -0.2046,
         "max_drawdown": -1.0,
-        "sharpe": -23.611,
+        "sharpe": -23.618,
         "win_rate": 0.179,
         "trades": 8895,
-        "profit_factor": 0.519,
+        "profit_factor": 0.518,
         "avg_hold_hours": 0.58
       },
       "test": {
         "total_return": -0.9899,
-        "bench_return": 0.0541,
+        "bench_return": 0.0572,
         "max_drawdown": -0.9903,
-        "sharpe": -25.273,
+        "sharpe": -25.28,
         "win_rate": 0.2354,
         "trades": 3428,
         "profit_factor": 0.478,
@@ -1188,20 +1189,20 @@
       "variant": "样本内最优",
       "params": "阈值 ±6，不止损",
       "train": {
-        "total_return": -0.9894,
-        "bench_return": -0.1998,
+        "total_return": -0.9895,
+        "bench_return": -0.2046,
         "max_drawdown": -0.9897,
-        "sharpe": -13.818,
+        "sharpe": -13.832,
         "win_rate": 0.2717,
-        "trades": 4313,
-        "profit_factor": 0.561,
+        "trades": 4314,
+        "profit_factor": 0.56,
         "avg_hold_hours": 0.36
       },
       "test": {
-        "total_return": -0.6702,
-        "bench_return": 0.0541,
-        "max_drawdown": -0.6714,
-        "sharpe": -12.965,
+        "total_return": -0.6708,
+        "bench_return": 0.0572,
+        "max_drawdown": -0.6718,
+        "sharpe": -12.985,
         "win_rate": 0.2453,
         "trades": 966,
         "profit_factor": 0.443,
@@ -1739,7 +1740,7 @@
       "funding_points": 286,
       "horizons": {
         "15分钟": {
-          "score": -7.0,
+          "score": -6.0,
           "verdict": "强烈做空",
           "price": 74751.3
         },
@@ -1759,8 +1760,8 @@
           "price": 74751.3
         },
         "超短线": {
-          "score": -6.4,
-          "verdict": "强烈做空",
+          "score": -3.8,
+          "verdict": "偏空",
           "price": 74751.3
         },
         "中线": {
@@ -1781,8 +1782,8 @@
       "funding_points": 286,
       "horizons": {
         "15分钟": {
-          "score": -8.0,
-          "verdict": "强烈做空",
+          "score": -4.0,
+          "verdict": "做空",
           "price": 2124.61
         },
         "1小时": {
@@ -1801,8 +1802,8 @@
           "price": 2124.61
         },
         "超短线": {
-          "score": -6.8,
-          "verdict": "强烈做空",
+          "score": -3.0,
+          "verdict": "偏空",
           "price": 2124.61
         },
         "中线": {
