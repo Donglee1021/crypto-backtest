@@ -6,6 +6,7 @@
   <title>Grok Bot 交易终端</title>
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="css/terminal.css">
+  <script src="js/lightweight-charts.standalone.production.js"></script>
 </head>
 <body>
   <div class="scanline" aria-hidden="true"></div>
@@ -95,7 +96,30 @@
             <div><span class="help">现在</span><strong id="nowNum">—</strong></div>
             <div><span class="help">变化</span><div id="diffNum">—</div></div>
           </div>
-          <div id="eqChart" class="chart"></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div class="kline-head">
+            <h3>K 线</h3>
+            <div class="seg" id="tfSeg" role="group" aria-label="周期">
+              <button type="button" data-tf="1m">1m</button>
+              <button type="button" data-tf="5m">5m</button>
+              <button type="button" data-tf="15m" class="on">15m</button>
+              <button type="button" data-tf="1h">1h</button>
+              <button type="button" data-tf="4h">4h</button>
+              <button type="button" data-tf="1D">1D</button>
+            </div>
+          </div>
+          <div class="kline-grid">
+            <div class="kline-pane">
+              <div class="kline-title">BTC 永续</div>
+              <div id="chartBTC" class="kchart"></div>
+            </div>
+            <div class="kline-pane">
+              <div class="kline-title">ETH 永续</div>
+              <div id="chartETH" class="kchart"></div>
+            </div>
+          </div>
+          <p class="help">公开 K 线。圆点只标模拟账本里的开仓、平仓和减仓。有持仓时画出模拟止损线，那是记账参数，不是建议。</p>
         </div>
         <div class="card" style="margin-top:12px">
           <h3>决定记录</h3>

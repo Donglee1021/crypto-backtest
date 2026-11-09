@@ -148,8 +148,19 @@ main { max-width: 1180px; margin: 0 auto; padding: 12px; }
 .down { color: var(--bad); }
 .result { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; }
 .result strong { font-size: 28px; font-variant-numeric: tabular-nums; }
-.chart { width: 100%; height: 180px; }
-.chart svg { width: 100%; height: 100%; display: block; }
+.kline-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.kline-head h3 { margin: 0; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg button {
+  font: inherit; font-size: 12px; border: 1px solid var(--line); background: #fff; color: var(--muted);
+  border-radius: 8px; padding: 4px 8px; cursor: pointer;
+}
+.seg button.on { background: #e8f1ff; color: var(--tx); border-color: #c5d9f8; }
+.kline-grid { display: grid; gap: 12px; margin-top: 10px; }
+@media (min-width: 960px) { .kline-grid { grid-template-columns: 1fr 1fr; } }
+.kline-pane { min-width: 0; }
+.kline-title { font-size: 13px; font-weight: 650; margin-bottom: 4px; }
+.kchart { width: 100%; height: 240px; min-width: 0; overflow: hidden; }
 .eq-line { fill: none; stroke: #1d6fe8; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .eq-area { fill: rgba(29, 111, 232, .12); stroke: none; }
 .log {
