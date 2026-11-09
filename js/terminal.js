@@ -125,24 +125,66 @@
     token.style.left = left + 'px';
   }
 
+  let gazeStep = 'scan';
+  let pointer = null;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  function setMood(mood) {
+    const el = $('mascot');
+    if (!el) return;
+    el.classList.remove('mood-idle', 'mood-block', 'mood-exec');
+    el.classList.add(mood === 'block' ? 'mood-block' : mood === 'exec' ? 'mood-exec' : 'mood-idle');
+  }
+
+  function aimEyes() {
+    const face = document.querySelector('.mascot');
+    const look = document.querySelector('.look');
+    if (!face || !look) return;
+    const box = face.getBoundingClientRect();
+    const cx = box.left + box.width / 2;
+    const cy = box.top + box.height / 2;
+    let tx = 0;
+    let ty = 0;
+    if (pointer && finePointer && window.innerWidth >= 960) {
+      tx = pointer.x - cx;
+      ty = pointer.y - cy;
+    } else {
+      const node = document.querySelector('.node[data-step="' + gazeStep + '"]');
+      if (!node) return;
+      const r = node.getBoundingClientRect();
+      tx = (r.left + r.width / 2) - cx;
+      ty = (r.top + r.height / 2) - cy;
+    }
+    const len = Math.hypot(tx, ty) || 1;
+    const dx = (tx / len) * Math.min(2.6, Math.abs(tx) / 70);
+    const dy = (ty / len) * Math.min(1.6, Math.abs(ty) / 90);
+    look.setAttribute('transform', 'translate(' + dx.toFixed(2) + ' ' + dy.toFixed(2) + ')');
+  }
+
   function light(step, outcome, last) {
     clearHot();
     const node = document.querySelector('.node[data-step="' + step + '"]');
     const agent = document.querySelector('.agent[data-agent="' + AGENT_FOR[step] + '"]');
     if (node) node.classList.add('on');
+    gazeStep = step;
     if (last && outcome === 'block') {
       if (node) { node.classList.remove('on'); node.classList.add('hot-bad'); }
       if (agent) agent.classList.add('active', 'bad');
+      setMood('block');
     } else if (last && outcome === 'exec' && (step === 'exec' || step === 'log')) {
       const exec = document.querySelector('.node[data-step="exec"]');
       if (exec) { exec.classList.add('hot-ok'); }
       const who = document.querySelector('.agent[data-agent="executor"]');
       if (who) who.classList.add('active', 'good');
       if (step === 'log' && agent) agent.classList.add('active');
+      setMood('exec');
+      gazeStep = 'exec';
     } else if (agent) {
       agent.classList.add('active');
+      if (outcome !== 'block') setMood('idle');
     }
     moveToken(step);
+    aimEyes();
   }
 
   function outcomeOf(data) {
@@ -403,6 +445,15 @@
     }));
   }
 
+  if (reduced) {
+    document.querySelectorAll('#mascot animate').forEach(node => node.remove());
+  }
+  document.addEventListener('pointermove', ev => {
+    if (!finePointer || window.innerWidth < 960) return;
+    pointer = { x: ev.clientX, y: ev.clientY };
+    aimEyes();
+  });
+  document.addEventListener('pointerleave', () => { pointer = null; aimEyes(); });
   setInterval(() => { if (pub) $('uptime').textContent = uptime(pub.started_at); }, 1000);
   connectSocket();
   seedPrices();
