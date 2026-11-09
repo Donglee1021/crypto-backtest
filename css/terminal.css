@@ -137,8 +137,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 12px; }
   position: absolute; z-index: 2; top: 22px; left: 28px; width: 10px; height: 10px;
   margin-left: -5px; border-radius: 50%; background: var(--acc);
   box-shadow: 0 0 10px var(--acc);
-  transition: left .42s cubic-bezier(.2, .7, .2, 1);
+  transition: left .21s cubic-bezier(.2, .7, .2, 1);
 }
+.round-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; justify-content: space-between; }
+.round-head h3 { margin: 0; }
+.countdown { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .candidate { margin-top: 4px; color: var(--acc); font-size: 13px; min-height: 1.2em; }
 .trade { display: grid; gap: 6px; margin-top: 10px; }
 .trade.in { animation: slidein .45s ease; }
@@ -219,6 +222,7 @@ h3 { margin: 12px 0 8px; font-size: 14px; }
 @keyframes flashdown { 0% { background: rgba(240, 113, 120, .35); } 100% { background: transparent; } }
 
 @media (max-width: 480px) {
+  header { position: static; backdrop-filter: none; }
   main { padding: 10px; }
   h1 { font-size: 16px; }
   .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
