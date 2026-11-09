@@ -1,0 +1,116 @@
+name: 每日回测
+
+on:
+  schedule:
+    # 每天 01:20 UTC。调度用 Actions cron，仓库里不跑 APScheduler。
+    - cron: "20 1 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: crypto-backtest-data
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    outputs:
+      pages: ${{ steps.pagescfg.outcome }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: 检出
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: 取回 data 分支上的历史库
+        run: |
+          git fetch origin data || true
+          if git rev-parse --verify origin/data >/dev/null 2>&1; then
+            git checkout origin/data -- data/cache data/history.duckdb data/history || true
+            git reset -q HEAD -- data/cache data/history.duckdb data/history || true
+          fi
+
+      - name: 安装 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: 安装分析依赖
+        run: bash scripts/install_analysis.sh
+
+      - name: 对照浏览器打分
+        run: python3 analysis/parity_check.py
+
+      - name: 回测并生成报告
+        run: python3 -u -m analysis.run_backtest
+
+      - name: 提交页面用的结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/backtest reports
+          if git diff --cached --quiet; then
+            echo "回测 JSON 无变化"
+          else
+            git commit -m "data: 更新回测结果与 QuantStats 报告"
+            ok=false
+            for i in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then
+                ok=true
+                break
+              fi
+              sleep $((i * 5))
+            done
+            if [ "$ok" != true ]; then
+              echo "推送 main 失败"
+              exit 1
+            fi
+          fi
+
+      - name: 更新 data 分支
+        run: bash scripts/push_data_branch.sh
+
+      - name: 组装站点
+        run: bash scripts/assemble_site.sh
+
+      - name: 配置 Pages
+        id: pagescfg
+        continue-on-error: true
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - name: 上传页面
+        if: steps.pagescfg.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Pages 未开启时说明原因
+        if: steps.pagescfg.outcome != 'success'
+        run: echo "::warning::GitHub Pages 未能在这个任务里配置。请仓库所有者打开 Settings → Pages → Build and deployment → Source，选 GitHub Actions 并保存，然后重新运行「部署页面」。"
+
+  deploy:
+    needs: backtest
+    if: needs.backtest.result == 'success' && needs.backtest.outputs.pages == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v5

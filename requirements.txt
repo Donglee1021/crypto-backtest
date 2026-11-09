@@ -1,0 +1,10 @@
+ccxt>=4.2
+TA-Lib>=0.6.0
+vectorbt>=0.26
+quantstats>=0.0.62
+duckdb>=1.1
+pyarrow>=15
+pandas>=2.2
+numpy>=1.26
+skfolio>=0.6
+matplotlib>=3.8
