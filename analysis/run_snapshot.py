@@ -106,6 +106,11 @@ def main():
         except Exception as exc:
             print("exit live", coin, exc, flush=True)
     LIVE_EXIT.write_text(json.dumps(exit_live, ensure_ascii=False, indent=2), encoding="utf-8")
+    try:
+        from analysis.run_search import refresh_live
+        refresh_live()
+    except Exception as exc:
+        print("最佳方案实时信号", exc, flush=True)
     print("snapshot rows", len(rows), flush=True)
 
 

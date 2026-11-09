@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   const TZ = 'Asia/Shanghai';
-  const state = { summary: null, charts: null, signals: null, exits: null, liveExit: null, leverage: null, coin: 'ALL', group: 'ALL', pick: null, levCoin: 'BTC', levEntry: '页面规则' };
+  const state = { summary: null, charts: null, signals: null, exits: null, liveExit: null, leverage: null, best: null, coin: 'ALL', group: 'ALL', pick: null, levCoin: 'BTC', levEntry: '页面规则' };
   const charts = {};
 
   function $(id) { return document.getElementById(id); }
@@ -253,6 +253,7 @@
     renderSignals();
     renderExits();
     renderLeverage();
+    renderBest();
     renderNotes();
   }
 
@@ -368,6 +369,82 @@
     charts.levChart = chart;
   }
 
+  function renderBest() {
+    const data = state.best;
+    const box = $('bestBody');
+    if (!box) return;
+    if (!data || !data.top) {
+      box.innerHTML = '<div class="muted">策略搜索还没有生成。</div>';
+      return;
+    }
+    if ($('bestNote') && data.note) $('bestNote').textContent = data.note;
+    const verdict = data.beats_buy_hold
+      ? '按上面的标准，有方案在样本外的风险调整后结果好于同期买入持有。'
+      : '按样本外夏普、并且扣完成本后收益为正来看，没有方案同时好过两个币的买入持有。下面仍列出这次搜索里相对更稳的三个，方便对照。';
+    const rows = (data.ranking || []).map(row => {
+      const b = row.BTC || row.book || {};
+      const e = row.ETH || {};
+      return '<tr><td>' + esc(row.name) + '</td><td>' + esc(row.tf || '组合') + '</td><td class="n">' + num(row.score) +
+        '</td><td class="n">' + num(b.sharpe) + '</td><td class="n">' + num(e.sharpe) + '</td><td class="n">' + pct(b.ann_return) +
+        '</td><td class="n">' + pct(b.max_drawdown) + '</td><td>' + (row.positive ? '两个币都为正' : '没有同时为正') + '</td></tr>';
+    }).join('');
+    const cards = data.top.map((card, index) => {
+      const live = card.live || {};
+      const liveText = live.summary || ['BTC', 'ETH'].map(c => c + ' ' + (live[c] || '—')).join('，');
+      const b = card.BTC || card.book || {};
+      const e = card.ETH || {};
+      const lev = card.leverage || {};
+      const levHead = Object.keys(lev).map(k => '<th class="n">' + k + ' 倍</th>').join('');
+      const levRow = (label, pick) => '<tr><td>' + label + '</td>' + Object.keys(lev).map(k => '<td class="n">' + pick(lev[k] || {}) + '</td>').join('') + '</tr>';
+      const levTable = levHead ? '<div class="scroll"><table><tr><th>放大同一条信号</th>' + levHead + '</tr>' +
+        levRow('BTC 年化', block => pct((block.BTC || {}).ann_return)) +
+        levRow('BTC 回撤', block => pct((block.BTC || {}).max_drawdown)) +
+        levRow('BTC 夏普', block => num((block.BTC || {}).sharpe)) +
+        levRow('ETH 年化', block => pct((block.ETH || {}).ann_return)) +
+        levRow('ETH 夏普', block => num((block.ETH || {}).sharpe)) +
+        '</table></div><p class="muted">倍数只说明放大后的历史路径，不是建议。</p>' : '';
+      return '<article class="card" style="margin-top:10px"><h3>' + (index + 1) + '. ' + esc(card.name) +
+        (card.beats_buy_hold ? ' · 样本外风险调整后好于买入持有' : ' · 没有同时好过两个币的买入持有') + '</h3>' +
+        '<p>' + esc(card.plain) + '</p>' +
+        '<div class="hz"><div class="chip"><b>现在的信号</b>' + esc(liveText) + '</div>' +
+        '<div class="chip"><b>参数是否稳</b>各段选中同一套的比例 ' + (card.stable == null ? '—' : Math.round(card.stable * 100) + '%') +
+        '，相邻参数样本外夏普中位数 ' + num(card.neighbor_sharpe) + '</div>' +
+        '<div class="chip"><b>紧缩夏普概率</b>' + (card.deflated_sharpe == null ? '—' : card.deflated_sharpe) + '</div></div>' +
+        '<div class="scroll"><table><tr><th></th><th class="n">年化</th><th class="n">最大回撤</th><th class="n">夏普</th><th class="n">卡玛</th><th class="n">胜率</th><th class="n">每笔期望</th><th class="n">每年笔数</th></tr>' +
+        '<tr><td>BTC</td><td class="n">' + pct(b.ann_return) + '</td><td class="n">' + pct(b.max_drawdown) + '</td><td class="n">' + num(b.sharpe) +
+        '</td><td class="n">' + num(b.calmar) + '</td><td class="n">' + (b.win_rate == null ? '—' : (b.win_rate * 100).toFixed(1) + '%') +
+        '</td><td class="n">' + pctPlain(b.expectancy) + '</td><td class="n">' + (b.trades_per_year == null ? '—' : b.trades_per_year) + '</td></tr>' +
+        (card.ETH ? '<tr><td>ETH</td><td class="n">' + pct(e.ann_return) + '</td><td class="n">' + pct(e.max_drawdown) + '</td><td class="n">' + num(e.sharpe) +
+        '</td><td class="n">' + num(e.calmar) + '</td><td class="n">' + (e.win_rate == null ? '—' : (e.win_rate * 100).toFixed(1) + '%') +
+        '</td><td class="n">' + pctPlain(e.expectancy) + '</td><td class="n">' + (e.trades_per_year == null ? '—' : e.trades_per_year) + '</td></tr>' : '') +
+        '</table></div>' + levTable +
+        '<div id="bestChart' + index + '" class="chart"></div>' +
+        '<div class="legend"><span><i style="background:#58a6ff"></i>BTC 或组合</span><span><i style="background:#26a69a"></i>ETH</span><span><i style="background:#8b949e"></i>买入持有</span></div></article>';
+    }).join('');
+    box.innerHTML = '<p>' + verdict + '</p><p class="muted">样本外从 ' + esc((data.window || {}).oos_start || '') + ' 起。试过 ' + (data.trials || '—') + ' 套配置。买入持有夏普：BTC ' +
+      num((data.buy_hold.BTC || {}).sharpe) + '，ETH ' + num((data.buy_hold.ETH || {}).sharpe) + '。</p>' +
+      '<div class="scroll"><table><tr><th>策略族</th><th>最近一段周期</th><th class="n">稳健分</th><th class="n">BTC 夏普</th><th class="n">ETH 夏普</th><th class="n">BTC 年化</th><th class="n">BTC 回撤</th><th>样本外</th></tr>' +
+      rows + '</table></div>' + cards;
+    data.top.forEach((card, index) => {
+      const el = $('bestChart' + index);
+      if (!el || typeof LightweightCharts === 'undefined') return;
+      destroy(el.id);
+      el.innerHTML = '';
+      const chart = LightweightCharts.createChart(el, baseOptions(el));
+      const eq = card.equity || {};
+      const add = (points, color) => {
+        if (!points || points.length < 2) return;
+        const series = chart.addLineSeries({ color: color, lineWidth: 2, priceLineVisible: false });
+        series.setData(points);
+      };
+      add(eq.BTC || eq.book, '#58a6ff');
+      add(eq.ETH, '#26a69a');
+      add(eq.bh_BTC || eq.basket, '#8b949e');
+      chart.timeScale().fitContent();
+      charts[el.id] = chart;
+    });
+  }
+
   $('levBody').addEventListener('click', ev => {
     const btn = ev.target.closest('button');
     if (!btn || !btn.dataset.v) return;
@@ -394,14 +471,23 @@
     loadJson('data/backtest/signals.json').catch(() => null),
     loadJson('data/backtest/exits.json').catch(() => null),
     loadJson('data/backtest/leverage.json').catch(() => null),
-    loadJson('data/backtest/exit_live.json').catch(() => null)
-  ]).then(([summary, chartsData, signals, exits, leverage, liveExit]) => {
+    loadJson('data/backtest/exit_live.json').catch(() => null),
+    loadJson('data/backtest/best.json').catch(() => null),
+    loadJson('data/backtest/best_live.json').catch(() => null)
+  ]).then(([summary, chartsData, signals, exits, leverage, liveExit, best, bestLive]) => {
     state.summary = summary;
     state.charts = chartsData;
     state.signals = signals;
     state.exits = exits;
     state.leverage = leverage;
     state.liveExit = liveExit;
+    state.best = best;
+    if (best && bestLive && bestLive.top && best.top) {
+      bestLive.top.forEach(row => {
+        const card = best.top.find(item => item.name === row.name);
+        if (card && row.live) card.live = row.live;
+      });
+    }
     if (!summary) {
       $('generated').textContent = '还没有回测文件。每日任务或手动运行之后，这里会填上数字。';
     }
