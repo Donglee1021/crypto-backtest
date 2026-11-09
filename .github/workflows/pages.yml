@@ -6,10 +6,12 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "report.html"
       - "css/**"
       - "js/**"
       - "favicon.svg"
       - "data/backtest/**"
+      - "data/paper/**"
       - "reports/**"
       - ".github/workflows/pages.yml"
 
