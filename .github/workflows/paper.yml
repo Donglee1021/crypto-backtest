@@ -2,8 +2,8 @@ name: 模拟盘
 
 on:
   schedule:
-    # 每 15 分钟。GitHub 的 cron 可能晚几分钟到几十分钟。
-    - cron: "*/15 * * * *"
+    # 每 5 分钟，这是 GitHub 定时的最短间隔。实际触发可能再晚几分钟。
+    - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
     branches: [main]

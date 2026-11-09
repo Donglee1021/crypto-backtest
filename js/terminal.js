@@ -467,7 +467,7 @@
       if (token !== replayToken) return;
       const last = i === plan.steps.length - 1;
       light(plan.steps[i], plan.outcome, last || (plan.outcome === 'exec' && plan.steps[i] === 'exec'));
-      await wait(reduced ? 0 : 460);
+      await wait(reduced ? 0 : 230);
     }
     if (token !== replayToken) return;
     slideTrade();
@@ -580,7 +580,23 @@
   connectSocket();
   seedPrices();
   poll();
-  setInterval(poll, 60000);
+  function paintCountdown() {
+    const el = $('nextRound');
+    if (!el) return;
+    const slot = 5 * 60 * 1000;
+    const left = slot - (Date.now() % slot);
+    if (left < 1500) {
+      el.textContent = '正在等这一轮';
+      return;
+    }
+    const sec = Math.ceil(left / 1000);
+    const m = Math.floor(sec / 60);
+    const s = String(sec % 60).padStart(2, '0');
+    el.textContent = '下一轮 ' + m + ':' + s;
+  }
+  setInterval(paintCountdown, 1000);
+  paintCountdown();
+  setInterval(poll, 30000);
   const tfSeg = $('tfSeg');
   if (tfSeg) {
     tfSeg.addEventListener('click', ev => {
