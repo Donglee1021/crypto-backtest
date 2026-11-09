@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   const TZ = 'Asia/Shanghai';
-  const state = { summary: null, charts: null, signals: null, coin: 'ALL', group: 'ALL', pick: null };
+  const state = { summary: null, charts: null, signals: null, exits: null, liveExit: null, leverage: null, coin: 'ALL', group: 'ALL', pick: null, levCoin: 'BTC', levEntry: '页面规则' };
   const charts = {};
 
   function $(id) { return document.getElementById(id); }
@@ -251,8 +251,130 @@
     renderAlloc();
     renderReports();
     renderSignals();
+    renderExits();
+    renderLeverage();
     renderNotes();
   }
+
+  function pctPlain(x, digits) {
+    if (x == null || Number.isNaN(Number(x))) return '—';
+    const n = Number(x) * 100;
+    return (n > 0 ? '+' : '') + n.toFixed(digits == null ? 2 : digits) + '%';
+  }
+  function renderExits() {
+    const data = state.exits;
+    const liveSrc = (state.liveExit && state.liveExit.coins) || (data && data.live) || {};
+    const coins = ['BTC', 'ETH'];
+    $('exitLive').innerHTML = coins.map(coin => {
+      const block = liveSrc[coin] && liveSrc[coin].live ? liveSrc[coin] : { live: liveSrc[coin] };
+      const live = block.live || liveSrc[coin] || {};
+      const card = (key, title) => {
+        const item = live[key];
+        if (!item) return '';
+        return '<div class="chip"><b>假设' + title + '</b><span class="tag ' + (item.action === '平仓' ? 'down' : item.action === '减仓' ? 'warn' : 'up') + '">' +
+          esc(item.action) + '</span><div>' + esc(item.reason) + '</div><div class="muted">吊灯止损 ' + item.trail_stop +
+          ' · 按 25 倍粗算的 -15% 权益价 ' + item.account_stop_25x + '</div></div>';
+      };
+      return '<div class="card" style="margin-top:8px"><b>' + coin + '</b><div class="hz">' + card('long', '多单') + card('short', '空单') + '</div></div>';
+    }).join('');
+    const rows = (data && data.leaderboard) || [];
+    const head = '<tr><th>币</th><th>入场</th><th>规则</th><th>参数</th><th>样本</th><th class="n">胜率</th><th class="n">平均盈利</th><th class="n">平均亏损</th><th class="n">盈亏比</th><th class="n">每笔期望</th><th class="n">盈亏因子</th><th class="n">回撤</th><th class="n">笔数</th><th></th></tr>';
+    const body = rows.filter(row => row.role === '样本外' || row.role === '对照' || row.flag).map(row => {
+      const o = row.oos || {};
+      const flag = row.flag ? '<span class="tag warn">高胜率但期望为负</span>' : '';
+      return '<tr><td>' + esc(row.coin) + '</td><td>' + esc(row.entry) + '</td><td>' + esc(row.rule) + '</td><td>' + esc(row.params) + '</td><td>' + esc(row.role) +
+        '</td><td class="n">' + (o.win_rate == null ? '—' : (o.win_rate * 100).toFixed(1) + '%') + '</td><td class="n">' + pctPlain(o.avg_win) +
+        '</td><td class="n">' + pctPlain(o.avg_loss) + '</td><td class="n">' + num(o.payoff) + '</td><td class="n">' + pctPlain(o.expectancy) +
+        '</td><td class="n">' + num(o.profit_factor) + '</td><td class="n">' + pct(o.max_drawdown) + '</td><td class="n">' + (o.trades == null ? '—' : o.trades) +
+        '</td><td>' + flag + '</td></tr>';
+    }).join('');
+    $('exitBoard').innerHTML = head + (body || '<tr><td colspan="14">出场结果还没有生成。</td></tr>');
+    $('exitScatter').innerHTML = scatterSvg((data && data.scatter) || []);
+  }
+  function scatterSvg(points) {
+    const rows = points.filter(p => p.win_rate != null && p.expectancy != null && p.trades >= 20);
+    if (rows.length < 2) return '<div class="muted">散点还没有生成。</div>';
+    const w = 720, h = 300, pad = 42;
+    const xs = rows.map(p => p.win_rate);
+    const ys = rows.map(p => p.expectancy);
+    let x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
+    let y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
+    if (x1 === x0) x1 = x0 + 0.01;
+    if (y1 === y0) y1 = y0 + 0.001;
+    const X = v => pad + (v - x0) / (x1 - x0) * (w - pad * 2);
+    const Y = v => pad + (1 - (v - y0) / (y1 - y0)) * (h - pad * 2);
+    const zero = (0 >= y0 && 0 <= y1) ? '<line x1="' + pad + '" x2="' + (w - pad) + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#30363d"/>' : '';
+    const dots = rows.map(p => '<circle cx="' + X(p.win_rate).toFixed(1) + '" cy="' + Y(p.expectancy).toFixed(1) + '" r="' + (p.flag ? 5 : 3.5) + '" class="' + (p.flag ? 'dot-flag' : '') + '" fill="' + (p.flag ? '#d29922' : '#58a6ff') + '"><title>' +
+      esc(p.coin + ' ' + p.entry + ' ' + p.rule + ' ' + p.params) + '</title></circle>').join('');
+    return '<svg class="scatter" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="胜率与每笔期望">' + zero + dots +
+      '<text x="' + pad + '" y="' + (h - 8) + '" fill="#8b949e" font-size="12">胜率 ' + (x0 * 100).toFixed(0) + '%</text>' +
+      '<text x="' + (w - pad - 70) + '" y="' + (h - 8) + '" fill="#8b949e" font-size="12">' + (x1 * 100).toFixed(0) + '%</text>' +
+      '<text x="8" y="' + pad + '" fill="#8b949e" font-size="12">期望</text></svg>';
+  }
+  function levRows() {
+    const data = state.leverage;
+    if (!data || !data.coins || !data.coins[state.levCoin]) return null;
+    const strat = data.coins[state.levCoin].strategies[state.levEntry];
+    return strat || null;
+  }
+  function renderLeverage() {
+    const data = state.leverage;
+    const note = $('levNote');
+    if (data && data.note && note) note.textContent = data.note;
+    const body = $('levBody');
+    if (!data || !data.coins) {
+      body.innerHTML = '<div class="muted">杠杆模拟还没有生成。</div>';
+      return;
+    }
+    const strat = levRows();
+    const coinMeta = data.coins[state.levCoin] || {};
+    const rows = (strat && strat.rows) || [];
+    const metrics = [
+      ['期末权益（起始 10000）', r => r.final_equity == null ? '—' : Number(r.final_equity).toLocaleString('zh-CN', { maximumFractionDigits: 0 })],
+      ['最大回撤', r => pct(r.max_drawdown)],
+      ['触及日内 +20% 的天数', r => r.pct_days_plus20 == null ? '—' : (r.pct_days_plus20 * 100).toFixed(1) + '%'],
+      ['出现单笔 -15% 的天数', r => r.pct_days_minus15 == null ? '—' : (r.pct_days_minus15 * 100).toFixed(1) + '%'],
+      ['单笔 -15% 平均每天次数', r => r.minus15_per_day == null ? '—' : String(r.minus15_per_day)],
+      ['有触发的日子里平均次数', r => r.minus15_when_hit == null ? '—' : String(r.minus15_when_hit)],
+      ['最长连亏笔数', r => r.longest_loss_streak == null ? '—' : String(r.longest_loss_streak)],
+      ['强平次数', r => r.liquidations == null ? '—' : String(r.liquidations)],
+      ['重抽样后权益减半的比例', r => r.p_drop_50 == null ? '—' : (r.p_drop_50 * 100).toFixed(1) + '%'],
+      ['重抽样后权益只剩一成的比例', r => r.p_drop_90 == null ? '—' : (r.p_drop_90 * 100).toFixed(1) + '%'],
+      ['减半的中位天数（没碰到则空）', r => r.median_days_to_50 == null ? '样本长度内中位数没碰到' : String(r.median_days_to_50)],
+      ['成交笔数', r => r.trades == null ? '—' : String(r.trades)]
+    ];
+    const head = '<tr><th>项目</th>' + rows.map(r => '<th class="n">' + r.leverage + ' 倍</th>').join('') + '</tr>';
+    const table = '<table>' + head + metrics.map(pair => '<tr><td>' + pair[0] + '</td>' + rows.map(r => '<td class="n">' + pair[1](r) + '</td>').join('') + '</tr>').join('') + '</table>';
+    body.innerHTML = '<div class="controls"><div class="seg" id="levCoin">' +
+      ['BTC', 'ETH'].map(c => '<button type="button" data-v="' + c + '"' + (c === state.levCoin ? ' class="on"' : '') + '>' + c + '</button>').join('') +
+      '</div><div class="seg" id="levEntry">' +
+      ['页面规则', 'RSI均值回归'].map(c => '<button type="button" data-v="' + c + '"' + (c === state.levEntry ? ' class="on"' : '') + '>' + c + '</button>').join('') +
+      '</div></div><div class="muted">' + esc(state.levCoin) + ' · ' + esc(state.levEntry) +
+      (strat ? ' · 各段出场：' + esc(strat.rows && strat.rows[0] ? strat.rows[0].exit_rule : strat.exit_rule) : '') +
+      ' · 棒内用 ' + esc(coinMeta.intrabar || '') + '，覆盖 ' + (coinMeta.intrabar_coverage == null ? '—' : (coinMeta.intrabar_coverage * 100).toFixed(0) + '%') +
+      ' 的小时。账户从 10000 起算，三段样本外首尾相接。</div><div class="scroll">' + table + '</div><div id="levChart" class="chart"></div>' +
+      '<div class="legend"><span><i style="background:#ef5350"></i>25 倍</span><span><i style="background:#d29922"></i>10 倍</span><span><i style="background:#58a6ff"></i>5 倍</span><span><i style="background:#26a69a"></i>3 倍</span></div>';
+    const el = $('levChart');
+    destroy('levChart');
+    if (!rows.length || typeof LightweightCharts === 'undefined') return;
+    el.innerHTML = '';
+    const chart = LightweightCharts.createChart(el, baseOptions(el));
+    const colors = { 25: '#ef5350', 10: '#d29922', 5: '#58a6ff', 3: '#26a69a' };
+    rows.forEach(row => {
+      const series = chart.addLineSeries({ color: colors[row.leverage] || '#8b949e', lineWidth: 2, priceLineVisible: false });
+      series.setData(row.equity || []);
+    });
+    chart.timeScale().fitContent();
+    charts.levChart = chart;
+  }
+
+  $('levBody').addEventListener('click', ev => {
+    const btn = ev.target.closest('button');
+    if (!btn || !btn.dataset.v) return;
+    if (btn.parentElement.id === 'levCoin') state.levCoin = btn.dataset.v;
+    if (btn.parentElement.id === 'levEntry') state.levEntry = btn.dataset.v;
+    renderLeverage();
+  });
 
   $('board').addEventListener('click', ev => {
     const tr = ev.target.closest('tr.click');
@@ -269,11 +391,17 @@
   Promise.all([
     loadJson('data/backtest/summary.json').catch(() => null),
     loadJson('data/backtest/charts.json').catch(() => null),
-    loadJson('data/backtest/signals.json').catch(() => null)
-  ]).then(([summary, chartsData, signals]) => {
+    loadJson('data/backtest/signals.json').catch(() => null),
+    loadJson('data/backtest/exits.json').catch(() => null),
+    loadJson('data/backtest/leverage.json').catch(() => null),
+    loadJson('data/backtest/exit_live.json').catch(() => null)
+  ]).then(([summary, chartsData, signals, exits, leverage, liveExit]) => {
     state.summary = summary;
     state.charts = chartsData;
     state.signals = signals;
+    state.exits = exits;
+    state.leverage = leverage;
+    state.liveExit = liveExit;
     if (!summary) {
       $('generated').textContent = '还没有回测文件。每日任务或手动运行之后，这里会填上数字。';
     }

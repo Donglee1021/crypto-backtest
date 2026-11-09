@@ -1,0 +1,45 @@
+{
+  "generated": "2026-11-09T18:46:42.386012+00:00",
+  "coins": {
+    "BTC": {
+      "price": 74751.3,
+      "funding": 5.64907336766e-05,
+      "live": {
+        "long": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 74388.27,
+          "account_stop_25x": 74302.79,
+          "price": 74751.3
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 75156.73,
+          "account_stop_25x": 75199.81,
+          "price": 74751.3
+        }
+      }
+    },
+    "ETH": {
+      "price": 2124.61,
+      "funding": 3.67364647311e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2176.67,
+          "account_stop_25x": 2111.86,
+          "price": 2124.61
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 2120.31,
+          "account_stop_25x": 2137.36,
+          "price": 2124.61
+        }
+      }
+    }
+  }
+}

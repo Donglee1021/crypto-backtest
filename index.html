@@ -69,6 +69,23 @@
       <p class="muted">最近 50 条。做多之后上涨、做空之后下跌，记为对。观望不判断对错。表里较早的记录是用同一套规则在已收盘 K 线上重算的，不是当时看板上的实时快照；之后每小时的任务会继续往里加。</p>
     </section>
 
+    <section class="card" id="exitCard">
+      <h2>减仓 / 平仓信号</h2>
+      <p class="warn">假设现在已经持有，成本按现价或最近一段行情来看。这是出场研究的标签，不是开仓建议，也不表示该减掉多少、该用多少杠杆。</p>
+      <div id="exitLive"></div>
+      <h3>样本外出场对照</h3>
+      <div class="scroll"><table id="exitBoard"></table></div>
+      <h3>胜率和每笔期望</h3>
+      <div id="exitScatter"></div>
+      <p class="muted">每个点是一套参数在样本外的胜率和平均每笔收益。赢的次数多，不代表每笔平均下来是赚的。橙色点是胜率超过 80% 但期望仍为负，这种规则不会被当成更好。</p>
+    </section>
+
+    <section class="card" id="levCard">
+      <h2>杠杆模拟</h2>
+      <p class="warn" id="levNote">全仓、用当时的全部权益当保证金。日内权益涨到 +20% 当天停手；单笔权益回到 -15% 就平掉这一笔。下表只是这套规则在历史上的结果，不是建议使用任何杠杆。</p>
+      <div id="levBody"></div>
+    </section>
+
     <section class="card">
       <h2>方法</h2>
       <ul class="notes" id="notes"></ul>

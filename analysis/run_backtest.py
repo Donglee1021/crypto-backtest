@@ -388,6 +388,12 @@ def main():
     except Exception as exc:
         log(f"duckdb backtests {exc}")
     log(f"wrote {SUMMARY}")
+    try:
+        from analysis.run_exits import main as exit_main
+        exit_main()
+    except Exception as exc:
+        log(f"出场与杠杆模拟失败 {exc}")
+        raise
 
 
 def FEE_NOTE():
@@ -404,6 +410,7 @@ def NOTES():
         "参数只在前 70% K 线里按夏普挑选，后 30% 留作样本外。走步检验把样本切成 4 段，每次只用前面的数据重选参数，再看下一段。样本内更好看，通常就是过拟合。",
         "经典策略（EMA 交叉、RSI 均值回归、布林突破、MACD）只作为对照，同样收手续费和资金费，不用 ATR 止损。",
         "买入持有是同期价格涨跌，不含手续费和资金费。策略净值从 1 起算，已经扣过这两项。",
+        "减仓和平仓是出场研究的分类，不是让你减掉多少，也不是开仓建议。杠杆模拟只是把固定规则套在历史上，不推荐任何倍数。",
         "这是历史研究，不构成投资建议，也不提供仓位或杠杆建议。过去的收益不代表以后。",
     ]
 

@@ -82,6 +82,9 @@ tr.click:hover, tr.sel { background: #1c2128; }
 .barline span { width: 52px; color: var(--tx2); }
 .track { flex: 1; height: 8px; background: #21262d; border-radius: 99px; overflow: hidden; }
 .track b { display: block; height: 100%; background: var(--acc); }
+.scatter { width: 100%; height: auto; }
+.dot-flag { fill: #d29922; }
+.hz .chip { flex: 1 1 120px; }
 ul.notes { margin: 8px 0 0; padding-left: 18px; color: var(--tx2); font-size: 13px; }
 ul.notes li { margin: 4px 0; }
 .links { display: flex; flex-wrap: wrap; gap: 8px 14px; }
