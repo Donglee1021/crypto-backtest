@@ -23,6 +23,9 @@ mkdir -p "$wt/data/history" "$wt/data/cache"
 if [ -f "$root/data/history.duckdb" ]; then
   cp -a "$root/data/history.duckdb" "$wt/data/history.duckdb"
 fi
+if [ -f "$root/data/paper.duckdb" ]; then
+  cp -a "$root/data/paper.duckdb" "$wt/data/paper.duckdb"
+fi
 if [ -d "$root/data/history" ]; then
   cp -a "$root/data/history/." "$wt/data/history/"
 fi

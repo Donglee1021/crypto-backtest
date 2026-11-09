@@ -3,101 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BTC / ETH 回测</title>
+  <title>Grok Bot 交易终端</title>
   <link rel="icon" href="favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/terminal.css">
   <script src="js/lightweight-charts.standalone.production.js"></script>
 </head>
 <body>
   <header>
     <div class="top">
-      <h1>BTC / ETH 回测</h1>
-      <a href="https://donglee1021.github.io/crypto-dashboard/">返回实时看板</a>
+      <h1>Grok Bot 交易终端</h1>
+      <div>
+        <span class="badge">模拟盘 · 不是真钱</span>
+        <a href="report.html">详细报告</a>
+        <a href="https://donglee1021.github.io/crypto-dashboard/">实时看板</a>
+      </div>
     </div>
-    <p class="banner">只做历史研究，不下单，不连接账户，也不提供仓位或杠杆建议。回测不能保证以后的结果，不构成投资建议。</p>
-    <p class="muted" id="generated"></p>
+    <div class="stats" id="stats"></div>
   </header>
   <main>
-    <section class="grid2" id="overview"></section>
-
-    <section class="card">
-      <h2>策略对照</h2>
-      <div class="controls">
-        <div class="seg" id="coinSeg" role="group" aria-label="币种">
-          <button type="button" class="on" data-v="ALL">全部</button>
-          <button type="button" data-v="BTC">BTC</button>
-          <button type="button" data-v="ETH">ETH</button>
+    <p class="warn" id="honesty"></p>
+    <div class="layout">
+      <section class="card" id="agents"></section>
+      <section>
+        <div class="card">
+          <h3>这一轮</h3>
+          <div class="flow" id="flow"></div>
+          <div class="trade" id="trade"></div>
         </div>
-        <div class="seg" id="groupSeg" role="group" aria-label="策略组">
-          <button type="button" class="on" data-v="ALL">全部</button>
-          <button type="button" data-v="页面规则">页面规则</button>
-          <button type="button" data-v="经典策略">经典策略</button>
+        <div class="card" style="margin-top:12px">
+          <h3>结果</h3>
+          <div class="result" id="result"></div>
+          <div id="eqChart" class="chart"></div>
         </div>
-      </div>
-      <div class="scroll"><table id="board"></table></div>
-      <p class="warn">样本内挑参数容易把噪声当成规律。标成「可能过拟合」的，请以样本外和走步检验为准。经典策略里样本外最好的一条，是事后比较出来的，事先并不能确定会选中它。</p>
-    </section>
-
-    <section class="card" id="detailCard">
-      <h2 id="detailTitle">曲线</h2>
-      <div id="detailMeta" class="muted"></div>
-      <div class="scroll" id="detailTable"></div>
-      <h3>净值</h3>
-      <div id="equityChart" class="chart"></div>
-      <div class="legend"><span><i style="background:#58a6ff"></i>策略</span><span><i style="background:#8b949e"></i>买入持有</span></div>
-      <h3>价格与进出场</h3>
-      <div id="priceChart" class="chart"></div>
-      <p class="muted">箭头是这一档策略的开仓。多在 K 线下方，空在上方。价格用最近一段 4 小时 K 线，更早的成交不会画在这张图上。</p>
-    </section>
-
-    <section class="card">
-      <h2>BTC / ETH / 稳定币配置</h2>
-      <div id="alloc"></div>
-      <p class="warn">这些权重只说明历史波动怎么分，不是建议你拿多少，也没有杠杆。稳定币按价格恒定来算，最小方差会大量分给它，因为这样波动最小。</p>
-    </section>
-
-    <section class="card">
-      <h2>QuantStats 报告</h2>
-      <div class="links" id="reports"></div>
-      <p class="muted">报告正文是 QuantStats 的英文模板，对照的是买入持有。中线默认用全样本，经典策略用样本外那段。</p>
-    </section>
-
-    <section class="card">
-      <h2>信号记录</h2>
-      <div id="hitRate" class="muted"></div>
-      <div class="scroll"><table id="signals"></table></div>
-      <p class="muted">最近 50 条。做多之后上涨、做空之后下跌，记为对。观望不判断对错。表里较早的记录是用同一套规则在已收盘 K 线上重算的，不是当时看板上的实时快照；之后每小时的任务会继续往里加。</p>
-    </section>
-
-    <section class="card" id="exitCard">
-      <h2>减仓 / 平仓信号</h2>
-      <p class="warn">假设现在已经持有，成本按现价或最近一段行情来看。这是出场研究的标签，不是开仓建议，也不表示该减掉多少、该用多少杠杆。</p>
-      <div id="exitLive"></div>
-      <h3>样本外出场对照</h3>
-      <div class="scroll"><table id="exitBoard"></table></div>
-      <h3>胜率和每笔期望</h3>
-      <div id="exitScatter"></div>
-      <p class="muted">每个点是一套参数在样本外的胜率和平均每笔收益。赢的次数多，不代表每笔平均下来是赚的。橙色点是胜率超过 80% 但期望仍为负，这种规则不会被当成更好。</p>
-    </section>
-
-    <section class="card" id="levCard">
-      <h2>杠杆模拟</h2>
-      <p class="warn" id="levNote">全仓、用当时的全部权益当保证金。日内权益涨到 +20% 当天停手；单笔权益回到 -15% 就平掉这一笔。下表只是这套规则在历史上的结果，不是建议使用任何杠杆。</p>
-      <div id="levBody"></div>
-    </section>
-
-    <section class="card" id="bestCard">
-      <h2>最佳方案</h2>
-      <p class="warn" id="bestNote">按样本外的夏普和卡玛来排，不按样本内赚多少。扣过手续费、滑点和资金费。这里不推荐杠杆，1 倍、2 倍、3 倍只是同一条信号放大后的对照。</p>
-      <div id="bestBody"></div>
-    </section>
-
-    <section class="card">
-      <h2>方法</h2>
-      <ul class="notes" id="notes"></ul>
-    </section>
-    <footer>数据来自 OKX 公共行情和 alternative.me 恐惧贪婪指数。没有使用交易所 API 密钥。Cryptofeed 需要长期运行的进程，APScheduler 也要常驻服务，这个仓库只有 GitHub Actions，所以都没有用。</footer>
+        <div class="card" style="margin-top:12px">
+          <h3>决定记录</h3>
+          <div class="log" id="log"></div>
+        </div>
+        <div class="card help" style="margin-top:12px" id="help">
+          <h3>怎么看</h3>
+          <p>左边是六个步骤：先看信号，再检查要不要拦住，然后按固定模拟规则算一张很小的账，最后只在账本上记下开仓或平仓。</p>
+          <p>中间的流程会标出这一轮停在哪一步。有持仓时，价格用浏览器向 OKX 要的最新价，两次任务之间的浮动盈亏会跟着变。</p>
+          <p>下面每条记录都有维也纳时间、动作和一句人话原因。过滤就是没做，跳过就是这一轮没有新动作。</p>
+          <p>任务大约每 15 分钟跑一次，GitHub 的定时可能晚几分钟。过去的回测没有好过买入持有，这里的模拟盘也不保证以后会赚。</p>
+        </div>
+      </section>
+    </div>
   </main>
-  <script src="js/app.js"></script>
+  <script src="js/terminal.js"></script>
 </body>
 </html>

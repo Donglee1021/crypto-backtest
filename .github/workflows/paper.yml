@@ -1,0 +1,115 @@
+name: 模拟盘
+
+on:
+  schedule:
+    # 每 15 分钟。GitHub 的 cron 可能晚几分钟到几十分钟。
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "analysis/paper.py"
+      - "analysis/search.py"
+      - ".github/workflows/paper.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: crypto-backtest-data
+  cancel-in-progress: false
+
+jobs:
+  paper:
+    outputs:
+      pages: ${{ steps.pagescfg.outcome }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 检出
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: 取回模拟账本
+        run: |
+          git fetch origin data || true
+          if git rev-parse --verify origin/data >/dev/null 2>&1; then
+            git checkout origin/data -- data/paper.duckdb data/cache || true
+            git reset -q HEAD -- data/paper.duckdb data/cache || true
+          fi
+
+      - name: 安装 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: python3 -m pip install 'duckdb>=1.1' 'pandas>=2.2' 'numpy>=1.26' 'pyarrow>=15' 'ccxt>=4.2'
+
+      - name: 记一笔模拟账
+        run: python3 -u -m analysis.paper
+
+      - name: 提交页面账本
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/paper/state.json
+          if git diff --cached --quiet; then
+            echo "模拟账无变化"
+          else
+            git commit -m "data: 更新模拟盘"
+            ok=false
+            for i in 1 2 3 4; do
+              if git pull --rebase origin main && git push origin HEAD:main; then
+                ok=true
+                break
+              fi
+              sleep $((i * 5))
+            done
+            if [ "$ok" != true ]; then
+              echo "推送 main 失败"
+              exit 1
+            fi
+          fi
+
+      - name: 更新 data 分支
+        run: bash scripts/push_data_branch.sh
+
+      - name: 组装站点
+        run: bash scripts/assemble_site.sh
+
+      - name: 配置 Pages
+        id: pagescfg
+        continue-on-error: true
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - name: 上传页面
+        if: steps.pagescfg.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Pages 未开启时说明原因
+        if: steps.pagescfg.outcome != 'success'
+        run: echo "::warning::GitHub Pages 未能配置。请把 Source 设成 GitHub Actions 后再运行「部署页面」。"
+
+  deploy:
+    needs: paper
+    if: needs.paper.result == 'success' && needs.paper.outputs.pages == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v5
