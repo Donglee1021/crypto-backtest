@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --card: #161b22;
+  --line: #30363d;
+  --tx: #e6edf3;
+  --tx2: #8b949e;
+  --up: #26a69a;
+  --down: #ef5350;
+  --warn: #d29922;
+  --acc: #58a6ff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--tx); }
+body {
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(13, 17, 23, .94);
+  border-bottom: 1px solid var(--line);
+  padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+  backdrop-filter: blur(8px);
+}
+h1 { font-size: 17px; margin: 0; font-weight: 650; }
+h2 { font-size: 15px; margin: 0 0 10px; font-weight: 650; }
+h3 { font-size: 13px; margin: 12px 0 6px; font-weight: 650; }
+a { color: var(--acc); }
+.top { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; }
+.muted { color: var(--tx2); font-size: 12px; }
+.warn { color: var(--warn); font-size: 13px; }
+.banner {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(210, 153, 34, .45);
+  background: rgba(210, 153, 34, .08);
+  border-radius: 8px;
+  color: #e6c98a;
+  font-size: 13px;
+}
+main { max-width: 1180px; margin: 0 auto; padding: 12px; display: grid; gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.grid2 { display: grid; gap: 12px; }
+@media (min-width: 860px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button {
+  background: transparent; color: var(--tx2); border: 0; border-right: 1px solid var(--line);
+  padding: 6px 10px; font: inherit; cursor: pointer;
+}
+.seg button:last-child { border-right: 0; }
+.seg button.on { background: #1f6feb33; color: var(--tx); }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+th { color: var(--tx2); font-weight: 600; font-size: 12px; }
+td.n, th.n { text-align: right; }
+tr.click { cursor: pointer; }
+tr.click:hover, tr.sel { background: #1c2128; }
+.up { color: var(--up); }
+.down { color: var(--down); }
+.tag {
+  display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 650;
+}
+.tag.up { background: rgba(38, 166, 154, .16); }
+.tag.down { background: rgba(239, 83, 80, .16); }
+.tag.flat { background: rgba(139, 148, 158, .16); color: var(--tx2); }
+.tag.warn { background: rgba(210, 153, 34, .16); color: var(--warn); }
+.price { font-size: clamp(22px, 6vw, 28px); font-weight: 650; }
+.hz { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; min-width: 92px; }
+.chip b { display: block; font-size: 12px; color: var(--tx2); font-weight: 600; }
+.chart { width: 100%; height: 280px; }
+.chart.short { height: 220px; }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--tx2); margin-top: 4px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+.weights { display: grid; gap: 6px; margin: 8px 0; }
+.barline { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.barline span { width: 52px; color: var(--tx2); }
+.track { flex: 1; height: 8px; background: #21262d; border-radius: 99px; overflow: hidden; }
+.track b { display: block; height: 100%; background: var(--acc); }
+ul.notes { margin: 8px 0 0; padding-left: 18px; color: var(--tx2); font-size: 13px; }
+ul.notes li { margin: 4px 0; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+footer { color: var(--tx2); font-size: 12px; padding: 4px 2px 18px; }

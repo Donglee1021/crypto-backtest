@@ -1,0 +1,60 @@
+name: 部署页面
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "css/**"
+      - "js/**"
+      - "favicon.svg"
+      - "data/backtest/**"
+      - "reports/**"
+      - ".github/workflows/pages.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: crypto-backtest-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 检出
+        uses: actions/checkout@v5
+
+      - name: 组装站点
+        run: bash scripts/assemble_site.sh
+
+      - name: 配置 Pages
+        id: pagescfg
+        continue-on-error: true
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
+
+      - name: 上传页面
+        if: steps.pagescfg.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: 部署
+        if: steps.pagescfg.outcome == 'success'
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Pages 未开启时说明原因
+        if: steps.pagescfg.outcome != 'success'
+        run: |
+          echo "::error::GitHub Pages 没有部署。请仓库所有者打开 Settings → Pages → Build and deployment → Source，选 GitHub Actions 并保存，然后重新运行「部署页面」。"
+          exit 1
