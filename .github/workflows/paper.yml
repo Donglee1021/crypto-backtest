@@ -18,7 +18,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: crypto-backtest-data
+  # 不和每日回测共用队列。共用时，后到的任务会把还在排队的模拟盘取消。
+  group: paper-terminal
   cancel-in-progress: false
 
 jobs:
