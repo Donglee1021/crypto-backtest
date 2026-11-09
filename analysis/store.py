@@ -14,6 +14,7 @@ SUMMARY = ROOT / "data" / "backtest" / "summary.json"
 SIGNALS = ROOT / "data" / "backtest" / "signals.json"
 CHARTS = ROOT / "data" / "backtest" / "charts.json"
 LATEST = ROOT / "data" / "backtest" / "latest.json"
+LIVE_EXIT = ROOT / "data" / "backtest" / "exit_live.json"
 
 OUTCOME_COLS = ["ret_1h", "ret_4h", "ret_24h", "hit_1h", "hit_4h", "hit_24h"]
 

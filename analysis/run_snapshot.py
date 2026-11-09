@@ -13,7 +13,8 @@ sys.path.insert(0, str(ROOT))
 from analysis.horizons import DROPPED, _weekly_frame, current_signals
 from analysis.market import drop_forming, fetch_funding, fetch_ohlcv
 from analysis.scoring import score_frame, talib_last
-from analysis.store import LATEST, export_frontend, insert_signals, update_outcomes
+from analysis.exits import live_advice
+from analysis.store import LATEST, LIVE_EXIT, export_frontend, insert_signals, update_outcomes
 
 
 def latest_fng():
@@ -32,6 +33,7 @@ def main():
         fng = None
     rows = []
     latest = {}
+    frames = {}
     for coin in ("BTC", "ETH"):
         raw = {}
         # 快照只需要算当前分数。缓存里已经有长历史时，这里只会补最新的几根。
@@ -70,6 +72,7 @@ def main():
                     "dropped": DROPPED,
                 }, ensure_ascii=False),
             })
+        frames[coin] = raw["1h"]
         print(coin, "price", price, "中线", signals.get("中线"), flush=True)
     insert_signals(rows)
     update_outcomes()
@@ -87,6 +90,22 @@ def main():
         "coins": latest,
         "backtest_generated": prev.get("backtest_generated"),
     }, ensure_ascii=False, indent=2), encoding="utf-8")
+    exit_live = {"generated": now.isoformat(), "coins": {}}
+    for coin in ("BTC", "ETH"):
+        block = latest.get(coin) or {}
+        horizons = block.get("horizons") or {}
+        # 用刚才拉到的 1 小时 K 线再算一次出场标签。失败时留空，不挡住信号快照。
+        try:
+            frame = frames[coin]
+            exit_live["coins"][coin] = {
+                "price": block.get("price"),
+                "funding": block.get("funding"),
+                "live": live_advice(frame, block.get("funding")),
+                "score_hint": horizons.get("1小时"),
+            }
+        except Exception as exc:
+            print("exit live", coin, exc, flush=True)
+    LIVE_EXIT.write_text(json.dumps(exit_live, ensure_ascii=False, indent=2), encoding="utf-8")
     print("snapshot rows", len(rows), flush=True)
 
 
