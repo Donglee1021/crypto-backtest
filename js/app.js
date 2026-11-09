@@ -105,10 +105,10 @@
     return {
       width: el.clientWidth,
       height: el.clientHeight || 280,
-      layout: { background: { type: 'solid', color: '#161b22' }, textColor: '#8b949e' },
-      grid: { vertLines: { color: '#21262d' }, horzLines: { color: '#21262d' } },
-      rightPriceScale: { borderColor: '#30363d' },
-      timeScale: { borderColor: '#30363d', timeVisible: true, secondsVisible: false }
+      layout: { background: { type: 'solid', color: '#ffffff' }, textColor: '#667085' },
+      grid: { vertLines: { color: '#eef1f4' }, horzLines: { color: '#eef1f4' } },
+      rightPriceScale: { borderColor: '#e3e7ee' },
+      timeScale: { borderColor: '#e3e7ee', timeVisible: true, secondsVisible: false }
     };
   }
   function mountLine(el, equity, bench) {
@@ -119,8 +119,8 @@
     }
     el.innerHTML = '';
     const chart = LightweightCharts.createChart(el, baseOptions(el));
-    const a = chart.addLineSeries({ color: '#58a6ff', lineWidth: 2, priceLineVisible: false });
-    const b = chart.addLineSeries({ color: '#8b949e', lineWidth: 1, priceLineVisible: false });
+    const a = chart.addLineSeries({ color: '#1d6fe8', lineWidth: 2, priceLineVisible: false });
+    const b = chart.addLineSeries({ color: '#98a2b3', lineWidth: 1, priceLineVisible: false });
     a.setData(equity);
     b.setData(bench || []);
     chart.timeScale().fitContent();
@@ -304,13 +304,13 @@
     if (y1 === y0) y1 = y0 + 0.001;
     const X = v => pad + (v - x0) / (x1 - x0) * (w - pad * 2);
     const Y = v => pad + (1 - (v - y0) / (y1 - y0)) * (h - pad * 2);
-    const zero = (0 >= y0 && 0 <= y1) ? '<line x1="' + pad + '" x2="' + (w - pad) + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#30363d"/>' : '';
+    const zero = (0 >= y0 && 0 <= y1) ? '<line x1="' + pad + '" x2="' + (w - pad) + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#e3e7ee"/>' : '';
     const dots = rows.map(p => '<circle cx="' + X(p.win_rate).toFixed(1) + '" cy="' + Y(p.expectancy).toFixed(1) + '" r="' + (p.flag ? 5 : 3.5) + '" class="' + (p.flag ? 'dot-flag' : '') + '" fill="' + (p.flag ? '#d29922' : '#58a6ff') + '"><title>' +
       esc(p.coin + ' ' + p.entry + ' ' + p.rule + ' ' + p.params) + '</title></circle>').join('');
     return '<svg class="scatter" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="胜率与每笔期望">' + zero + dots +
-      '<text x="' + pad + '" y="' + (h - 8) + '" fill="#8b949e" font-size="12">胜率 ' + (x0 * 100).toFixed(0) + '%</text>' +
-      '<text x="' + (w - pad - 70) + '" y="' + (h - 8) + '" fill="#8b949e" font-size="12">' + (x1 * 100).toFixed(0) + '%</text>' +
-      '<text x="8" y="' + pad + '" fill="#8b949e" font-size="12">期望</text></svg>';
+      '<text x="' + pad + '" y="' + (h - 8) + '" fill="#667085" font-size="12">胜率 ' + (x0 * 100).toFixed(0) + '%</text>' +
+      '<text x="' + (w - pad - 70) + '" y="' + (h - 8) + '" fill="#667085" font-size="12">' + (x1 * 100).toFixed(0) + '%</text>' +
+      '<text x="8" y="' + pad + '" fill="#667085" font-size="12">期望</text></svg>';
   }
   function levRows() {
     const data = state.leverage;
@@ -362,7 +362,7 @@
     const chart = LightweightCharts.createChart(el, baseOptions(el));
     const colors = { 25: '#ef5350', 10: '#d29922', 5: '#58a6ff', 3: '#26a69a' };
     rows.forEach(row => {
-      const series = chart.addLineSeries({ color: colors[row.leverage] || '#8b949e', lineWidth: 2, priceLineVisible: false });
+      const series = chart.addLineSeries({ color: colors[row.leverage] || '#98a2b3', lineWidth: 2, priceLineVisible: false });
       series.setData(row.equity || []);
     });
     chart.timeScale().fitContent();
@@ -419,7 +419,7 @@
         '</td><td class="n">' + pctPlain(e.expectancy) + '</td><td class="n">' + (e.trades_per_year == null ? '—' : e.trades_per_year) + '</td></tr>' : '') +
         '</table></div>' + levTable +
         '<div id="bestChart' + index + '" class="chart"></div>' +
-        '<div class="legend"><span><i style="background:#58a6ff"></i>BTC 或组合</span><span><i style="background:#26a69a"></i>ETH</span><span><i style="background:#8b949e"></i>买入持有</span></div></article>';
+        '<div class="legend"><span><i style="background:#1d6fe8"></i>BTC 或组合</span><span><i style="background:#128a52"></i>ETH</span><span><i style="background:#98a2b3"></i>买入持有</span></div></article>';
     }).join('');
     box.innerHTML = '<p>' + verdict + '</p><p class="muted">样本外从 ' + esc((data.window || {}).oos_start || '') + ' 起。试过 ' + (data.trials || '—') + ' 套配置。买入持有夏普：BTC ' +
       num((data.buy_hold.BTC || {}).sharpe) + '，ETH ' + num((data.buy_hold.ETH || {}).sharpe) + '。</p>' +
@@ -437,9 +437,9 @@
         const series = chart.addLineSeries({ color: color, lineWidth: 2, priceLineVisible: false });
         series.setData(points);
       };
-      add(eq.BTC || eq.book, '#58a6ff');
-      add(eq.ETH, '#26a69a');
-      add(eq.bh_BTC || eq.basket, '#8b949e');
+      add(eq.BTC || eq.book, '#1d6fe8');
+      add(eq.ETH, '#128a52');
+      add(eq.bh_BTC || eq.basket, '#98a2b3');
       chart.timeScale().fitContent();
       charts[el.id] = chart;
     });
