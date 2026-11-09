@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T20:11:00.203360+00:00",
+  "generated": "2026-11-09T20:00:00+00:00",
   "coins": {
     "BTC": {
       "price": 74851.9,
@@ -19,6 +19,11 @@
           "account_stop_25x": 75301.01,
           "price": 74851.9
         }
+      },
+      "score_hint": {
+        "score": -2.0,
+        "verdict": "观望",
+        "price": 74851.9
       }
     },
     "ETH": {
@@ -39,6 +44,11 @@
           "account_stop_25x": 2140.49,
           "price": 2127.72
         }
+      },
+      "score_hint": {
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 2127.72
       }
     }
   }
