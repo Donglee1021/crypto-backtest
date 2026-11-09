@@ -7,8 +7,8 @@
       "fng": 29,
       "horizons": {
         "15分钟": {
-          "score": -3.0,
-          "verdict": "做空",
+          "score": 2.0,
+          "verdict": "观望",
           "price": 74730.0
         },
         "1小时": {
@@ -27,8 +27,8 @@
           "price": 74730.0
         },
         "超短线": {
-          "score": -2.6,
-          "verdict": "偏空",
+          "score": 3.4,
+          "verdict": "偏多",
           "price": 74730.0
         },
         "中线": {
@@ -49,8 +49,8 @@
       "fng": 29,
       "horizons": {
         "15分钟": {
-          "score": -8.0,
-          "verdict": "强烈做空",
+          "score": 1.0,
+          "verdict": "观望",
           "price": 2125.25
         },
         "1小时": {
@@ -69,8 +69,8 @@
           "price": 2125.25
         },
         "超短线": {
-          "score": -2.9,
-          "verdict": "偏空",
+          "score": 2.9,
+          "verdict": "偏多",
           "price": 2125.25
         },
         "中线": {
