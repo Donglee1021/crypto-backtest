@@ -6,19 +6,53 @@
   <title>Grok Bot 交易终端</title>
   <link rel="icon" href="favicon.svg">
   <link rel="stylesheet" href="css/terminal.css">
-  <script src="js/lightweight-charts.standalone.production.js"></script>
 </head>
 <body>
+  <div class="scanline" aria-hidden="true"></div>
   <header>
     <div class="top">
-      <h1>Grok Bot 交易终端</h1>
-      <div>
+      <div class="brand">
+        <svg class="mascot" viewBox="0 0 64 64" aria-hidden="true">
+          <rect class="antenna" x="30" y="6" width="4" height="10" rx="2"></rect>
+          <circle class="antenna-tip" cx="32" cy="6" r="3.2"></circle>
+          <rect class="head" x="8" y="14" width="48" height="40" rx="14"></rect>
+          <g class="eyes">
+            <ellipse class="eye" cx="24" cy="32" rx="4.2" ry="5"></ellipse>
+            <ellipse class="eye" cx="40" cy="32" rx="4.2" ry="5"></ellipse>
+          </g>
+          <path class="mouth" d="M22 43h20"></path>
+        </svg>
+        <h1>Grok Bot 交易终端</h1>
+      </div>
+      <div class="nav">
         <span class="badge">模拟盘 · 不是真钱</span>
         <a href="report.html">详细报告</a>
         <a href="https://donglee1021.github.io/crypto-dashboard/">实时看板</a>
       </div>
     </div>
-    <div class="stats" id="stats"></div>
+    <div class="ticker" id="ticker" aria-label="行情">
+      <span class="live-tag"><i class="dot"></i>行情</span>
+      <span class="tick" id="tickBTC"><em>BTC</em><b>—</b></span>
+      <span class="tick" id="tickETH"><em>ETH</em><b>—</b></span>
+    </div>
+    <div class="stats" id="stats">
+      <div class="stat">
+        <b><i class="dot"></i><span id="runLabel">运行中</span></b>
+        <span id="uptime">已运行 —</span>
+      </div>
+      <div class="stat">
+        <b id="equityNum">—</b>
+        <span>模拟权益</span>
+      </div>
+      <div class="stat">
+        <b id="tradeNum">0</b>
+        <span>总成交</span>
+      </div>
+      <div class="stat">
+        <b><span id="winNum">0</span> / <span id="lossNum">0</span></b>
+        <span>盈 / 亏</span>
+      </div>
+    </div>
   </header>
   <main>
     <p class="warn" id="honesty"></p>
@@ -27,12 +61,30 @@
       <section>
         <div class="card">
           <h3>这一轮</h3>
-          <div class="flow" id="flow"></div>
+          <div class="flow" id="flow">
+            <div class="rail" id="rail">
+              <div class="node" data-step="scan"><span>扫描</span></div>
+              <div class="dash"></div>
+              <div class="node" data-step="risk"><span>风控</span></div>
+              <div class="dash"></div>
+              <div class="node" data-step="size"><span>仓位</span></div>
+              <div class="dash"></div>
+              <div class="node" data-step="exec"><span>执行</span></div>
+              <div class="dash"></div>
+              <div class="node" data-step="log"><span>记录</span></div>
+              <i class="token" id="token"></i>
+            </div>
+            <div class="candidate" id="candidate"></div>
+          </div>
           <div class="trade" id="trade"></div>
         </div>
         <div class="card" style="margin-top:12px">
           <h3>结果</h3>
-          <div class="result" id="result"></div>
+          <div class="result" id="result">
+            <div><span class="help">起始</span><div id="startNum">10,000</div></div>
+            <div><span class="help">现在</span><strong id="nowNum">—</strong></div>
+            <div><span class="help">变化</span><div id="diffNum">—</div></div>
+          </div>
           <div id="eqChart" class="chart"></div>
         </div>
         <div class="card" style="margin-top:12px">
