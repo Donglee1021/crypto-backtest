@@ -1,29 +1,29 @@
 {
-  "generated": "2026-11-10T19:00:00+00:00",
+  "generated": "2026-11-10T20:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73453.6,
+      "price": 73440.5,
       "funding": 4.84085643949e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 74038.54,
-          "account_stop_25x": 73012.88,
-          "price": 73453.6
+          "trail_stop": 74113.43,
+          "account_stop_25x": 72999.86,
+          "price": 73440.5
         },
         "short": {
-          "action": "平仓",
-          "reason": "MACD 绿柱在缩短；KDJ 的 K 上穿 D",
-          "trail_stop": 74561.46,
-          "account_stop_25x": 73894.32,
-          "price": 73453.6
+          "action": "减仓",
+          "reason": "MACD 绿柱在缩短",
+          "trail_stop": 74486.57,
+          "account_stop_25x": 73881.14,
+          "price": 73440.5
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 73453.6
+        "price": 73440.5
       }
     },
     "ETH": {
