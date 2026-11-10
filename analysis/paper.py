@@ -1,23 +1,29 @@
 """模拟盘。只用公开行情记账，不下单，不使用 API 密钥。
 
-扫描用搜索里相对稳一点的两套：日线 SMA20/50 加 3 倍 ATR 跟踪，以及约 12 周时序动量。
-两套方向一致才考虑进场。风控不通过就只写一条原因。仓位比例是模拟参数，不是建议。
+超短线：1 分钟、5 分钟、15 分钟方向一致，并且和 1 小时同向，才记账。
+止损、减仓和止盈按 15 分钟 ATR，是模拟参数，不是建议。
 """
 from __future__ import annotations
 
 import json
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import duckdb
-import numpy as np
-import pandas as pd
 
-from analysis.market import drop_forming, fetch_funding, fetch_ohlcv
-from analysis.scoring import atr
-from analysis.search import apply_trail, ma_pos, tsmom_pos
+from analysis.market import fetch_funding
+from analysis.scalp import (
+    COOLDOWN_MIN,
+    DAY_LOSS,
+    STOP_MULT,
+    TARGET1_MULT,
+    TARGET2_MULT,
+    apply_exit,
+    latest,
+    side_of,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "paper" / "state.json"
@@ -139,29 +145,6 @@ def latest_funding(coin: str) -> float | None:
     return float(hist["rate"].iloc[-1])
 
 
-def signals(coin: str) -> dict:
-    daily = drop_forming(fetch_ohlcv(coin, "1d"), "1d")
-    h4 = drop_forming(fetch_ohlcv(coin, "4h"), "4h")
-    close = daily["close"].to_numpy(float)
-    high = daily["high"].to_numpy(float)
-    low = daily["low"].to_numpy(float)
-    ma = apply_trail(high, low, close, ma_pos(close, 20, 50, "sma"), atr(high, low, close, 14), 3)
-    mom = tsmom_pos(close, 84, False)
-    h4c = h4["close"].to_numpy(float)
-    h4_ma = ma_pos(h4c, 20, 50, "sma")
-    atr_v = atr(high, low, close, 14)
-    return {
-        "bar": daily.index[-1].isoformat(),
-        "price": float(close[-1]),
-        "atr": float(atr_v[-1]) if np.isfinite(atr_v[-1]) else float(close[-1]) * 0.02,
-        "ma": int(ma[-1]),
-        "mom": int(mom[-1]),
-        "h4": int(h4_ma[-1]),
-        "low": float(low[-1]),
-        "high": float(high[-1]),
-    }
-
-
 def mark_equity(state: dict, marks: dict[str, float]) -> float:
     equity = float(state["cash"])
     for coin, pos in (state.get("positions") or {}).items():
@@ -196,7 +179,7 @@ def append_log(state: dict, stamp: datetime, coin: str, action: str, reason: str
 
 def open_position(state: dict, coin: str, side: int, price: float, atr_v: float, reason: str) -> dict:
     equity = mark_equity(state, {coin: price})
-    stop_dist = max(atr_v * 3, price * 0.005)
+    stop_dist = max(atr_v * STOP_MULT, price * 0.001)
     risk_cash = equity * RISK_FRAC
     qty = risk_cash / stop_dist
     notional = qty * price
@@ -214,7 +197,10 @@ def open_position(state: dict, coin: str, side: int, price: float, atr_v: float,
         "qty": qty,
         "notional": round(notional, 2),
         "stop": round(stop, 2 if fill >= 100 else 4),
-        "opened_at": reason and None,
+        "target1": round(fill + side * atr_v * TARGET1_MULT, 2 if fill >= 100 else 4),
+        "target2": round(fill + side * atr_v * TARGET2_MULT, 2 if fill >= 100 else 4),
+        "reduced": False,
+        "realized": round(-fee, 4),
         "fee_open": round(fee, 4),
         "reason": reason,
     }
@@ -228,8 +214,10 @@ def close_position(state: dict, coin: str, pos: dict, price: float) -> float:
     fee = pos["qty"] * fill * FEE
     pnl = gross - fee
     state["cash"] = float(state["cash"]) + pnl
+    total = pnl + float(pos.get("realized") or 0)
+    state["day_pnl"] = float(state.get("day_pnl") or 0) + pnl
     state["trades"] = int(state["trades"]) + 1
-    if pnl >= 0:
+    if total >= 0:
         state["wins"] = int(state["wins"]) + 1
     else:
         state["losses"] = int(state["losses"]) + 1
@@ -240,110 +228,193 @@ def close_position(state: dict, coin: str, pos: dict, price: float) -> float:
         "exit": round(fill, 2 if fill >= 100 else 4),
         "qty": pos["qty"],
         "notional": pos["notional"],
-        "pnl": round(pnl, 2),
+        "pnl": round(total, 2),
         "reason": pos.get("reason") or "",
     }
+    return total
+
+
+def reduce_position(state: dict, pos: dict, price: float) -> float:
+    part = pos["qty"] * 0.5
+    side = pos["side"]
+    fill = price * (1 - side * SLIP)
+    gross = side * part * (fill - pos["entry"])
+    fee = part * fill * FEE
+    pnl = gross - fee
+    state["cash"] = float(state["cash"]) + pnl
+    state["day_pnl"] = float(state.get("day_pnl") or 0) + pnl
+    pos["realized"] = float(pos.get("realized") or 0) + pnl
+    pos["qty"] = pos["qty"] - part
+    pos["reduced"] = True
+    pos["stop"] = pos["entry"]
+    pos["notional"] = round(pos["qty"] * fill, 2)
     return pnl
+
+
+def backtest_public():
+    path = ROOT / "data" / "paper" / "scalp_backtest.json"
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    brief = {"days": data.get("days"), "note": data.get("note"), "coins": {}}
+    for coin, stats in (data.get("coins") or {}).items():
+        brief["coins"][coin] = {
+            "trades": stats.get("trades"),
+            "win_rate": None if stats.get("win_rate") is None else round(stats["win_rate"], 4),
+            "return": round(stats.get("return") or 0, 4),
+            "max_drawdown": round(stats.get("max_drawdown") or 0, 4),
+        }
+    return brief
 
 
 def run() -> dict:
     stamp = now_vienna()
     state = load_state(stamp)
+    state.setdefault("cooldown", {})
     marks = {}
+    calls = {}
     flow = "scan"
     candidate_label = "没有候选"
     decisions = []
+    equity_now = mark_equity(state, {})
+    day_key = stamp.date().isoformat()
+    if state.get("day_key") != day_key:
+        state["day_key"] = day_key
+        state["day_pnl"] = 0.0
+        state["day_equity"] = equity_now
     for coin in COINS:
-        info = signals(coin)
-        marks[coin] = info["price"]
-        ma_side, mom_side = info["ma"], info["mom"]
-        if ma_side != 0 and ma_side == mom_side:
-            candidate = ma_side
-        else:
-            candidate = 0
-        rate = latest_funding(coin)
-        blocks = []
-        notes = []
-        if candidate == 0:
-            if ma_side == 0 and mom_side == 0:
-                notes.append("均线和 12 周动量都没有方向")
-            else:
-                blocks.append(f"均线是{side_name(ma_side)}，动量是{side_name(mom_side)}，方向相反")
-        if candidate and info["h4"] != 0 and info["h4"] != candidate:
-            blocks.append(f"4 小时均线是{side_name(info['h4'])}，和日线不一致")
-        if candidate and rate is not None:
-            if candidate > 0 and rate > 0.0003:
-                blocks.append("资金费率过热，多头拥挤")
-            elif candidate < 0 and rate < -0.0003:
-                blocks.append("资金费率过冷，空头拥挤")
-        elif rate is None:
-            notes.append("资金费率暂时没取到，这项不拦截")
-        if candidate and info["atr"] / info["price"] > 0.06:
-            blocks.append("日线波动太大")
-        liq = liquidation_cluster(coin, info["price"])
-        if candidate and liq == "cluster":
-            blocks.append("附近清算单扎堆")
-        elif liq == "unknown":
-            notes.append("清算簇没有拉到，这项不拦截")
+        try:
+            view = latest(coin)
+        except Exception as exc:
+            print("latest", coin, exc, flush=True)
+            decisions.append({"coin": coin, "action": "跳过", "reason": "行情没取到", "price": None, "candidate": 0, "blocks": []})
+            append_log(state, stamp, coin, "跳过", "行情没取到", mark_equity(state, marks), None)
+            continue
+        intra = view["intraday"]
+        hour = view["hour"]
+        price = float(intra.get("price") or hour.get("price") or 0)
+        marks[coin] = price
+        vote = side_of(intra["call"])
+        hside = side_of(hour["call"])
+        calls[coin] = {
+            "intraday": {"call": intra["call"], "score": intra["score"], "reasons": intra["reasons"]},
+            "hour": {"call": hour["call"], "score": hour["score"], "reasons": hour["reasons"]},
+        }
         pos = (state.get("positions") or {}).get(coin)
         action = "跳过"
         reason = ""
-        trail_hit = False
+        blocks = []
+        candidate = vote if vote and vote == hside else 0
         if pos:
-            if pos["side"] > 0 and info["low"] <= pos["stop"]:
-                trail_hit = True
-            elif pos["side"] < 0 and info["high"] >= pos["stop"]:
-                trail_hit = True
-        if pos and (trail_hit or (candidate != 0 and candidate != pos["side"]) or (ma_side == 0 and mom_side == 0)):
-            why = "碰到 ATR 跟踪止损" if trail_hit else "两套方案不再支持原来的方向"
-            pnl = close_position(state, coin, pos, info["price"])
-            state["positions"].pop(coin, None)
-            action = "平仓"
-            reason = f"{why}，模拟盈亏 {pnl:+.2f} USDT"
-            flow = "exec"
-            candidate_label = f"{coin} 平仓"
-        elif pos:
-            action = "跳过"
-            reason = "持仓还在，信号没有反过来"
-            notes_txt = "；".join(notes)
-            if notes_txt:
-                reason += "。" + notes_txt
-            flow = "log"
-            candidate_label = f"{coin} {side_name(pos['side'])}"
-        elif candidate and blocks:
-            action = "过滤"
-            reason = "；".join(blocks)
-            flow = "risk"
-            candidate_label = f"{coin} {side_name(candidate)}"
-        elif candidate and not blocks:
-            if state["seen_bars"].get(coin) == info["bar"] and not pos:
-                action = "跳过"
-                reason = "这根日线已经看过，不重复开仓"
-            else:
-                new_pos = open_position(
-                    state, coin, candidate, info["price"], info["atr"],
-                    f"日线均线与 12 周动量同为{side_name(candidate)}",
-                )
-                new_pos["opened_at"] = stamp.isoformat()
-                new_pos["bar"] = info["bar"]
-                state["positions"][coin] = new_pos
-                state["seen_bars"][coin] = info["bar"]
-                action = "开仓"
-                reason = f"{side_name(candidate)}，模拟名义 {new_pos['notional']:.0f} USDT，止损价 {new_pos['stop']}"
-                flow = "exec"
-                candidate_label = f"{coin} {side_name(candidate)}"
+            m5 = view["frames"]["5m"]
+            opened = datetime.fromisoformat(pos["opened_at"])
+            for ts, bar in m5.iterrows():
+                bar_ts = ts.to_pydatetime()
+                if bar_ts.tzinfo is None:
+                    bar_ts = bar_ts.replace(tzinfo=VIENNA)
+                event = apply_exit(pos, float(bar["high"]), float(bar["low"]), float(bar["close"]), bar_ts, vote, hside)
+                if not event:
+                    continue
+                if event["action"] == "减仓":
+                    pnl = reduce_position(state, pos, event["fill"])
+                    action = "减仓"
+                    reason = f"{event['reason']}，这一笔 {pnl:+.2f} USDT"
+                    event = apply_exit(pos, float(bar["high"]), float(bar["low"]), float(bar["close"]), bar_ts, vote, hside)
+                    if not event:
+                        continue
+                if event["action"] == "平仓":
+                    pnl = close_position(state, coin, pos, event["fill"])
+                    state["positions"].pop(coin, None)
+                    pos = None
+                    action = "平仓"
+                    reason = f"{event['reason']}，模拟盈亏 {pnl:+.2f} USDT"
+                    candidate_label = f"{coin} 平仓"
+                    flow = "exec"
+                    if "止损" in event["reason"]:
+                        until = bar_ts + timedelta(minutes=COOLDOWN_MIN)
+                        state["cooldown"][coin] = until.isoformat()
+                    break
+            if pos:
+                if action != "减仓":
+                    action = "跳过"
+                    reason = "持仓还在。日内是%s，1 小时是%s" % (intra["call"], hour["call"])
+                candidate_label = f"{coin} {side_name(pos['side'])}"
+                flow = "log"
         else:
-            action = "过滤" if blocks else "跳过"
-            reason = "；".join(blocks + notes) or "没有一致的进场信号"
-            flow = "risk" if blocks else "scan"
-            if ma_side or mom_side:
-                candidate_label = f"{coin} 均线{side_name(ma_side)} / 动量{side_name(mom_side)}"
+            blocks = []
+            notes = []
+            if vote and hside and vote != hside:
+                blocks.append(f"日内是{intra['call']}，1 小时是{hour['call']}，方向相反")
+            elif vote == 0 or hside == 0:
+                notes.append(f"日内是{intra['call']}，1 小时是{hour['call']}")
+            rate = latest_funding(coin)
+            if candidate and rate is not None:
+                if candidate > 0 and rate > 0.0005:
+                    blocks.append("资金费率过热，多头拥挤")
+                elif candidate < 0 and rate < -0.0005:
+                    blocks.append("资金费率过冷，空头拥挤")
+            elif rate is None:
+                notes.append("资金费率暂时没取到，这项不拦截")
+            if candidate and price > 0 and intra.get("atr", 0) / price > 0.02:
+                blocks.append("15 分钟波动太大")
+            liq = liquidation_cluster(coin, price) if price else "unknown"
+            if candidate and liq == "cluster":
+                blocks.append("附近清算单扎堆")
+            elif liq == "unknown":
+                notes.append("清算簇没有拉到，这项不拦截")
+            day_equity = float(state.get("day_equity") or equity_now or START)
+            if candidate and day_equity > 0 and float(state.get("day_pnl") or 0) <= -DAY_LOSS * day_equity:
+                blocks.append("今天模拟亏损已经到 3%，暂停开新仓")
+            cool = state.get("cooldown", {}).get(coin)
+            if candidate and cool:
+                try:
+                    if stamp < datetime.fromisoformat(cool):
+                        blocks.append("止损后还在冷却")
+                except Exception:
+                    pass
+            if candidate and not blocks:
+                if state["seen_bars"].get(coin) == intra.get("bar"):
+                    action = "跳过"
+                    reason = "这根 15 分钟已经看过，不重复开仓"
+                else:
+                    new_pos = open_position(
+                        state, coin, candidate, price, intra["atr"],
+                        f"日内与 1 小时同为{side_name(candidate)}",
+                    )
+                    new_pos["opened_at"] = stamp.isoformat()
+                    new_pos["bar"] = intra.get("bar")
+                    state["positions"][coin] = new_pos
+                    state["seen_bars"][coin] = intra.get("bar")
+                    action = "开多" if candidate > 0 else "开空"
+                    reason = f"模拟名义 {new_pos['notional']:.0f} USDT，止损 {new_pos['stop']}，第一目标 {new_pos['target1']}"
+                    flow = "exec"
+                    candidate_label = f"{coin} {side_name(candidate)}"
+            elif blocks:
+                action = "过滤"
+                reason = "；".join(blocks)
+                flow = "risk"
+                candidate_label = f"{coin} 日内{intra['call']} / 1小时{hour['call']}"
+            else:
+                action = "跳过"
+                reason = "；".join(notes) or "没有同时满足的进场信号"
+                flow = "scan"
+                candidate_label = f"{coin} 日内{intra['call']} / 1小时{hour['call']}"
         if action == "过滤":
-            state["seen_bars"][coin] = info["bar"]
-        decisions.append({"coin": coin, "action": action, "reason": reason, "price": info["price"], "candidate": candidate, "info": info, "blocks": blocks})
+            state["seen_bars"][coin] = intra.get("bar")
+        decisions.append({
+            "coin": coin,
+            "action": action,
+            "reason": reason,
+            "price": price,
+            "candidate": candidate,
+            "blocks": blocks if not pos else [],
+        })
         equity_now = mark_equity(state, marks)
         state["equity"] = equity_now
-        append_log(state, stamp, coin, action, reason, equity_now, info["price"])
+        append_log(state, stamp, coin, action, reason, equity_now, price)
 
     equity_now = mark_equity(state, marks)
     state["equity"] = round(equity_now, 2)
@@ -360,6 +431,8 @@ def run() -> dict:
             "side_sign": pos["side"],
             "entry": pos["entry"],
             "stop": pos["stop"],
+            "target1": pos.get("target1"),
+            "reduced": bool(pos.get("reduced")),
             "qty": pos["qty"],
             "notional": pos["notional"],
             "fee_open": pos.get("fee_open"),
@@ -368,10 +441,11 @@ def run() -> dict:
             "upnl": round(upnl, 2),
             "mark": px,
         })
-    focus = next((d for d in decisions if d["action"] in ("开仓", "平仓", "过滤")), decisions[0] if decisions else None)
+    acted = ("开多", "开空", "减仓", "平仓")
+    focus = next((d for d in decisions if d["action"] in acted or d["action"] == "过滤"), decisions[0] if decisions else None)
     if focus and focus["action"] == "过滤":
         flow = "risk"
-    elif focus and focus["action"] in ("开仓", "平仓"):
+    elif focus and focus["action"] in acted:
         flow = "exec"
     elif open_positions:
         flow = "equity"
@@ -379,30 +453,30 @@ def run() -> dict:
         "scanner": {
             "title": "扫描",
             "en": "SCANNER",
-            "line": "看 BTC 和 ETH 的日线均线、ATR 跟踪和 12 周动量。",
+            "line": "看 1 分钟、5 分钟、15 分钟是否和 1 小时同一个方向。",
             "badge": "有候选" if any(d["candidate"] for d in decisions) else "无信号",
             "tone": "run" if any(d["candidate"] for d in decisions) else "idle",
         },
         "risk": {
             "title": "风控检查",
             "en": "RISK CHECK",
-            "line": "费率极端、4 小时方向相反、波动过大或附近清算扎堆，就拦住。",
+            "line": "日内和 1 小时相反、费率极端、当天亏到 3%、止损冷却或清算扎堆，就拦住。",
             "badge": "拦截" if any(d["action"] == "过滤" for d in decisions) else "放行",
             "tone": "block" if any(d["action"] == "过滤" for d in decisions) else "ok",
         },
         "sizer": {
             "title": "仓位",
             "en": "SIZER",
-            "line": "模拟参数：按 1% 模拟权益对 3 倍 ATR 止损来算张数，名义不超过权益的 20%。不是建议。",
-            "badge": "已计算" if any(d["action"] == "开仓" for d in decisions) else "空闲",
-            "tone": "run" if any(d["action"] == "开仓" for d in decisions) else "idle",
+            "line": "模拟参数：1.5 倍 15 分钟 ATR 为止损，第一目标减半，第二目标平仓。名义不超过权益的 20%。不是建议。",
+            "badge": "已计算" if any(d["action"] in ("开多", "开空") for d in decisions) else "空闲",
+            "tone": "run" if any(d["action"] in ("开多", "开空") for d in decisions) else "idle",
         },
         "executor": {
             "title": "执行",
             "en": "EXECUTOR",
-            "line": "只在账本上开平仓，扣 0.05% 吃单费和 0.02% 滑点。",
-            "badge": "有成交" if any(d["action"] in ("开仓", "平仓") for d in decisions) else "无动作",
-            "tone": "run" if any(d["action"] in ("开仓", "平仓") for d in decisions) else "idle",
+            "line": "只在账本上开仓、减仓和平仓，扣 0.05% 费用和 0.02% 滑点。最长拿 6 小时。",
+            "badge": "有成交" if any(d["action"] in acted for d in decisions) else "无动作",
+            "tone": "run" if any(d["action"] in acted for d in decisions) else "idle",
         },
         "logger": {
             "title": "记录",
@@ -430,6 +504,9 @@ def run() -> dict:
         "losses": state["losses"],
         "trades": state["trades"],
         "positions": open_positions,
+        "calls": calls,
+        "strategy": "超短线",
+        "backtest": backtest_public(),
         "marks": marks,
         "agents": agents,
         "flow_step": flow,
@@ -437,7 +514,7 @@ def run() -> dict:
         "last_closed": state.get("last_closed"),
         "equity_curve": state["equity_curve"],
         "log": state["log"],
-        "honesty": "过去的回测没有在扣完成本后同时好过两个币的买入持有。这里只是模拟记账。",
+        "honesty": "这是超短线模拟记账，不是建议。方向不一致、当天亏到 3% 或止损冷却时不会开新仓。",
         "fee": FEE,
         "slippage": SLIP,
     }
@@ -454,6 +531,11 @@ def run() -> dict:
         "equity_curve": state["equity_curve"],
         "log": state["log"],
         "seen_bars": state["seen_bars"],
+        "calls": calls,
+        "cooldown": state.get("cooldown") or {},
+        "day_key": state.get("day_key"),
+        "day_pnl": state.get("day_pnl") or 0,
+        "day_equity": state.get("day_equity"),
     }
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(json.dumps({**payload, "_state": persisted}, ensure_ascii=False), encoding="utf-8")

@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "analysis/paper.py"
+      - "analysis/scalp.py"
       - "analysis/search.py"
       - ".github/workflows/paper.yml"
 

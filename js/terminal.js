@@ -189,7 +189,7 @@
 
   function outcomeOf(data) {
     const actions = (data.log || []).slice(-4).map(row => row.action);
-    if (actions.indexOf('开仓') >= 0 || actions.indexOf('平仓') >= 0) return 'exec';
+    if (actions.some(name => name === '开仓' || name === '开多' || name === '开空' || name === '平仓' || name === '减仓')) return 'exec';
     if (actions.indexOf('过滤') >= 0 || data.flow_step === 'risk') return 'block';
     return 'pass';
   }
@@ -216,6 +216,7 @@
         ['开仓价', fmt(pos.entry)],
         ['现价', '<span id="livePx">' + fmt(px) + '</span>' + (marks[pos.coin] ? '（OKX）' : '（上次收盘）')],
         ['止损价', fmt(pos.stop)],
+        ['第一目标', pos.target1 ? fmt(pos.target1) : '—'],
         ['模拟名义', fmt(pos.notional, 0) + ' USDT'],
         ['滑点', ((pub.slippage || 0.0002) * 100).toFixed(2) + '%'],
         ['浮动盈亏', '<span id="livePnl" class="' + (upnl >= 0 ? 'up' : 'down') + '">' + (upnl >= 0 ? '+' : '') + fmt(upnl) + '</span>'],
@@ -338,7 +339,7 @@
     }));
   }
   function markersFor(coin, sec) {
-    const rows = ((pub && pub.log) || []).filter(row => row.coin === coin && (row.action === '开仓' || row.action === '平仓' || row.action === '减仓'));
+    const rows = ((pub && pub.log) || []).filter(row => row.coin === coin && (row.action === '开仓' || row.action === '开多' || row.action === '开空' || row.action === '平仓' || row.action === '减仓'));
     const seen = {};
     const out = [];
     rows.forEach(row => {
@@ -351,7 +352,7 @@
       const text = row.reason || '';
       const long = text.indexOf('做多') >= 0;
       const short = text.indexOf('做空') >= 0;
-      if (row.action === '开仓') {
+      if (row.action === '开仓' || row.action === '开多' || row.action === '开空') {
         out.push({
           time: time,
           position: short && !long ? 'aboveBar' : 'belowBar',
@@ -452,6 +453,46 @@
     slot.series.update(last);
   }
 
+  function callTone(name) {
+    if (name === '做多') return 'tag-long';
+    if (name === '做空') return 'tag-short';
+    return 'tag-flat';
+  }
+  function callLine(label, row) {
+    row = row || {};
+    const score = Number(row.score || 0);
+    const reasons = (row.reasons || []).slice(0, 3).join('；');
+    return '<p>' + esc(label) + ' <span class="' + callTone(row.call) + '">' + esc(row.call || '—') + '</span> ' +
+      esc((score > 0 ? '+' : '') + score) + (reasons ? ' · ' + esc(reasons) : '') + '</p>';
+  }
+  function paintCalls() {
+    const box = $('calls');
+    if (!box) return;
+    const calls = (pub && pub.calls) || {};
+    const coins = Object.keys(calls);
+    if (!coins.length) {
+      box.innerHTML = '';
+      return;
+    }
+    const cards = coins.map(coin => {
+      const item = calls[coin] || {};
+      return '<div class="call"><b>' + esc(coin) + '</b>' + callLine('日内', item.intraday) + callLine('1 小时', item.hour) + '</div>';
+    }).join('');
+    const test = pub.backtest;
+    let note = '';
+    if (test && test.coins) {
+      const bits = Object.keys(test.coins).map(coin => {
+        const row = test.coins[coin];
+        const wr = row.win_rate == null ? '—' : (row.win_rate * 100).toFixed(1) + '%';
+        const ret = (row.return * 100).toFixed(1) + '%';
+        const dd = (row.max_drawdown * 100).toFixed(1) + '%';
+        return coin + ' ' + row.trades + ' 笔，胜率 ' + wr + '，收益 ' + ret + '，最大回撤 ' + dd;
+      });
+      note = '<p class="help">最近 ' + esc(test.days) + ' 天、每个币单独 1 万的回测：' + esc(bits.join('；')) + '。这段是亏的。</p>';
+    }
+    box.innerHTML = cards + note;
+  }
+
   async function replay() {
     const token = ++replayToken;
     const plan = pathFor(pub);
@@ -471,6 +512,7 @@
     }
     if (token !== replayToken) return;
     slideTrade();
+    paintCalls();
     paintMarks('BTC');
     paintMarks('ETH');
     await typeLogs(token);

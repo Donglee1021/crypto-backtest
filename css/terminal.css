@@ -143,6 +143,14 @@ main { max-width: 1180px; margin: 0 auto; padding: 12px; }
 .round-head h3 { margin: 0; }
 .countdown { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .candidate { margin-top: 4px; color: var(--acc); font-size: 13px; min-height: 1.2em; }
+.calls { display: grid; gap: 8px; margin-top: 10px; }
+@media (min-width: 720px) { .calls { grid-template-columns: 1fr 1fr; } }
+.call { border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; background: #fff; min-width: 0; }
+.call b { display: block; font-size: 13px; margin-bottom: 4px; }
+.call p { margin: 2px 0; font-size: 12px; color: var(--muted); }
+.tag-long { color: var(--ok); font-weight: 700; }
+.tag-short { color: var(--bad); font-weight: 700; }
+.tag-flat { color: var(--muted); font-weight: 700; }
 .trade { display: grid; gap: 6px; margin-top: 10px; }
 .trade.in { animation: slidein .45s ease; }
 .kv { display: grid; grid-template-columns: 88px 1fr; gap: 4px 8px; font-size: 13px; }
