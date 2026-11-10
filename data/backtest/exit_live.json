@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-10T03:00:00+00:00",
+  "generated": "2026-11-10T04:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 74837.7,
+      "price": 74540.8,
       "funding": 4.63168996037e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "MACD 红柱在缩短；KDJ 的 K 下穿 D",
-          "trail_stop": 74675.85,
-          "account_stop_25x": 74388.67,
-          "price": 74837.7
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 74672.73,
+          "account_stop_25x": 74093.56,
+          "price": 74540.8
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 74869.15,
-          "account_stop_25x": 75286.73,
-          "price": 74837.7
-        }
-      },
-      "score_hint": {
-        "score": -4.0,
-        "verdict": "做空",
-        "price": 74837.7
-      }
-    },
-    "ETH": {
-      "price": 2122.09,
-      "funding": -1.7710099645e-06,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 2191.75,
-          "account_stop_25x": 2109.36,
-          "price": 2122.09
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 2105.23,
-          "account_stop_25x": 2134.82,
-          "price": 2122.09
+          "trail_stop": 74872.27,
+          "account_stop_25x": 74988.04,
+          "price": 74540.8
         }
       },
       "score_hint": {
         "score": -7.0,
         "verdict": "强烈做空",
-        "price": 2122.09
+        "price": 74540.8
+      }
+    },
+    "ETH": {
+      "price": 2113.87,
+      "funding": -1.7710099645e-06,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 2192.13,
+          "account_stop_25x": 2101.19,
+          "price": 2113.87
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 2104.85,
+          "account_stop_25x": 2126.55,
+          "price": 2113.87
+        }
+      },
+      "score_hint": {
+        "score": -7.0,
+        "verdict": "强烈做空",
+        "price": 2113.87
       }
     }
   }
