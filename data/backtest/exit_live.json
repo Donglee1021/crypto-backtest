@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-10T16:00:00+00:00",
+  "generated": "2026-11-10T17:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73177.4,
+      "price": 72850.0,
       "funding": 4.84085643949e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D；放量且这根 K 线对着持仓",
-          "trail_stop": 74199.12,
-          "account_stop_25x": 72738.34,
-          "price": 73177.4
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 74021.74,
+          "account_stop_25x": 72412.9,
+          "price": 72850.0
         },
         "short": {
-          "action": "减仓",
-          "reason": "价格新低而 RSI 没有新低",
-          "trail_stop": 74673.88,
-          "account_stop_25x": 73616.46,
-          "price": 73177.4
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 74600.26,
+          "account_stop_25x": 73287.1,
+          "price": 72850.0
         }
       },
       "score_hint": {
         "score": -8.0,
         "verdict": "强烈做空",
-        "price": 73177.4
+        "price": 72850.0
       }
     },
     "ETH": {
-      "price": 2022.42,
+      "price": 2017.15,
       "funding": -3.77091720412e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D；放量且这根 K 线对着持仓",
-          "trail_stop": 2160.33,
-          "account_stop_25x": 2010.29,
-          "price": 2022.42
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2153.5,
+          "account_stop_25x": 2005.05,
+          "price": 2017.15
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2084.92,
-          "account_stop_25x": 2034.55,
-          "price": 2022.42
+          "trail_stop": 2085.6,
+          "account_stop_25x": 2029.25,
+          "price": 2017.15
         }
       },
       "score_hint": {
         "score": -6.0,
         "verdict": "强烈做空",
-        "price": 2022.42
+        "price": 2017.15
       }
     }
   }

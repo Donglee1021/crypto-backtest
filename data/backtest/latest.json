@@ -1,87 +1,87 @@
 {
-  "generated": "2026-11-10T16:00:00+00:00",
+  "generated": "2026-11-10T17:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73177.4,
+      "price": 72850.0,
       "funding": 4.84085643949e-05,
       "fng": 32,
       "horizons": {
         "15分钟": {
-          "score": -10.0,
+          "score": -7.0,
           "verdict": "强烈做空",
-          "price": 73177.4
+          "price": 72850.0
         },
         "1小时": {
           "score": -8.0,
           "verdict": "强烈做空",
-          "price": 73177.4
+          "price": 72850.0
         },
         "4小时": {
           "score": -8.0,
           "verdict": "强烈做空",
-          "price": 73177.4
+          "price": 72850.0
         },
         "日线": {
           "score": -5.0,
           "verdict": "做空",
-          "price": 73177.4
+          "price": 72850.0
         },
         "超短线": {
-          "score": -7.1,
-          "verdict": "强烈做空",
-          "price": 73177.4
+          "score": -5.2,
+          "verdict": "偏空",
+          "price": 72850.0
         },
         "中线": {
           "score": -5.8,
           "verdict": "偏空",
-          "price": 73177.4
+          "price": 72850.0
         },
         "长线": {
           "score": 1.2,
           "verdict": "观望",
-          "price": 73177.4
+          "price": 72850.0
         }
       }
     },
     "ETH": {
-      "price": 2022.42,
+      "price": 2017.15,
       "funding": -3.77091720412e-05,
       "fng": 32,
       "horizons": {
         "15分钟": {
-          "score": -5.0,
-          "verdict": "做空",
-          "price": 2022.42
+          "score": -7.0,
+          "verdict": "强烈做空",
+          "price": 2017.15
         },
         "1小时": {
           "score": -6.0,
           "verdict": "强烈做空",
-          "price": 2022.42
+          "price": 2017.15
         },
         "4小时": {
           "score": -6.0,
           "verdict": "强烈做空",
-          "price": 2022.42
+          "price": 2017.15
         },
         "日线": {
           "score": -7.0,
           "verdict": "强烈做空",
-          "price": 2022.42
+          "price": 2017.15
         },
         "超短线": {
-          "score": -2.5,
+          "score": -5.4,
           "verdict": "偏空",
-          "price": 2022.42
+          "price": 2017.15
         },
         "中线": {
           "score": -4.8,
           "verdict": "偏空",
-          "price": 2022.42
+          "price": 2017.15
         },
         "长线": {
           "score": -4.9,
           "verdict": "偏空",
-          "price": 2022.42
+          "price": 2017.15
         }
       }
     }
