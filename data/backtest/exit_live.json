@@ -27,28 +27,28 @@
       }
     },
     "ETH": {
-      "price": 2059.01,
+      "price": 2056.47,
       "funding": 3.45142419821e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 2094.98,
-          "account_stop_25x": 2046.66,
-          "price": 2059.01
+          "trail_stop": 2097.27,
+          "account_stop_25x": 2044.13,
+          "price": 2056.47
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 2058.71,
-          "account_stop_25x": 2071.36,
-          "price": 2059.01
+          "trail_stop": 2056.42,
+          "account_stop_25x": 2068.81,
+          "price": 2056.47
         }
       },
       "score_hint": {
-        "score": -4.0,
+        "score": -5.0,
         "verdict": "做空",
-        "price": 2059.01
+        "price": 2056.47
       }
     }
   }
