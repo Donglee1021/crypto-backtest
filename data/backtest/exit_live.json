@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-10T23:00:00+00:00",
+  "generated": "2026-11-11T01:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73670.4,
-      "funding": 4.84085643949e-05,
+      "price": 73508.4,
+      "funding": 0.0001,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 74021.09,
-          "account_stop_25x": 73228.38,
-          "price": 73670.4
+          "trail_stop": 73995.5,
+          "account_stop_25x": 73067.35,
+          "price": 73508.4
         },
         "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 74365.31,
-          "account_stop_25x": 74112.42,
-          "price": 73670.4
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 74256.5,
+          "account_stop_25x": 73949.45,
+          "price": 73508.4
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 73670.4
+        "price": 73508.4
       }
     },
     "ETH": {
-      "price": 2047.46,
-      "funding": -3.77091720412e-05,
+      "price": 2049.0,
+      "funding": -3.71940960305e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2096.57,
-          "account_stop_25x": 2035.18,
-          "price": 2047.46
+          "trail_stop": 2093.88,
+          "account_stop_25x": 2036.71,
+          "price": 2049.0
         },
         "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 2073.44,
-          "account_stop_25x": 2059.74,
-          "price": 2047.46
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2068.13,
+          "account_stop_25x": 2061.29,
+          "price": 2049.0
         }
       },
       "score_hint": {
-        "score": -5.0,
+        "score": -3.0,
         "verdict": "做空",
-        "price": 2047.46
+        "price": 2049.0
       }
     }
   }
