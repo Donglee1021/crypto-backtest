@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-11T07:00:00+00:00",
+  "generated": "2026-11-11T08:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73586.4,
-      "funding": 0.0001,
+      "price": 73696.1,
+      "funding": 9.37768718932e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 74081.7,
-          "account_stop_25x": 73144.88,
-          "price": 73586.4
+          "trail_stop": 74062.72,
+          "account_stop_25x": 73253.92,
+          "price": 73696.1
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 74155.7,
-          "account_stop_25x": 74027.92,
-          "price": 73586.4
+          "trail_stop": 74174.68,
+          "account_stop_25x": 74138.28,
+          "price": 73696.1
+        }
+      },
+      "score_hint": {
+        "score": -2.0,
+        "verdict": "观望",
+        "price": 73696.1
+      }
+    },
+    "ETH": {
+      "price": 2058.0,
+      "funding": 3.45142419821e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 2092.72,
+          "account_stop_25x": 2045.65,
+          "price": 2058.0
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2060.97,
+          "account_stop_25x": 2070.35,
+          "price": 2058.0
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 73586.4
-      }
-    },
-    "ETH": {
-      "price": 2055.22,
-      "funding": -3.71940960305e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 2091.27,
-          "account_stop_25x": 2042.89,
-          "price": 2055.22
-        },
-        "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2062.42,
-          "account_stop_25x": 2067.55,
-          "price": 2055.22
-        }
-      },
-      "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 2055.22
+        "price": 2058.0
       }
     }
   }
