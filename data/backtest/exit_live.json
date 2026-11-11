@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-11T06:00:00+00:00",
+  "generated": "2026-11-11T07:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73895.9,
+      "price": 73586.4,
       "funding": 0.0001,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 74057.74,
-          "account_stop_25x": 73452.52,
-          "price": 73895.9
+          "trail_stop": 74081.7,
+          "account_stop_25x": 73144.88,
+          "price": 73586.4
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 74179.66,
-          "account_stop_25x": 74339.28,
-          "price": 73895.9
+          "trail_stop": 74155.7,
+          "account_stop_25x": 74027.92,
+          "price": 73586.4
         }
       },
       "score_hint": {
-        "score": 2.0,
-        "verdict": "观望",
-        "price": 73895.9
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 73586.4
       }
     },
     "ETH": {
-      "price": 2069.36,
+      "price": 2055.22,
       "funding": -3.71940960305e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2090.89,
-          "account_stop_25x": 2056.94,
-          "price": 2069.36
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 2091.27,
+          "account_stop_25x": 2042.89,
+          "price": 2055.22
         },
         "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 2062.8,
-          "account_stop_25x": 2081.78,
-          "price": 2069.36
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2062.42,
+          "account_stop_25x": 2067.55,
+          "price": 2055.22
         }
       },
       "score_hint": {
-        "score": 2.0,
-        "verdict": "观望",
-        "price": 2069.36
+        "score": -7.0,
+        "verdict": "强烈做空",
+        "price": 2055.22
       }
     }
   }
