@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-11T01:00:00+00:00",
+  "generated": "2026-11-11T02:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73508.4,
+      "price": 73575.1,
       "funding": 0.0001,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 73995.5,
-          "account_stop_25x": 73067.35,
-          "price": 73508.4
+          "trail_stop": 73958.78,
+          "account_stop_25x": 73133.65,
+          "price": 73575.1
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 74256.5,
-          "account_stop_25x": 73949.45,
-          "price": 73508.4
-        }
-      },
-      "score_hint": {
-        "score": -5.0,
-        "verdict": "做空",
-        "price": 73508.4
-      }
-    },
-    "ETH": {
-      "price": 2049.0,
-      "funding": -3.71940960305e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2093.88,
-          "account_stop_25x": 2036.71,
-          "price": 2049.0
-        },
-        "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2068.13,
-          "account_stop_25x": 2061.29,
-          "price": 2049.0
+          "trail_stop": 74293.22,
+          "account_stop_25x": 74016.55,
+          "price": 73575.1
         }
       },
       "score_hint": {
         "score": -3.0,
         "verdict": "做空",
-        "price": 2049.0
+        "price": 73575.1
+      }
+    },
+    "ETH": {
+      "price": 2052.64,
+      "funding": -3.71940960305e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2092.81,
+          "account_stop_25x": 2040.32,
+          "price": 2052.64
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2069.2,
+          "account_stop_25x": 2064.96,
+          "price": 2052.64
+        }
+      },
+      "score_hint": {
+        "score": -3.0,
+        "verdict": "做空",
+        "price": 2052.64
       }
     }
   }
