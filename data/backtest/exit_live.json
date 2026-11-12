@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-12T14:00:00+00:00",
+  "generated": "2026-11-12T16:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 72475.8,
-      "funding": 9.24114251855e-05,
+      "price": 71682.7,
+      "funding": 7.36920850367e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；放量且这根 K 线对着持仓",
-          "trail_stop": 73525.86,
-          "account_stop_25x": 72040.95,
-          "price": 72475.8
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 73298.74,
+          "account_stop_25x": 71252.6,
+          "price": 71682.7
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 73473.94,
-          "account_stop_25x": 72910.65,
-          "price": 72475.8
-        }
-      },
-      "score_hint": {
-        "score": -6.0,
-        "verdict": "强烈做空",
-        "price": 72475.8
-      }
-    },
-    "ETH": {
-      "price": 2004.29,
-      "funding": 3.3180642211e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；放量且这根 K 线对着持仓",
-          "trail_stop": 2048.55,
-          "account_stop_25x": 1992.26,
-          "price": 2004.29
-        },
-        "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2037.16,
-          "account_stop_25x": 2016.32,
-          "price": 2004.29
+          "action": "减仓",
+          "reason": "价格新低而 RSI 没有新低",
+          "trail_stop": 72690.26,
+          "account_stop_25x": 72112.8,
+          "price": 71682.7
         }
       },
       "score_hint": {
         "score": -4.0,
         "verdict": "做空",
-        "price": 2004.29
+        "price": 71682.7
+      }
+    },
+    "ETH": {
+      "price": 2008.22,
+      "funding": 1.03550893474e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2048.23,
+          "account_stop_25x": 1996.17,
+          "price": 2008.22
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2037.48,
+          "account_stop_25x": 2020.27,
+          "price": 2008.22
+        }
+      },
+      "score_hint": {
+        "score": -3.0,
+        "verdict": "做空",
+        "price": 2008.22
       }
     }
   }
