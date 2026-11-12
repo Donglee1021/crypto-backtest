@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-12T03:00:00+00:00",
+  "generated": "2026-11-12T05:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73774.4,
+      "price": 73703.0,
       "funding": 6.10331387262e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 73581.97,
-          "account_stop_25x": 73331.75,
-          "price": 73774.4
+          "trail_stop": 73632.82,
+          "account_stop_25x": 73260.78,
+          "price": 73703.0
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 74081.53,
-          "account_stop_25x": 74217.05,
-          "price": 73774.4
-        }
-      },
-      "score_hint": {
-        "score": -8.0,
-        "verdict": "强烈做空",
-        "price": 73774.4
-      }
-    },
-    "ETH": {
-      "price": 2054.17,
-      "funding": 9.5417195015e-06,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2078.68,
-          "account_stop_25x": 2041.84,
-          "price": 2054.17
-        },
-        "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2055.18,
-          "account_stop_25x": 2066.5,
-          "price": 2054.17
+          "trail_stop": 74030.68,
+          "account_stop_25x": 74145.22,
+          "price": 73703.0
         }
       },
       "score_hint": {
         "score": -9.0,
         "verdict": "强烈做空",
-        "price": 2054.17
+        "price": 73703.0
+      }
+    },
+    "ETH": {
+      "price": 2049.61,
+      "funding": 9.5417195015e-06,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2080.54,
+          "account_stop_25x": 2037.31,
+          "price": 2049.61
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2053.32,
+          "account_stop_25x": 2061.91,
+          "price": 2049.61
+        }
+      },
+      "score_hint": {
+        "score": -9.0,
+        "verdict": "强烈做空",
+        "price": 2049.61
       }
     }
   }
