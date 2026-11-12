@@ -1,29 +1,29 @@
 {
-  "generated": "2026-11-12T19:00:00+00:00",
+  "generated": "2026-11-12T20:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 71734.0,
+      "price": 71666.4,
       "funding": 7.36920850367e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 73270.41,
-          "account_stop_25x": 71303.6,
-          "price": 71734.0
+          "trail_stop": 73303.9,
+          "account_stop_25x": 71236.4,
+          "price": 71666.4
         },
         "short": {
           "action": "减仓",
           "reason": "MACD 绿柱在缩短",
-          "trail_stop": 72718.59,
-          "account_stop_25x": 72164.4,
-          "price": 71734.0
+          "trail_stop": 72685.1,
+          "account_stop_25x": 72096.4,
+          "price": 71666.4
         }
       },
       "score_hint": {
         "score": -3.0,
         "verdict": "做空",
-        "price": 71734.0
+        "price": 71666.4
       }
     },
     "ETH": {
