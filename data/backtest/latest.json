@@ -1,87 +1,87 @@
 {
-  "generated": "2026-11-12T02:00:00+00:00",
+  "generated": "2026-11-12T03:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 73685.6,
+      "price": 73774.4,
       "funding": 6.10331387262e-05,
+      "fng": 28,
+      "horizons": {
+        "15分钟": {
+          "score": -3.0,
+          "verdict": "做空",
+          "price": 73774.4
+        },
+        "1小时": {
+          "score": -8.0,
+          "verdict": "强烈做空",
+          "price": 73774.4
+        },
+        "4小时": {
+          "score": -5.0,
+          "verdict": "做空",
+          "price": 73774.4
+        },
+        "日线": {
+          "score": -5.0,
+          "verdict": "做空",
+          "price": 73774.4
+        },
+        "超短线": {
+          "score": -2.6,
+          "verdict": "偏空",
+          "price": 73774.4
+        },
+        "中线": {
+          "score": -2.2,
+          "verdict": "观望",
+          "price": 73774.4
+        },
+        "长线": {
+          "score": -0.4,
+          "verdict": "观望",
+          "price": 73774.4
+        }
+      }
+    },
+    "ETH": {
+      "price": 2054.17,
+      "funding": 9.5417195015e-06,
       "fng": 28,
       "horizons": {
         "15分钟": {
           "score": -4.0,
           "verdict": "做空",
-          "price": 73685.6
+          "price": 2054.17
         },
         "1小时": {
           "score": -9.0,
           "verdict": "强烈做空",
-          "price": 73685.6
+          "price": 2054.17
         },
         "4小时": {
           "score": -3.0,
           "verdict": "做空",
-          "price": 73685.6
-        },
-        "日线": {
-          "score": -5.0,
-          "verdict": "做空",
-          "price": 73685.6
-        },
-        "超短线": {
-          "score": -3.0,
-          "verdict": "偏空",
-          "price": 73685.6
-        },
-        "中线": {
-          "score": -2.2,
-          "verdict": "观望",
-          "price": 73685.6
-        },
-        "长线": {
-          "score": -0.4,
-          "verdict": "观望",
-          "price": 73685.6
-        }
-      }
-    },
-    "ETH": {
-      "price": 2050.51,
-      "funding": 9.5417195015e-06,
-      "fng": 28,
-      "horizons": {
-        "15分钟": {
-          "score": 0.0,
-          "verdict": "观望",
-          "price": 2050.51
-        },
-        "1小时": {
-          "score": -9.0,
-          "verdict": "强烈做空",
-          "price": 2050.51
-        },
-        "4小时": {
-          "score": -3.0,
-          "verdict": "做空",
-          "price": 2050.51
+          "price": 2054.17
         },
         "日线": {
           "score": -3.0,
           "verdict": "做空",
-          "price": 2050.51
+          "price": 2054.17
         },
         "超短线": {
-          "score": -1.4,
+          "score": -1.2,
           "verdict": "观望",
-          "price": 2050.51
+          "price": 2054.17
         },
         "中线": {
           "score": 0.3,
           "verdict": "观望",
-          "price": 2050.51
+          "price": 2054.17
         },
         "长线": {
           "score": -3.3,
           "verdict": "偏空",
-          "price": 2050.51
+          "price": 2054.17
         }
       }
     }
