@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T01:00:00+00:00",
+  "generated": "2026-11-13T02:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 71100.1,
+      "price": 70920.8,
       "funding": 0.0001,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 73347.2,
-          "account_stop_25x": 70673.5,
-          "price": 71100.1
-        },
-        "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 72042.0,
-          "account_stop_25x": 71526.7,
-          "price": 71100.1
-        }
-      },
-      "score_hint": {
-        "score": -4.0,
-        "verdict": "做空",
-        "price": 71100.1
-      }
-    },
-    "ETH": {
-      "price": 2010.57,
-      "funding": 6.3241063902e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2053.74,
-          "account_stop_25x": 1998.51,
-          "price": 2010.57
+          "trail_stop": 73346.13,
+          "account_stop_25x": 70495.28,
+          "price": 70920.8
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 2031.97,
-          "account_stop_25x": 2022.63,
-          "price": 2010.57
+          "trail_stop": 72043.07,
+          "account_stop_25x": 71346.32,
+          "price": 70920.8
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 2010.57
+        "price": 70920.8
+      }
+    },
+    "ETH": {
+      "price": 2011.01,
+      "funding": 6.3241063902e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 2053.92,
+          "account_stop_25x": 1998.94,
+          "price": 2011.01
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 2031.79,
+          "account_stop_25x": 2023.08,
+          "price": 2011.01
+        }
+      },
+      "score_hint": {
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 2011.01
       }
     }
   }
