@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T03:00:00+00:00",
+  "generated": "2026-11-13T05:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 70207.5,
+      "price": 68542.2,
       "funding": 0.0001,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 73204.93,
-          "account_stop_25x": 69786.26,
-          "price": 70207.5
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 72932.14,
+          "account_stop_25x": 68130.95,
+          "price": 68542.2
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 71389.77,
-          "account_stop_25x": 70628.74,
-          "price": 70207.5
+          "trail_stop": 70306.86,
+          "account_stop_25x": 68953.45,
+          "price": 68542.2
         }
       },
       "score_hint": {
-        "score": -8.0,
-        "verdict": "强烈做空",
-        "price": 70207.5
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 68542.2
       }
     },
     "ETH": {
-      "price": 1989.11,
+      "price": 1924.09,
       "funding": 6.3241063902e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2049.22,
-          "account_stop_25x": 1977.18,
-          "price": 1989.11
+          "trail_stop": 2036.72,
+          "account_stop_25x": 1912.55,
+          "price": 1924.09
         },
         "short": {
-          "action": "减仓",
-          "reason": "价格新低而 RSI 没有新低",
-          "trail_stop": 2027.42,
-          "account_stop_25x": 2001.04,
-          "price": 1989.11
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1981.83,
+          "account_stop_25x": 1935.63,
+          "price": 1924.09
         }
       },
       "score_hint": {
-        "score": -8.0,
-        "verdict": "强烈做空",
-        "price": 1989.11
+        "score": -3.0,
+        "verdict": "做空",
+        "price": 1924.09
       }
     }
   }
