@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T15:00:00+00:00",
+  "generated": "2026-11-13T16:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 68977.9,
-      "funding": -6.41996236096e-05,
+      "price": 68872.5,
+      "funding": 3.81700234244e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 72791.29,
-          "account_stop_25x": 68564.03,
-          "price": 68977.9
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 72717.19,
+          "account_stop_25x": 68459.26,
+          "price": 68872.5
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 69442.71,
-          "account_stop_25x": 69391.77,
-          "price": 68977.9
+          "trail_stop": 69516.81,
+          "account_stop_25x": 69285.74,
+          "price": 68872.5
         }
       },
       "score_hint": {
-        "score": -3.0,
-        "verdict": "做空",
-        "price": 68977.9
+        "score": -8.0,
+        "verdict": "强烈做空",
+        "price": 68872.5
       }
     },
     "ETH": {
-      "price": 1951.18,
-      "funding": -7.6271667399e-05,
+      "price": 1927.0,
+      "funding": -2.48886381282e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2037.64,
-          "account_stop_25x": 1939.47,
-          "price": 1951.18
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 2034.35,
+          "account_stop_25x": 1915.44,
+          "price": 1927.0
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1958.9,
-          "account_stop_25x": 1962.89,
-          "price": 1951.18
+          "trail_stop": 1962.19,
+          "account_stop_25x": 1938.56,
+          "price": 1927.0
         }
       },
       "score_hint": {
-        "score": -3.0,
-        "verdict": "做空",
-        "price": 1951.18
+        "score": -7.0,
+        "verdict": "强烈做空",
+        "price": 1927.0
       }
     }
   }
