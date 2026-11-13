@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T08:00:00+00:00",
+  "generated": "2026-11-13T10:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 68675.4,
+      "price": 69067.9,
       "funding": -6.41996236096e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 72696.78,
-          "account_stop_25x": 68263.35,
-          "price": 68675.4
+          "trail_stop": 72749.23,
+          "account_stop_25x": 68653.49,
+          "price": 69067.9
         },
         "short": {
           "action": "减仓",
           "reason": "MACD 绿柱在缩短",
-          "trail_stop": 69537.22,
-          "account_stop_25x": 69087.45,
-          "price": 68675.4
-        }
-      },
-      "score_hint": {
-        "score": -3.0,
-        "verdict": "做空",
-        "price": 68675.4
-      }
-    },
-    "ETH": {
-      "price": 1930.99,
-      "funding": -7.6271667399e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 2034.72,
-          "account_stop_25x": 1919.4,
-          "price": 1930.99
-        },
-        "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 1961.82,
-          "account_stop_25x": 1942.58,
-          "price": 1930.99
+          "trail_stop": 69484.77,
+          "account_stop_25x": 69482.31,
+          "price": 69067.9
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 1930.99
+        "price": 69067.9
+      }
+    },
+    "ETH": {
+      "price": 1940.97,
+      "funding": -7.6271667399e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2037.17,
+          "account_stop_25x": 1929.32,
+          "price": 1940.97
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "MACD 绿柱在缩短；KDJ 的 K 上穿 D",
+          "trail_stop": 1959.37,
+          "account_stop_25x": 1952.62,
+          "price": 1940.97
+        }
+      },
+      "score_hint": {
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 1940.97
       }
     }
   }
