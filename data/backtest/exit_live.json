@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T17:00:00+00:00",
+  "generated": "2026-11-13T18:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 68668.0,
+      "price": 68918.6,
       "funding": 3.81700234244e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 72754.72,
-          "account_stop_25x": 68255.99,
-          "price": 68668.0
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 72770.27,
+          "account_stop_25x": 68505.09,
+          "price": 68918.6
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 69479.28,
-          "account_stop_25x": 69080.01,
-          "price": 68668.0
+          "trail_stop": 69463.73,
+          "account_stop_25x": 69332.11,
+          "price": 68918.6
         }
       },
       "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 68668.0
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 68918.6
       }
     },
     "ETH": {
-      "price": 1927.0,
+      "price": 1937.4,
       "funding": -2.48886381282e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 2034.35,
-          "account_stop_25x": 1915.44,
-          "price": 1927.0
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2023.06,
+          "account_stop_25x": 1925.78,
+          "price": 1937.4
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1962.19,
-          "account_stop_25x": 1938.56,
-          "price": 1927.0
+          "trail_stop": 1962.38,
+          "account_stop_25x": 1949.02,
+          "price": 1937.4
         }
       },
       "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 1927.0
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 1937.4
       }
     }
   }
