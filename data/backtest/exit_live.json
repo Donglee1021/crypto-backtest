@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-13T23:00:00+00:00",
+  "generated": "2026-11-14T01:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 68218.9,
-      "funding": 3.81700234244e-05,
+      "price": 68307.8,
+      "funding": 3.93916238255e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 72383.31,
-          "account_stop_25x": 67809.59,
-          "price": 68218.9
+          "trail_stop": 72341.61,
+          "account_stop_25x": 67897.95,
+          "price": 68307.8
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 69258.59,
-          "account_stop_25x": 68628.21,
-          "price": 68218.9
+          "trail_stop": 69175.69,
+          "account_stop_25x": 68717.65,
+          "price": 68307.8
         }
       },
       "score_hint": {
         "score": -7.0,
         "verdict": "强烈做空",
-        "price": 68218.9
+        "price": 68307.8
       }
     },
     "ETH": {
-      "price": 1922.44,
-      "funding": -2.48886381282e-05,
+      "price": 1931.16,
+      "funding": 1.04110380561e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
-          "trail_stop": 2001.67,
-          "account_stop_25x": 1910.91,
-          "price": 1922.44
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 2004.05,
+          "account_stop_25x": 1919.57,
+          "price": 1931.16
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1956.98,
-          "account_stop_25x": 1933.97,
-          "price": 1922.44
+          "trail_stop": 1953.51,
+          "account_stop_25x": 1942.75,
+          "price": 1931.16
         }
       },
       "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 1922.44
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 1931.16
       }
     }
   }
