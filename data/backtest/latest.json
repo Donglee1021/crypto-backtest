@@ -1,13 +1,14 @@
 {
-  "generated": "2026-11-14T02:17:32.327780+00:00",
+  "generated": "2026-11-14T02:00:00+00:00",
   "coins": {
     "BTC": {
       "price": 68260.3,
-      "funding_points": 287,
+      "funding": 3.93916238255e-05,
+      "fng": 13,
       "horizons": {
         "15分钟": {
-          "score": -7.0,
-          "verdict": "强烈做空",
+          "score": -4.0,
+          "verdict": "做空",
           "price": 68260.3
         },
         "1小时": {
@@ -26,7 +27,7 @@
           "price": 68260.3
         },
         "超短线": {
-          "score": -2.5,
+          "score": -5.1,
           "verdict": "偏空",
           "price": 68260.3
         },
@@ -40,16 +41,16 @@
           "verdict": "观望",
           "price": 68260.3
         }
-      },
-      "fng": 13
+      }
     },
     "ETH": {
       "price": 1926.99,
-      "funding_points": 287,
+      "funding": 1.04110380561e-05,
+      "fng": 13,
       "horizons": {
         "15分钟": {
-          "score": -7.0,
-          "verdict": "强烈做空",
+          "score": -4.0,
+          "verdict": "做空",
           "price": 1926.99
         },
         "1小时": {
@@ -68,8 +69,8 @@
           "price": 1926.99
         },
         "超短线": {
-          "score": -6.4,
-          "verdict": "强烈做空",
+          "score": -3.0,
+          "verdict": "偏空",
           "price": 1926.99
         },
         "中线": {
@@ -82,8 +83,8 @@
           "verdict": "观望",
           "price": 1926.99
         }
-      },
-      "fng": 13
+      }
     }
-  }
+  },
+  "backtest_generated": null
 }
