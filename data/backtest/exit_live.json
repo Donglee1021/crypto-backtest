@@ -1,29 +1,29 @@
 {
-  "generated": "2026-11-14T04:00:00+00:00",
+  "generated": "2026-11-14T05:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 66722.3,
+      "price": 67058.9,
       "funding": 3.93916238255e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 71879.62,
-          "account_stop_25x": 66321.97,
-          "price": 66722.3
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 71721.02,
+          "account_stop_25x": 66656.55,
+          "price": 67058.9
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 68522.38,
-          "account_stop_25x": 67122.63,
-          "price": 66722.3
+          "action": "减仓",
+          "reason": "价格新低而 RSI 没有新低",
+          "trail_stop": 68385.18,
+          "account_stop_25x": 67461.25,
+          "price": 67058.9
         }
       },
       "score_hint": {
-        "score": -6.0,
-        "verdict": "强烈做空",
-        "price": 66722.3
+        "score": -4.0,
+        "verdict": "做空",
+        "price": 67058.9
       }
     },
     "ETH": {
