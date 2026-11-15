@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-15T15:00:00+00:00",
+  "generated": "2026-11-15T16:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64736.8,
-      "funding": -4.970281698e-07,
+      "price": 64719.1,
+      "funding": 1.17815109256e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短；KDJ 的 K 下穿 D",
-          "trail_stop": 66691.58,
-          "account_stop_25x": 64348.38,
-          "price": 64736.8
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 66780.31,
+          "account_stop_25x": 64330.79,
+          "price": 64719.1
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 64349.52,
-          "account_stop_25x": 65125.22,
-          "price": 64736.8
+          "trail_stop": 64260.79,
+          "account_stop_25x": 65107.41,
+          "price": 64719.1
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 64736.8
+        "price": 64719.1
       }
     },
     "ETH": {
-      "price": 1806.0,
-      "funding": -4.31848561172e-05,
+      "price": 1809.75,
+      "funding": -6.40014518145e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短；KDJ 的 K 下穿 D",
-          "trail_stop": 1869.2,
-          "account_stop_25x": 1795.16,
-          "price": 1806.0
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 1872.35,
+          "account_stop_25x": 1798.89,
+          "price": 1809.75
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1795.48,
-          "account_stop_25x": 1816.84,
-          "price": 1806.0
+          "trail_stop": 1792.33,
+          "account_stop_25x": 1820.61,
+          "price": 1809.75
         }
       },
       "score_hint": {
         "score": -4.0,
         "verdict": "做空",
-        "price": 1806.0
+        "price": 1809.75
       }
     }
   }
