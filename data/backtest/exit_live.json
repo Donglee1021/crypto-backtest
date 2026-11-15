@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-15T22:00:00+00:00",
+  "generated": "2026-11-15T23:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64982.3,
+      "price": 65198.0,
       "funding": 1.17815109256e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 66428.1,
-          "account_stop_25x": 64592.41,
-          "price": 64982.3
+          "trail_stop": 66454.78,
+          "account_stop_25x": 64806.81,
+          "price": 65198.0
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 63969.9,
-          "account_stop_25x": 65372.19,
-          "price": 64982.3
+          "trail_stop": 63897.02,
+          "account_stop_25x": 65589.19,
+          "price": 65198.0
+        }
+      },
+      "score_hint": {
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 65198.0
+      }
+    },
+    "ETH": {
+      "price": 1826.52,
+      "funding": -6.40014518145e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 1867.14,
+          "account_stop_25x": 1815.56,
+          "price": 1826.52
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损；KDJ 的 K 上穿 D",
+          "trail_stop": 1777.75,
+          "account_stop_25x": 1837.48,
+          "price": 1826.52
         }
       },
       "score_hint": {
         "score": 0.0,
         "verdict": "观望",
-        "price": 64982.3
-      }
-    },
-    "ETH": {
-      "price": 1818.54,
-      "funding": -6.40014518145e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 1864.81,
-          "account_stop_25x": 1807.63,
-          "price": 1818.54
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1780.08,
-          "account_stop_25x": 1829.45,
-          "price": 1818.54
-        }
-      },
-      "score_hint": {
-        "score": -2.0,
-        "verdict": "观望",
-        "price": 1818.54
+        "price": 1826.52
       }
     }
   }
