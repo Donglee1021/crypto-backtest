@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-15T14:00:00+00:00",
+  "generated": "2026-11-15T15:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 65405.3,
+      "price": 64736.8,
       "funding": -4.970281698e-07,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 67205.82,
-          "account_stop_25x": 65012.87,
-          "price": 65405.3
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短；KDJ 的 K 下穿 D",
+          "trail_stop": 66691.58,
+          "account_stop_25x": 64348.38,
+          "price": 64736.8
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 64280.48,
-          "account_stop_25x": 65797.73,
-          "price": 65405.3
+          "trail_stop": 64349.52,
+          "account_stop_25x": 65125.22,
+          "price": 64736.8
         }
       },
       "score_hint": {
-        "score": 0.0,
-        "verdict": "观望",
-        "price": 65405.3
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 64736.8
       }
     },
     "ETH": {
-      "price": 1829.74,
+      "price": 1806.0,
       "funding": -4.31848561172e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1888.64,
-          "account_stop_25x": 1818.76,
-          "price": 1829.74
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短；KDJ 的 K 下穿 D",
+          "trail_stop": 1869.2,
+          "account_stop_25x": 1795.16,
+          "price": 1806.0
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1792.85,
-          "account_stop_25x": 1840.72,
-          "price": 1829.74
+          "trail_stop": 1795.48,
+          "account_stop_25x": 1816.84,
+          "price": 1806.0
         }
       },
       "score_hint": {
-        "score": 0.0,
-        "verdict": "观望",
-        "price": 1829.74
+        "score": -4.0,
+        "verdict": "做空",
+        "price": 1806.0
       }
     }
   }
