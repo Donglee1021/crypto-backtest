@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-16T16:00:00+00:00",
+  "generated": "2026-11-16T18:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64434.1,
+      "price": 64876.0,
       "funding": 6.14882963635e-05,
       "live": {
         "long": {
-          "action": "减仓",
-          "reason": "放量且这根 K 线对着持仓",
-          "trail_stop": 64175.05,
-          "account_stop_25x": 64047.5,
-          "price": 64434.1
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 64177.77,
+          "account_stop_25x": 64486.74,
+          "price": 64876.0
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 63926.95,
-          "account_stop_25x": 64820.7,
-          "price": 64434.1
+          "trail_stop": 63876.03,
+          "account_stop_25x": 65265.26,
+          "price": 64876.0
         }
       },
       "score_hint": {
-        "score": -5.0,
-        "verdict": "做空",
-        "price": 64434.1
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 64876.0
       }
     },
     "ETH": {
-      "price": 1819.32,
+      "price": 1820.36,
       "funding": -2.68686102321e-05,
       "live": {
         "long": {
-          "action": "减仓",
-          "reason": "放量且这根 K 线对着持仓",
-          "trail_stop": 1795.0,
-          "account_stop_25x": 1808.4,
-          "price": 1819.32
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1796.89,
+          "account_stop_25x": 1809.44,
+          "price": 1820.36
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1780.91,
-          "account_stop_25x": 1830.24,
-          "price": 1819.32
+          "trail_stop": 1779.02,
+          "account_stop_25x": 1831.28,
+          "price": 1820.36
         }
       },
       "score_hint": {
-        "score": 1.0,
+        "score": 0.0,
         "verdict": "观望",
-        "price": 1819.32
+        "price": 1820.36
       }
     }
   }
