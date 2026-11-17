@@ -27,28 +27,28 @@
       }
     },
     "ETH": {
-      "price": 1787.92,
+      "price": 1821.47,
       "funding": -2.05535173033e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1813.37,
-          "account_stop_25x": 1777.19,
-          "price": 1787.92
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1809.47,
+          "account_stop_25x": 1810.54,
+          "price": 1821.47
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1837.25,
-          "account_stop_25x": 1798.65,
-          "price": 1787.92
+          "trail_stop": 1841.15,
+          "account_stop_25x": 1832.4,
+          "price": 1821.47
         }
       },
       "score_hint": {
-        "score": -8.0,
-        "verdict": "强烈做空",
-        "price": 1787.92
+        "score": -1.0,
+        "verdict": "观望",
+        "price": 1821.47
       }
     }
   }
