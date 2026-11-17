@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-17T03:00:00+00:00",
+  "generated": "2026-11-17T05:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64475.3,
+      "price": 65007.3,
       "funding": 4.48915321898e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 64500.19,
-          "account_stop_25x": 64088.45,
-          "price": 64475.3
-        },
-        "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 65355.71,
-          "account_stop_25x": 64862.15,
-          "price": 64475.3
+          "trail_stop": 64539.18,
+          "account_stop_25x": 64617.26,
+          "price": 65007.3
+        },
+        "short": {
+          "action": "减仓",
+          "reason": "KDJ 的 K 上穿 D",
+          "trail_stop": 65316.72,
+          "account_stop_25x": 65397.34,
+          "price": 65007.3
         }
       },
       "score_hint": {
-        "score": -9.0,
-        "verdict": "强烈做空",
-        "price": 64475.3
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 65007.3
       }
     },
     "ETH": {
-      "price": 1831.79,
+      "price": 1834.16,
       "funding": -2.48290710527e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1809.97,
-          "account_stop_25x": 1820.8,
-          "price": 1831.79
+          "trail_stop": 1811.9,
+          "account_stop_25x": 1823.16,
+          "price": 1834.16
         },
         "short": {
           "action": "平仓",
-          "reason": "现价已经升破吊灯止损；KDJ 的 K 上穿 D",
-          "trail_stop": 1828.51,
-          "account_stop_25x": 1842.78,
-          "price": 1831.79
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 1826.58,
+          "account_stop_25x": 1845.16,
+          "price": 1834.16
         }
       },
       "score_hint": {
         "score": 3.0,
         "verdict": "做多",
-        "price": 1831.79
+        "price": 1834.16
       }
     }
   }
