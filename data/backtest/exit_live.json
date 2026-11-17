@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-17T06:00:00+00:00",
+  "generated": "2026-11-17T07:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64774.3,
+      "price": 64520.3,
       "funding": 4.48915321898e-05,
       "live": {
         "long": {
-          "action": "减仓",
-          "reason": "KDJ 的 K 下穿 D",
-          "trail_stop": 64597.56,
-          "account_stop_25x": 64385.65,
-          "price": 64774.3
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 64591.51,
+          "account_stop_25x": 64133.18,
+          "price": 64520.3
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 65258.34,
-          "account_stop_25x": 65162.95,
-          "price": 64774.3
+          "trail_stop": 65264.39,
+          "account_stop_25x": 64907.42,
+          "price": 64520.3
         }
       },
       "score_hint": {
-        "score": -6.0,
+        "score": -8.0,
         "verdict": "强烈做空",
-        "price": 64774.3
+        "price": 64520.3
       }
     },
     "ETH": {
-      "price": 1833.17,
+      "price": 1825.2,
       "funding": -2.48290710527e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1812.66,
-          "account_stop_25x": 1822.17,
-          "price": 1833.17
+          "trail_stop": 1812.19,
+          "account_stop_25x": 1814.25,
+          "price": 1825.2
         },
         "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1825.82,
-          "account_stop_25x": 1844.17,
-          "price": 1833.17
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1826.29,
+          "account_stop_25x": 1836.15,
+          "price": 1825.2
         }
       },
       "score_hint": {
-        "score": 3.0,
-        "verdict": "做多",
-        "price": 1833.17
+        "score": 0.0,
+        "verdict": "观望",
+        "price": 1825.2
       }
     }
   }
