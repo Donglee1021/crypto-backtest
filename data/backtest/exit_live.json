@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-16T23:00:00+00:00",
+  "generated": "2026-11-17T01:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 65294.7,
-      "funding": 6.14882963635e-05,
+      "price": 64603.7,
+      "funding": 4.48915321898e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 64438.04,
-          "account_stop_25x": 64902.93,
-          "price": 65294.7
+          "action": "平仓",
+          "reason": "MACD 红柱在缩短；KDJ 的 K 下穿 D",
+          "trail_stop": 64455.97,
+          "account_stop_25x": 64216.08,
+          "price": 64603.7
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 63615.76,
-          "account_stop_25x": 65686.47,
-          "price": 65294.7
+          "trail_stop": 63597.83,
+          "account_stop_25x": 64991.32,
+          "price": 64603.7
         }
       },
       "score_hint": {
-        "score": 3.0,
-        "verdict": "做多",
-        "price": 65294.7
+        "score": -6.0,
+        "verdict": "强烈做空",
+        "price": 64603.7
       }
     },
     "ETH": {
-      "price": 1827.19,
-      "funding": -2.68686102321e-05,
+      "price": 1813.66,
+      "funding": -2.48290710527e-05,
       "live": {
         "long": {
           "action": "减仓",
-          "reason": "KDJ 的 K 下穿 D",
-          "trail_stop": 1806.12,
-          "account_stop_25x": 1816.23,
-          "price": 1827.19
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 1808.97,
+          "account_stop_25x": 1802.78,
+          "price": 1813.66
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1769.79,
-          "account_stop_25x": 1838.15,
-          "price": 1827.19
+          "trail_stop": 1766.94,
+          "account_stop_25x": 1824.54,
+          "price": 1813.66
         }
       },
       "score_hint": {
-        "score": -2.0,
-        "verdict": "观望",
-        "price": 1827.19
+        "score": -6.0,
+        "verdict": "强烈做空",
+        "price": 1813.66
       }
     }
   }
