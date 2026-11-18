@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-18T17:00:00+00:00",
+  "generated": "2026-11-18T18:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 62733.9,
+      "price": 63074.0,
       "funding": 6.34843947535e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；放量且这根 K 线对着持仓",
-          "trail_stop": 63889.94,
-          "account_stop_25x": 62357.5,
-          "price": 62733.9
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 63805.86,
+          "account_stop_25x": 62695.56,
+          "price": 63074.0
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 63855.36,
-          "account_stop_25x": 63110.3,
-          "price": 62733.9
+          "trail_stop": 63939.44,
+          "account_stop_25x": 63452.44,
+          "price": 63074.0
         }
       },
       "score_hint": {
         "score": -6.0,
         "verdict": "强烈做空",
-        "price": 62733.9
+        "price": 63074.0
       }
     },
     "ETH": {
-      "price": 1748.41,
+      "price": 1767.57,
       "funding": -3.48074717455e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；放量且这根 K 线对着持仓",
-          "trail_stop": 1784.52,
-          "account_stop_25x": 1737.92,
-          "price": 1748.41
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1780.14,
+          "account_stop_25x": 1756.96,
+          "price": 1767.57
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1790.21,
-          "account_stop_25x": 1758.9,
-          "price": 1748.41
+          "action": "减仓",
+          "reason": "KDJ 的 K 上穿 D",
+          "trail_stop": 1794.59,
+          "account_stop_25x": 1778.18,
+          "price": 1767.57
         }
       },
       "score_hint": {
-        "score": -6.0,
-        "verdict": "强烈做空",
-        "price": 1748.41
+        "score": -4.0,
+        "verdict": "做空",
+        "price": 1767.57
       }
     }
   }
