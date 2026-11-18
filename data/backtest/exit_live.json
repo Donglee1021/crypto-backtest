@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-18T09:00:00+00:00",
+  "generated": "2026-11-18T10:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64654.1,
+      "price": 64703.6,
       "funding": 2.39227616186e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 64188.65,
-          "account_stop_25x": 64266.18,
-          "price": 64654.1
+          "action": "减仓",
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 64267.79,
+          "account_stop_25x": 64315.38,
+          "price": 64703.6
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 64766.45,
-          "account_stop_25x": 65042.02,
-          "price": 64654.1
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 64687.31,
+          "account_stop_25x": 65091.82,
+          "price": 64703.6
         }
       },
       "score_hint": {
         "score": 0.0,
         "verdict": "观望",
-        "price": 64654.1
+        "price": 64703.6
       }
     },
     "ETH": {
-      "price": 1811.01,
+      "price": 1810.77,
       "funding": -6.8713789351e-06,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1814.58,
-          "account_stop_25x": 1800.14,
-          "price": 1811.01
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 1817.22,
+          "account_stop_25x": 1799.91,
+          "price": 1810.77
         },
         "short": {
           "action": "平仓",
-          "reason": "现价已经升破吊灯止损；KDJ 的 K 上穿 D",
-          "trail_stop": 1802.3,
-          "account_stop_25x": 1821.88,
-          "price": 1811.01
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 1799.66,
+          "account_stop_25x": 1821.63,
+          "price": 1810.77
         }
       },
       "score_hint": {
         "score": 0.0,
         "verdict": "观望",
-        "price": 1811.01
+        "price": 1810.77
       }
     }
   }
