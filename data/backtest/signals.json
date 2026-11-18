@@ -2,138 +2,40 @@
   "items": [
     {
       "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "4小时",
+      "score": -7.0,
+      "verdict": "强烈做空",
+      "price": 1819.86,
+      "ret_1h": -0.97,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
       "coin": "BTC",
       "horizon": "15分钟",
-      "score": 0.0,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
+      "score": 5.0,
+      "verdict": "做多",
+      "price": 64766.5,
+      "ret_1h": -0.758,
       "ret_4h": null,
       "ret_24h": null,
-      "hit_1h": null,
+      "hit_1h": false,
       "hit_4h": null,
       "hit_24h": null
     },
     {
       "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
-      "horizon": "1小时",
-      "score": 2.0,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
-      "horizon": "4小时",
-      "score": -1.0,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
-      "horizon": "日线",
-      "score": -1.0,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
+      "coin": "ETH",
       "horizon": "超短线",
-      "score": -2.5,
-      "verdict": "偏空",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
-      "horizon": "中线",
-      "score": 1.2,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "BTC",
-      "horizon": "长线",
-      "score": -3.3,
-      "verdict": "观望",
-      "price": 64766.4,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "ETH",
-      "horizon": "15分钟",
-      "score": 0.0,
+      "score": -0.1,
       "verdict": "观望",
       "price": 1819.86,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "ETH",
-      "horizon": "1小时",
-      "score": 2.0,
-      "verdict": "观望",
-      "price": 1819.86,
-      "ret_1h": null,
-      "ret_4h": null,
-      "ret_24h": null,
-      "hit_1h": null,
-      "hit_4h": null,
-      "hit_24h": null
-    },
-    {
-      "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "ETH",
-      "horizon": "4小时",
-      "score": -1.0,
-      "verdict": "观望",
-      "price": 1819.86,
-      "ret_1h": null,
+      "ret_1h": -0.97,
       "ret_4h": null,
       "ret_24h": null,
       "hit_1h": null,
@@ -147,7 +49,35 @@
       "score": -3.0,
       "verdict": "做空",
       "price": 1819.86,
-      "ret_1h": null,
+      "ret_1h": -0.97,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "15分钟",
+      "score": 3.0,
+      "verdict": "做多",
+      "price": 1819.86,
+      "ret_1h": -0.97,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "1小时",
+      "score": 2.0,
+      "verdict": "观望",
+      "price": 1819.86,
+      "ret_1h": -0.97,
       "ret_4h": null,
       "ret_24h": null,
       "hit_1h": null,
@@ -157,11 +87,67 @@
     {
       "ts": "2026-11-18T01:00:00+00:00",
       "coin": "ETH",
-      "horizon": "超短线",
-      "score": 2.0,
+      "horizon": "长线",
+      "score": -4.9,
       "verdict": "观望",
       "price": 1819.86,
-      "ret_1h": null,
+      "ret_1h": -0.97,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "长线",
+      "score": -3.3,
+      "verdict": "观望",
+      "price": 64766.5,
+      "ret_1h": -0.758,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "中线",
+      "score": 1.2,
+      "verdict": "观望",
+      "price": 64766.5,
+      "ret_1h": -0.758,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "超短线",
+      "score": 5.5,
+      "verdict": "偏多",
+      "price": 64766.5,
+      "ret_1h": -0.758,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "1小时",
+      "score": 2.0,
+      "verdict": "观望",
+      "price": 64766.5,
+      "ret_1h": -0.758,
       "ret_4h": null,
       "ret_24h": null,
       "hit_1h": null,
@@ -175,7 +161,7 @@
       "score": -1.0,
       "verdict": "观望",
       "price": 1819.86,
-      "ret_1h": null,
+      "ret_1h": -0.97,
       "ret_4h": null,
       "ret_24h": null,
       "hit_1h": null,
@@ -184,16 +170,534 @@
     },
     {
       "ts": "2026-11-18T01:00:00+00:00",
-      "coin": "ETH",
-      "horizon": "长线",
-      "score": -2.4,
+      "coin": "BTC",
+      "horizon": "4小时",
+      "score": -5.0,
+      "verdict": "做空",
+      "price": 64766.5,
+      "ret_1h": -0.758,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T01:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "日线",
+      "score": -1.0,
       "verdict": "观望",
-      "price": 1819.86,
-      "ret_1h": null,
+      "price": 64766.5,
+      "ret_1h": -0.758,
       "ret_4h": null,
       "ret_24h": null,
       "hit_1h": null,
       "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "15分钟",
+      "score": 3.0,
+      "verdict": "做多",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "15分钟",
+      "score": 3.0,
+      "verdict": "做多",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "1小时",
+      "score": 3.0,
+      "verdict": "做多",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "4小时",
+      "score": -5.0,
+      "verdict": "做空",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "日线",
+      "score": -1.0,
+      "verdict": "观望",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "超短线",
+      "score": 2.6,
+      "verdict": "偏多",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "中线",
+      "score": 1.3,
+      "verdict": "观望",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "长线",
+      "score": -3.3,
+      "verdict": "观望",
+      "price": 64915.4,
+      "ret_1h": -0.23,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "长线",
+      "score": -4.9,
+      "verdict": "观望",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "中线",
+      "score": -0.9,
+      "verdict": "观望",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "超短线",
+      "score": -0.8,
+      "verdict": "观望",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "日线",
+      "score": -3.0,
+      "verdict": "做空",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "4小时",
+      "score": -7.0,
+      "verdict": "强烈做空",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-18T00:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "1小时",
+      "score": 3.0,
+      "verdict": "做多",
+      "price": 1824.18,
+      "ret_1h": -0.237,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "长线",
+      "score": -3.3,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "日线",
+      "score": -3.0,
+      "verdict": "做空",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "超短线",
+      "score": -2.1,
+      "verdict": "观望",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "中线",
+      "score": 0.1,
+      "verdict": "观望",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "4小时",
+      "score": -5.0,
+      "verdict": "做空",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "中线",
+      "score": -1.6,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "4小时",
+      "score": -7.0,
+      "verdict": "强烈做空",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "1小时",
+      "score": 2.0,
+      "verdict": "观望",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "15分钟",
+      "score": 1.0,
+      "verdict": "观望",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "日线",
+      "score": -1.0,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "超短线",
+      "score": 0.0,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "1小时",
+      "score": 2.0,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "15分钟",
+      "score": 1.0,
+      "verdict": "观望",
+      "price": 64696.5,
+      "ret_1h": 0.338,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T23:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "长线",
+      "score": -4.9,
+      "verdict": "观望",
+      "price": 1813.53,
+      "ret_1h": 0.588,
+      "ret_4h": null,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "15分钟",
+      "score": -1.0,
+      "verdict": "观望",
+      "price": 1805.25,
+      "ret_1h": 0.458,
+      "ret_4h": -0.168,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "超短线",
+      "score": -2.4,
+      "verdict": "观望",
+      "price": 1805.25,
+      "ret_1h": 0.458,
+      "ret_4h": -0.168,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "1小时",
+      "score": -4.0,
+      "verdict": "做空",
+      "price": 1805.25,
+      "ret_1h": 0.458,
+      "ret_4h": -0.168,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": true,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "ETH",
+      "horizon": "4小时",
+      "score": -7.0,
+      "verdict": "强烈做空",
+      "price": 1805.25,
+      "ret_1h": 0.458,
+      "ret_4h": -0.168,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": true,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "日线",
+      "score": -1.0,
+      "verdict": "观望",
+      "price": 64325.6,
+      "ret_1h": 0.577,
+      "ret_4h": -0.078,
+      "ret_24h": null,
+      "hit_1h": null,
+      "hit_4h": null,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "超短线",
+      "score": 2.6,
+      "verdict": "偏多",
+      "price": 64325.6,
+      "ret_1h": 0.577,
+      "ret_4h": -0.078,
+      "ret_24h": null,
+      "hit_1h": true,
+      "hit_4h": false,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "4小时",
+      "score": -5.0,
+      "verdict": "做空",
+      "price": 64325.6,
+      "ret_1h": 0.577,
+      "ret_4h": -0.078,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": true,
+      "hit_24h": null
+    },
+    {
+      "ts": "2026-11-17T22:00:00+00:00",
+      "coin": "BTC",
+      "horizon": "1小时",
+      "score": -4.0,
+      "verdict": "做空",
+      "price": 64325.6,
+      "ret_1h": 0.577,
+      "ret_4h": -0.078,
+      "ret_24h": null,
+      "hit_1h": false,
+      "hit_4h": true,
       "hit_24h": null
     }
   ],
@@ -201,100 +705,100 @@
     "by_horizon": {
       "15分钟": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4675,
+          "n": 1921
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4784,
+          "n": 1917
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.435,
+          "n": 1885
         }
       },
       "1小时": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4832,
+          "n": 1939
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4874,
+          "n": 1937
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4596,
+          "n": 1908
         }
       },
       "4小时": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4926,
+          "n": 2150
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.5047,
+          "n": 2144
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4986,
+          "n": 2104
         }
       },
       "中线": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4732,
+          "n": 598
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4398,
+          "n": 598
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.388,
+          "n": 598
         }
       },
       "日线": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.5147,
+          "n": 1968
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.516,
+          "n": 1965
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.5152,
+          "n": 1945
         }
       },
       "超短线": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.464,
+          "n": 1291
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4856,
+          "n": 1289
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4507,
+          "n": 1269
         }
       },
       "长线": {
         "1h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.5017,
+          "n": 1487
         },
         "4h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.5064,
+          "n": 1487
         },
         "24h": {
-          "hit": null,
-          "n": 0
+          "hit": 0.4963,
+          "n": 1487
         }
       }
     },
@@ -302,204 +806,204 @@
       "BTC": {
         "15分钟": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4809,
+            "n": 969
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4829,
+            "n": 967
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4337,
+            "n": 950
           }
         },
         "1小时": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4979,
+            "n": 970
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5015,
+            "n": 969
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4503,
+            "n": 955
           }
         },
         "4小时": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5023,
+            "n": 1077
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5056,
+            "n": 1074
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4877,
+            "n": 1054
           }
         },
         "中线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4744,
+            "n": 293
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4334,
+            "n": 293
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.3754,
+            "n": 293
           }
         },
         "日线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5236,
+            "n": 911
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5148,
+            "n": 911
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5027,
+            "n": 911
           }
         },
         "超短线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.469,
+            "n": 661
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4901,
+            "n": 659
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.446,
+            "n": 648
           }
         },
         "长线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4951,
+            "n": 719
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.484,
+            "n": 719
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4576,
+            "n": 719
           }
         }
       },
       "ETH": {
         "15分钟": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4538,
+            "n": 952
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4737,
+            "n": 950
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4364,
+            "n": 935
           }
         },
         "1小时": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4685,
+            "n": 969
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4731,
+            "n": 968
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.469,
+            "n": 953
           }
         },
         "4小时": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4828,
+            "n": 1073
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5037,
+            "n": 1070
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5095,
+            "n": 1050
           }
         },
         "中线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4721,
+            "n": 305
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4459,
+            "n": 305
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4,
+            "n": 305
           }
         },
         "日线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5071,
+            "n": 1057
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5171,
+            "n": 1054
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5261,
+            "n": 1034
           }
         },
         "超短线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4587,
+            "n": 630
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.481,
+            "n": 630
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.4557,
+            "n": 621
           }
         },
         "长线": {
           "1h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5078,
+            "n": 768
           },
           "4h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5273,
+            "n": 768
           },
           "24h": {
-            "hit": null,
-            "n": 0
+            "hit": 0.5326,
+            "n": 768
           }
         }
       }
     }
   },
-  "count": 14
+  "count": 20174
 }
