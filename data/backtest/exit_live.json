@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-18T02:00:00+00:00",
+  "generated": "2026-11-18T03:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 64275.4,
+      "price": 64426.9,
       "funding": -1.08871264091e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 63972.8,
-          "account_stop_25x": 63889.75,
-          "price": 64275.4
+          "action": "减仓",
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 64054.19,
+          "account_stop_25x": 64040.34,
+          "price": 64426.9
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 64982.3,
-          "account_stop_25x": 64661.05,
-          "price": 64275.4
+          "trail_stop": 64900.91,
+          "account_stop_25x": 64813.46,
+          "price": 64426.9
         }
       },
       "score_hint": {
         "score": -4.0,
         "verdict": "做空",
-        "price": 64275.4
+        "price": 64426.9
       }
     },
     "ETH": {
-      "price": 1802.21,
+      "price": 1804.29,
       "funding": 1.87954839306e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1804.97,
-          "account_stop_25x": 1791.4,
-          "price": 1802.21
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 1808.66,
+          "account_stop_25x": 1793.46,
+          "price": 1804.29
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1811.91,
-          "account_stop_25x": 1813.02,
-          "price": 1802.21
+          "trail_stop": 1808.22,
+          "account_stop_25x": 1815.12,
+          "price": 1804.29
         }
       },
       "score_hint": {
-        "score": -4.0,
-        "verdict": "做空",
-        "price": 1802.21
+        "score": -6.0,
+        "verdict": "强烈做空",
+        "price": 1804.29
       }
     }
   }
