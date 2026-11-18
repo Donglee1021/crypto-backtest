@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-18T22:00:00+00:00",
+  "generated": "2026-11-18T23:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 62315.2,
+      "price": 62212.2,
       "funding": 6.34843947535e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 63942.66,
-          "account_stop_25x": 61941.31,
-          "price": 62315.2
+          "trail_stop": 63830.77,
+          "account_stop_25x": 61838.93,
+          "price": 62212.2
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 63802.64,
-          "account_stop_25x": 62689.09,
-          "price": 62315.2
-        }
-      },
-      "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 62315.2
-      }
-    },
-    "ETH": {
-      "price": 1764.08,
-      "funding": -3.48074717455e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1786.55,
-          "account_stop_25x": 1753.5,
-          "price": 1764.08
-        },
-        "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 1788.18,
-          "account_stop_25x": 1774.66,
-          "price": 1764.08
+          "trail_stop": 63600.53,
+          "account_stop_25x": 62585.47,
+          "price": 62212.2
         }
       },
       "score_hint": {
         "score": -5.0,
         "verdict": "做空",
-        "price": 1764.08
+        "price": 62212.2
+      }
+    },
+    "ETH": {
+      "price": 1756.75,
+      "funding": -3.48074717455e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1786.63,
+          "account_stop_25x": 1746.21,
+          "price": 1756.75
+        },
+        "short": {
+          "action": "减仓",
+          "reason": "MACD 绿柱在缩短",
+          "trail_stop": 1788.1,
+          "account_stop_25x": 1767.29,
+          "price": 1756.75
+        }
+      },
+      "score_hint": {
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 1756.75
       }
     }
   }
