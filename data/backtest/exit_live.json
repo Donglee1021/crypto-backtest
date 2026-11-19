@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-19T08:00:00+00:00",
+  "generated": "2026-11-19T10:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 63714.3,
+      "price": 63825.0,
       "funding": -5.5330692592e-06,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 63759.96,
-          "account_stop_25x": 63332.01,
-          "price": 63714.3
+          "trail_stop": 63875.14,
+          "account_stop_25x": 63442.05,
+          "price": 63825.0
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 63671.34,
-          "account_stop_25x": 64096.59,
-          "price": 63714.3
-        }
-      },
-      "score_hint": {
-        "score": 0.0,
-        "verdict": "观望",
-        "price": 63714.3
-      }
-    },
-    "ETH": {
-      "price": 1803.28,
-      "funding": -4.163382442e-07,
-      "live": {
-        "long": {
-          "action": "减仓",
-          "reason": "价格新高而 RSI 没有新高",
-          "trail_stop": 1783.26,
-          "account_stop_25x": 1792.46,
-          "price": 1803.28
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1783.66,
-          "account_stop_25x": 1814.1,
-          "price": 1803.28
+          "trail_stop": 63556.16,
+          "account_stop_25x": 64207.95,
+          "price": 63825.0
         }
       },
       "score_hint": {
         "score": 1.0,
         "verdict": "观望",
-        "price": 1803.28
+        "price": 63825.0
+      }
+    },
+    "ETH": {
+      "price": 1805.65,
+      "funding": -4.163382442e-07,
+      "live": {
+        "long": {
+          "action": "减仓",
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 1786.11,
+          "account_stop_25x": 1794.82,
+          "price": 1805.65
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 1780.81,
+          "account_stop_25x": 1816.48,
+          "price": 1805.65
+        }
+      },
+      "score_hint": {
+        "score": 1.0,
+        "verdict": "观望",
+        "price": 1805.65
       }
     }
   }
