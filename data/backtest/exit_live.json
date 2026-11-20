@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-20T05:00:00+00:00",
+  "generated": "2026-11-20T06:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 61484.5,
+      "price": 61881.3,
       "funding": -1.56168184534e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62883.83,
-          "account_stop_25x": 61115.59,
-          "price": 61484.5
+          "trail_stop": 62900.35,
+          "account_stop_25x": 61510.01,
+          "price": 61881.3
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 63299.37,
-          "account_stop_25x": 61853.41,
-          "price": 61484.5
+          "trail_stop": 63282.85,
+          "account_stop_25x": 62252.59,
+          "price": 61881.3
         }
       },
       "score_hint": {
-        "score": -7.0,
-        "verdict": "强烈做空",
-        "price": 61484.5
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 61881.3
       }
     },
     "ETH": {
-      "price": 1726.57,
+      "price": 1740.56,
       "funding": 3.55059302453e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 1751.04,
-          "account_stop_25x": 1716.21,
-          "price": 1726.57
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1750.57,
+          "account_stop_25x": 1730.12,
+          "price": 1740.56
         },
         "short": {
           "action": "减仓",
-          "reason": "价格新低而 RSI 没有新低",
-          "trail_stop": 1785.06,
-          "account_stop_25x": 1736.93,
-          "price": 1726.57
+          "reason": "KDJ 的 K 上穿 D",
+          "trail_stop": 1785.2,
+          "account_stop_25x": 1751.0,
+          "price": 1740.56
         }
       },
       "score_hint": {
-        "score": -9.0,
-        "verdict": "强烈做空",
-        "price": 1726.57
+        "score": -5.0,
+        "verdict": "做空",
+        "price": 1740.56
       }
     }
   }
