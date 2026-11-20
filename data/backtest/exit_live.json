@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-20T07:00:00+00:00",
+  "generated": "2026-11-20T09:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 62023.5,
-      "funding": -1.56168184534e-05,
+      "price": 61796.5,
+      "funding": -3.53318787305e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62967.68,
-          "account_stop_25x": 61651.36,
-          "price": 62023.5
+          "trail_stop": 62872.66,
+          "account_stop_25x": 61425.72,
+          "price": 61796.5
         },
         "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 63215.52,
-          "account_stop_25x": 62395.64,
-          "price": 62023.5
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 63133.94,
+          "account_stop_25x": 62167.28,
+          "price": 61796.5
         }
       },
       "score_hint": {
-        "score": -5.0,
+        "score": -3.0,
         "verdict": "做空",
-        "price": 62023.5
+        "price": 61796.5
       }
     },
     "ETH": {
-      "price": 1749.01,
-      "funding": 3.55059302453e-05,
+      "price": 1750.58,
+      "funding": 1.52790002587e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1752.7,
-          "account_stop_25x": 1738.52,
-          "price": 1749.01
+          "trail_stop": 1754.11,
+          "account_stop_25x": 1740.08,
+          "price": 1750.58
         },
         "short": {
-          "action": "减仓",
-          "reason": "MACD 绿柱在缩短",
-          "trail_stop": 1783.07,
-          "account_stop_25x": 1759.5,
-          "price": 1749.01
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1779.71,
+          "account_stop_25x": 1761.08,
+          "price": 1750.58
         }
       },
       "score_hint": {
-        "score": -5.0,
+        "score": -3.0,
         "verdict": "做空",
-        "price": 1749.01
+        "price": 1750.58
       }
     }
   }
