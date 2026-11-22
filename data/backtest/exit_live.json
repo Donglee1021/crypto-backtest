@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-22T09:00:00+00:00",
+  "generated": "2026-11-22T10:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59769.1,
+      "price": 61097.8,
       "funding": 3.40541459576e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 60455.46,
-          "account_stop_25x": 59410.49,
-          "price": 59769.1
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 60215.81,
+          "account_stop_25x": 60731.21,
+          "price": 61097.8
         },
         "short": {
           "action": "平仓",
-          "reason": "现价已经升破吊灯止损；KDJ 的 K 上穿 D；放量且这根 K 线对着持仓",
-          "trail_stop": 56961.64,
-          "account_stop_25x": 60127.71,
-          "price": 59769.1
-        }
-      },
-      "score_hint": {
-        "score": -1.0,
-        "verdict": "观望",
-        "price": 59769.1
-      }
-    },
-    "ETH": {
-      "price": 1686.5,
-      "funding": -4.05296830284e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；价格新高而 RSI 没有新高",
-          "trail_stop": 1707.08,
-          "account_stop_25x": 1676.38,
-          "price": 1686.5
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损；MACD 绿柱在缩短；KDJ 的 K 上穿 D；放量且这根 K 线对着持仓",
-          "trail_stop": 1591.77,
-          "account_stop_25x": 1696.62,
-          "price": 1686.5
+          "reason": "现价已经升破吊灯止损；放量且这根 K 线对着持仓",
+          "trail_stop": 57201.29,
+          "account_stop_25x": 61464.39,
+          "price": 61097.8
         }
       },
       "score_hint": {
         "score": 2.0,
         "verdict": "观望",
-        "price": 1686.5
+        "price": 61097.8
+      }
+    },
+    "ETH": {
+      "price": 1716.45,
+      "funding": -4.05296830284e-05,
+      "live": {
+        "long": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1702.15,
+          "account_stop_25x": 1706.15,
+          "price": 1716.45
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损；放量且这根 K 线对着持仓",
+          "trail_stop": 1596.7,
+          "account_stop_25x": 1726.75,
+          "price": 1716.45
+        }
+      },
+      "score_hint": {
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 1716.45
       }
     }
   }
