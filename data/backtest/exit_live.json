@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-22T12:00:00+00:00",
+  "generated": "2026-11-22T14:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 61037.2,
+      "price": 60704.5,
       "funding": 3.40541459576e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 60159.99,
-          "account_stop_25x": 60670.98,
-          "price": 61037.2
+          "trail_stop": 60099.87,
+          "account_stop_25x": 60340.27,
+          "price": 60704.5
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 57095.01,
-          "account_stop_25x": 61403.42,
-          "price": 61037.2
+          "trail_stop": 57155.13,
+          "account_stop_25x": 61068.73,
+          "price": 60704.5
         }
       },
       "score_hint": {
         "score": 1.0,
         "verdict": "观望",
-        "price": 61037.2
+        "price": 60704.5
       }
     },
     "ETH": {
-      "price": 1706.55,
+      "price": 1702.46,
       "funding": -4.05296830284e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "价格新高而 RSI 没有新高；放量且这根 K 线对着持仓",
-          "trail_stop": 1698.35,
-          "account_stop_25x": 1696.31,
-          "price": 1706.55
+          "action": "减仓",
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 1699.58,
+          "account_stop_25x": 1692.25,
+          "price": 1702.46
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1596.81,
-          "account_stop_25x": 1716.79,
-          "price": 1706.55
+          "trail_stop": 1595.58,
+          "account_stop_25x": 1712.67,
+          "price": 1702.46
         }
       },
       "score_hint": {
-        "score": 0.0,
+        "score": 1.0,
         "verdict": "观望",
-        "price": 1706.55
+        "price": 1702.46
       }
     }
   }
