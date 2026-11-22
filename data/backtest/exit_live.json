@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-22T17:00:00+00:00",
+  "generated": "2026-11-22T18:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 61222.2,
+      "price": 60797.7,
       "funding": 2.27750962068e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 59730.47,
-          "account_stop_25x": 60854.87,
-          "price": 61222.2
+          "action": "减仓",
+          "reason": "KDJ 的 K 下穿 D",
+          "trail_stop": 59758.02,
+          "account_stop_25x": 60432.91,
+          "price": 60797.7
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 57014.43,
-          "account_stop_25x": 61589.53,
-          "price": 61222.2
+          "trail_stop": 56986.88,
+          "account_stop_25x": 61162.49,
+          "price": 60797.7
         }
       },
       "score_hint": {
-        "score": 5.0,
-        "verdict": "做多",
-        "price": 61222.2
+        "score": 1.0,
+        "verdict": "观望",
+        "price": 60797.7
       }
     },
     "ETH": {
-      "price": 1721.96,
+      "price": 1713.5,
       "funding": 8.2325453498e-06,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1678.52,
-          "account_stop_25x": 1711.63,
-          "price": 1721.96
+          "action": "减仓",
+          "reason": "KDJ 的 K 下穿 D",
+          "trail_stop": 1679.37,
+          "account_stop_25x": 1703.22,
+          "price": 1713.5
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1591.28,
-          "account_stop_25x": 1732.29,
-          "price": 1721.96
+          "trail_stop": 1590.43,
+          "account_stop_25x": 1723.78,
+          "price": 1713.5
         }
       },
       "score_hint": {
-        "score": 5.0,
-        "verdict": "做多",
-        "price": 1721.96
+        "score": 1.0,
+        "verdict": "观望",
+        "price": 1713.5
       }
     }
   }
