@@ -1,10 +1,9 @@
 {
-  "generated": "2026-11-22T02:00:00+00:00",
+  "generated": "2026-11-22T02:23:22.306369+00:00",
   "coins": {
     "BTC": {
       "price": 60083.3,
-      "funding": -3.76857530396e-05,
-      "fng": 11,
+      "funding_points": 90,
       "horizons": {
         "15分钟": {
           "score": -7.0,
@@ -41,12 +40,12 @@
           "verdict": "观望",
           "price": 60083.3
         }
-      }
+      },
+      "fng": 11
     },
     "ETH": {
       "price": 1685.45,
-      "funding": -2.41922516102e-05,
-      "fng": 11,
+      "funding_points": 90,
       "horizons": {
         "15分钟": {
           "score": 2.0,
@@ -83,8 +82,8 @@
           "verdict": "观望",
           "price": 1685.45
         }
-      }
+      },
+      "fng": 11
     }
-  },
-  "backtest_generated": null
+  }
 }
