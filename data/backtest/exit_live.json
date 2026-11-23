@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-23T16:00:00+00:00",
+  "generated": "2026-11-23T18:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 62862.4,
+      "price": 61647.5,
       "funding": 3.25240759041e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 62212.49,
-          "account_stop_25x": 62485.23,
-          "price": 62862.4
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 62087.74,
+          "account_stop_25x": 61277.61,
+          "price": 61647.5
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 61088.51,
-          "account_stop_25x": 63239.57,
-          "price": 62862.4
+          "trail_stop": 61213.26,
+          "account_stop_25x": 62017.39,
+          "price": 61647.5
         }
       },
       "score_hint": {
-        "score": 2.0,
+        "score": -2.0,
         "verdict": "观望",
-        "price": 62862.4
+        "price": 61647.5
       }
     },
     "ETH": {
-      "price": 1773.01,
+      "price": 1741.99,
       "funding": 2.03132916696e-05,
       "live": {
         "long": {
-          "action": "减仓",
-          "reason": "KDJ 的 K 下穿 D",
-          "trail_stop": 1770.83,
-          "account_stop_25x": 1762.37,
-          "price": 1773.01
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；MACD 红柱在缩短",
+          "trail_stop": 1766.74,
+          "account_stop_25x": 1731.54,
+          "price": 1741.99
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1721.28,
-          "account_stop_25x": 1783.65,
-          "price": 1773.01
+          "trail_stop": 1725.37,
+          "account_stop_25x": 1752.44,
+          "price": 1741.99
         }
       },
       "score_hint": {
-        "score": 4.0,
-        "verdict": "做多",
-        "price": 1773.01
+        "score": -1.0,
+        "verdict": "观望",
+        "price": 1741.99
       }
     }
   }
