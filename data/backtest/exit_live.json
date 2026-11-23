@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-23T13:00:00+00:00",
+  "generated": "2026-11-23T15:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 61296.6,
+      "price": 62868.9,
       "funding": -4.9511041365e-06,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 60426.03,
-          "account_stop_25x": 60928.82,
-          "price": 61296.6
+          "action": "平仓",
+          "reason": "价格新高而 RSI 没有新高；KDJ 的 K 下穿 D；放量且这根 K 线对着持仓",
+          "trail_stop": 62273.68,
+          "account_stop_25x": 62491.69,
+          "price": 62868.9
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 60247.97,
-          "account_stop_25x": 61664.38,
-          "price": 61296.6
+          "trail_stop": 61027.32,
+          "account_stop_25x": 63246.11,
+          "price": 62868.9
         }
       },
       "score_hint": {
-        "score": -1.0,
+        "score": 0.0,
         "verdict": "观望",
-        "price": 61296.6
+        "price": 62868.9
       }
     },
     "ETH": {
-      "price": 1721.03,
+      "price": 1778.34,
       "funding": -3.84188443379e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1708.01,
-          "account_stop_25x": 1710.7,
-          "price": 1721.03
+          "action": "平仓",
+          "reason": "价格新高而 RSI 没有新高；放量且这根 K 线对着持仓",
+          "trail_stop": 1772.24,
+          "account_stop_25x": 1767.67,
+          "price": 1778.34
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1691.09,
-          "account_stop_25x": 1731.36,
-          "price": 1721.03
+          "trail_stop": 1719.87,
+          "account_stop_25x": 1789.01,
+          "price": 1778.34
         }
       },
       "score_hint": {
-        "score": -2.0,
-        "verdict": "观望",
-        "price": 1721.03
+        "score": 4.0,
+        "verdict": "做多",
+        "price": 1778.34
       }
     }
   }
