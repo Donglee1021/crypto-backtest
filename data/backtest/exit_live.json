@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-23T02:00:00+00:00",
+  "generated": "2026-11-23T04:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 61053.1,
+      "price": 61262.6,
       "funding": 1.51578247325e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 60076.86,
-          "account_stop_25x": 60686.78,
-          "price": 61053.1
+          "action": "减仓",
+          "reason": "价格新高而 RSI 没有新高",
+          "trail_stop": 60165.0,
+          "account_stop_25x": 60895.02,
+          "price": 61262.6
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 56668.04,
-          "account_stop_25x": 61419.42,
-          "price": 61053.1
+          "trail_stop": 56878.0,
+          "account_stop_25x": 61630.18,
+          "price": 61262.6
         }
       },
       "score_hint": {
-        "score": 3.0,
-        "verdict": "做多",
-        "price": 61053.1
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 61262.6
       }
     },
     "ETH": {
-      "price": 1716.85,
+      "price": 1731.54,
       "funding": -4.59918583761e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1689.46,
-          "account_stop_25x": 1706.55,
-          "price": 1716.85
+          "trail_stop": 1700.19,
+          "account_stop_25x": 1721.15,
+          "price": 1731.54
         },
         "short": {
           "action": "平仓",
-          "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1580.34,
-          "account_stop_25x": 1727.15,
-          "price": 1716.85
+          "reason": "现价已经升破吊灯止损；放量且这根 K 线对着持仓",
+          "trail_stop": 1588.07,
+          "account_stop_25x": 1741.93,
+          "price": 1731.54
         }
       },
       "score_hint": {
-        "score": -1.0,
+        "score": 2.0,
         "verdict": "观望",
-        "price": 1716.85
+        "price": 1731.54
       }
     }
   }
