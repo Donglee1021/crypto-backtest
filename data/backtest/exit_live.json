@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-24T16:00:00+00:00",
+  "generated": "2026-11-24T17:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59688.0,
+      "price": 59393.2,
       "funding": 2.50961202131e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 62551.07,
-          "account_stop_25x": 59329.87,
-          "price": 59688.0
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 62578.79,
+          "account_stop_25x": 59036.84,
+          "price": 59393.2
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 61384.93,
-          "account_stop_25x": 60046.13,
-          "price": 59688.0
+          "action": "减仓",
+          "reason": "价格新低而 RSI 没有新低",
+          "trail_stop": 61291.51,
+          "account_stop_25x": 59749.56,
+          "price": 59393.2
         }
       },
       "score_hint": {
         "score": -10.0,
         "verdict": "强烈做空",
-        "price": 59688.0
+        "price": 59393.2
       }
     },
     "ETH": {
-      "price": 1677.0,
+      "price": 1684.89,
       "funding": 4.5872058862e-06,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 1781.73,
-          "account_stop_25x": 1666.94,
-          "price": 1677.0
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1781.92,
+          "account_stop_25x": 1674.78,
+          "price": 1684.89
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1729.65,
-          "account_stop_25x": 1687.06,
-          "price": 1677.0
+          "trail_stop": 1726.3,
+          "account_stop_25x": 1695.0,
+          "price": 1684.89
         }
       },
       "score_hint": {
-        "score": -10.0,
+        "score": -7.0,
         "verdict": "强烈做空",
-        "price": 1677.0
+        "price": 1684.89
       }
     }
   }
