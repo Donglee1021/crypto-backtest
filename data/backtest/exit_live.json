@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-24T04:00:00+00:00",
+  "generated": "2026-11-24T05:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60304.0,
+      "price": 60349.9,
       "funding": 5.38666241708e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62398.35,
-          "account_stop_25x": 59942.18,
-          "price": 60304.0
+          "trail_stop": 62460.49,
+          "account_stop_25x": 59987.8,
+          "price": 60349.9
         },
         "short": {
-          "action": "平仓",
-          "reason": "价格新低而 RSI 没有新低；KDJ 的 K 上穿 D",
-          "trail_stop": 60902.65,
-          "account_stop_25x": 60665.82,
-          "price": 60304.0
-        }
-      },
-      "score_hint": {
-        "score": -4.0,
-        "verdict": "做空",
-        "price": 60304.0
-      }
-    },
-    "ETH": {
-      "price": 1695.57,
-      "funding": -6.9320541967e-05,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1774.56,
-          "account_stop_25x": 1685.4,
-          "price": 1695.57
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "价格新低而 RSI 没有新低；KDJ 的 K 上穿 D",
-          "trail_stop": 1717.55,
-          "account_stop_25x": 1705.74,
-          "price": 1695.57
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 60840.51,
+          "account_stop_25x": 60712.0,
+          "price": 60349.9
         }
       },
       "score_hint": {
         "score": -3.0,
         "verdict": "做空",
-        "price": 1695.57
+        "price": 60349.9
+      }
+    },
+    "ETH": {
+      "price": 1699.21,
+      "funding": -6.9320541967e-05,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1776.77,
+          "account_stop_25x": 1689.01,
+          "price": 1699.21
+        },
+        "short": {
+          "action": "减仓",
+          "reason": "MACD 绿柱在缩短",
+          "trail_stop": 1715.34,
+          "account_stop_25x": 1709.41,
+          "price": 1699.21
+        }
+      },
+      "score_hint": {
+        "score": -3.0,
+        "verdict": "做空",
+        "price": 1699.21
       }
     }
   }
