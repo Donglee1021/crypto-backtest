@@ -2,53 +2,53 @@
   "generated": "2026-11-24T20:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59656.4,
+      "price": 59747.1,
       "funding": 2.50961202131e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62635.12,
-          "account_stop_25x": 59298.46,
-          "price": 59656.4
+          "trail_stop": 62678.42,
+          "account_stop_25x": 59388.62,
+          "price": 59747.1
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 61166.68,
-          "account_stop_25x": 60014.34,
-          "price": 59656.4
+          "trail_stop": 61123.38,
+          "account_stop_25x": 60105.58,
+          "price": 59747.1
         }
       },
       "score_hint": {
-        "score": -9.0,
+        "score": -7.0,
         "verdict": "强烈做空",
-        "price": 59656.4
+        "price": 59747.1
       }
     },
     "ETH": {
-      "price": 1672.97,
+      "price": 1675.37,
       "funding": 4.5872058862e-06,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1785.93,
-          "account_stop_25x": 1662.93,
-          "price": 1672.97
+          "trail_stop": 1786.83,
+          "account_stop_25x": 1665.32,
+          "price": 1675.37
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1722.29,
-          "account_stop_25x": 1683.01,
-          "price": 1672.97
+          "trail_stop": 1721.39,
+          "account_stop_25x": 1685.42,
+          "price": 1675.37
         }
       },
       "score_hint": {
-        "score": -9.0,
+        "score": -7.0,
         "verdict": "强烈做空",
-        "price": 1672.97
+        "price": 1675.37
       }
     }
   }
