@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-24T12:00:00+00:00",
+  "generated": "2026-11-24T13:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60394.0,
+      "price": 60459.9,
       "funding": 2.21870316848e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62637.76,
-          "account_stop_25x": 60031.64,
-          "price": 60394.0
+          "trail_stop": 62670.86,
+          "account_stop_25x": 60097.14,
+          "price": 60459.9
         },
         "short": {
           "action": "减仓",
-          "reason": "KDJ 的 K 上穿 D",
-          "trail_stop": 61298.24,
-          "account_stop_25x": 60756.36,
-          "price": 60394.0
-        }
-      },
-      "score_hint": {
-        "score": -5.0,
-        "verdict": "做空",
-        "price": 60394.0
-      }
-    },
-    "ETH": {
-      "price": 1701.93,
-      "funding": 8.892955017e-07,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1784.77,
-          "account_stop_25x": 1691.72,
-          "price": 1701.93
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "MACD 绿柱在缩短；KDJ 的 K 上穿 D",
-          "trail_stop": 1727.91,
-          "account_stop_25x": 1712.14,
-          "price": 1701.93
+          "reason": "MACD 绿柱在缩短",
+          "trail_stop": 61265.14,
+          "account_stop_25x": 60822.66,
+          "price": 60459.9
         }
       },
       "score_hint": {
         "score": -4.0,
         "verdict": "做空",
-        "price": 1701.93
+        "price": 60459.9
+      }
+    },
+    "ETH": {
+      "price": 1703.58,
+      "funding": 8.892955017e-07,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1786.04,
+          "account_stop_25x": 1693.36,
+          "price": 1703.58
+        },
+        "short": {
+          "action": "减仓",
+          "reason": "MACD 绿柱在缩短",
+          "trail_stop": 1726.64,
+          "account_stop_25x": 1713.8,
+          "price": 1703.58
+        }
+      },
+      "score_hint": {
+        "score": -4.0,
+        "verdict": "做空",
+        "price": 1703.58
       }
     }
   }
