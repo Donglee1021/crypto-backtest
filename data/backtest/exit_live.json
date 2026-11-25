@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-25T13:00:00+00:00",
+  "generated": "2026-11-25T15:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 58725.1,
+      "price": 58208.7,
       "funding": 6.29761552989e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 62972.72,
-          "account_stop_25x": 58372.75,
-          "price": 58725.1
+          "trail_stop": 61811.9,
+          "account_stop_25x": 57859.45,
+          "price": 58208.7
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 60017.38,
-          "account_stop_25x": 59077.45,
-          "price": 58725.1
+          "action": "平仓",
+          "reason": "价格新低而 RSI 没有新低；KDJ 的 K 上穿 D；放量且这根 K 线对着持仓",
+          "trail_stop": 59079.9,
+          "account_stop_25x": 58557.95,
+          "price": 58208.7
         }
       },
       "score_hint": {
-        "score": -7.0,
+        "score": -6.0,
         "verdict": "强烈做空",
-        "price": 58725.1
+        "price": 58208.7
       }
     },
     "ETH": {
-      "price": 1647.31,
+      "price": 1645.44,
       "funding": 4.03894753179e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1795.54,
-          "account_stop_25x": 1637.43,
-          "price": 1647.31
+          "trail_stop": 1738.68,
+          "account_stop_25x": 1635.57,
+          "price": 1645.44
         },
         "short": {
-          "action": "减仓",
-          "reason": "KDJ 的 K 上穿 D",
-          "trail_stop": 1681.17,
-          "account_stop_25x": 1657.19,
-          "price": 1647.31
+          "action": "平仓",
+          "reason": "价格新低而 RSI 没有新低；KDJ 的 K 上穿 D；放量且这根 K 线对着持仓",
+          "trail_stop": 1665.24,
+          "account_stop_25x": 1655.31,
+          "price": 1645.44
         }
       },
       "score_hint": {
-        "score": -5.0,
+        "score": -4.0,
         "verdict": "做空",
-        "price": 1647.31
+        "price": 1645.44
       }
     }
   }
