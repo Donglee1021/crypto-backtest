@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-26T16:00:00+00:00",
+  "generated": "2026-11-26T17:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60091.4,
+      "price": 60498.1,
       "funding": 4.48840561709e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 60166.07,
-          "account_stop_25x": 59730.85,
-          "price": 60091.4
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 60119.09,
+          "account_stop_25x": 60135.11,
+          "price": 60498.1
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 58711.73,
-          "account_stop_25x": 60451.95,
-          "price": 60091.4
+          "trail_stop": 58758.71,
+          "account_stop_25x": 60861.09,
+          "price": 60498.1
         }
       },
       "score_hint": {
-        "score": -6.0,
-        "verdict": "强烈做空",
-        "price": 60091.4
+        "score": -2.0,
+        "verdict": "观望",
+        "price": 60498.1
       }
     },
     "ETH": {
-      "price": 1676.33,
+      "price": 1691.34,
       "funding": 6.10717588503e-05,
       "live": {
         "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 1682.18,
-          "account_stop_25x": 1666.27,
-          "price": 1676.33
+          "action": "减仓",
+          "reason": "KDJ 的 K 下穿 D",
+          "trail_stop": 1682.19,
+          "account_stop_25x": 1681.19,
+          "price": 1691.34
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1655.18,
-          "account_stop_25x": 1686.39,
-          "price": 1676.33
+          "trail_stop": 1655.17,
+          "account_stop_25x": 1701.49,
+          "price": 1691.34
         }
       },
       "score_hint": {
         "score": -6.0,
         "verdict": "强烈做空",
-        "price": 1676.33
+        "price": 1691.34
       }
     }
   }
