@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-26T13:00:00+00:00",
+  "generated": "2026-11-26T15:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60801.4,
+      "price": 60702.3,
       "funding": 6.6713545153e-05,
-      "live": {
-        "long": {
-          "action": "减仓",
-          "reason": "MACD 红柱在缩短",
-          "trail_stop": 60073.33,
-          "account_stop_25x": 60436.59,
-          "price": 60801.4
-        },
-        "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损；KDJ 的 K 上穿 D",
-          "trail_stop": 58804.47,
-          "account_stop_25x": 61166.21,
-          "price": 60801.4
-        }
-      },
-      "score_hint": {
-        "score": 3.0,
-        "verdict": "做多",
-        "price": 60801.4
-      }
-    },
-    "ETH": {
-      "price": 1705.71,
-      "funding": 7.41303911153e-05,
       "live": {
         "long": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1682.9,
-          "account_stop_25x": 1695.48,
-          "price": 1705.71
+          "trail_stop": 60196.68,
+          "account_stop_25x": 60338.09,
+          "price": 60702.3
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1654.46,
-          "account_stop_25x": 1715.94,
-          "price": 1705.71
+          "trail_stop": 58681.12,
+          "account_stop_25x": 61066.51,
+          "price": 60702.3
         }
       },
       "score_hint": {
-        "score": 5.0,
-        "verdict": "做多",
-        "price": 1705.71
+        "score": 1.0,
+        "verdict": "观望",
+        "price": 60702.3
+      }
+    },
+    "ETH": {
+      "price": 1697.23,
+      "funding": 7.41303911153e-05,
+      "live": {
+        "long": {
+          "action": "减仓",
+          "reason": "MACD 红柱在缩短",
+          "trail_stop": 1685.57,
+          "account_stop_25x": 1687.05,
+          "price": 1697.23
+        },
+        "short": {
+          "action": "平仓",
+          "reason": "现价已经升破吊灯止损",
+          "trail_stop": 1651.79,
+          "account_stop_25x": 1707.41,
+          "price": 1697.23
+        }
+      },
+      "score_hint": {
+        "score": 2.0,
+        "verdict": "观望",
+        "price": 1697.23
       }
     }
   }
