@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-27T16:00:00+00:00",
+  "generated": "2026-11-27T17:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60076.5,
+      "price": 59928.0,
       "funding": -5.673470007e-07,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 60339.84,
-          "account_stop_25x": 59716.04,
-          "price": 60076.5
+          "trail_stop": 60311.94,
+          "account_stop_25x": 59568.43,
+          "price": 59928.0
         },
         "short": {
-          "action": "平仓",
-          "reason": "现价已经升破吊灯止损；价格新低而 RSI 没有新低；放量且这根 K 线对着持仓",
-          "trail_stop": 59933.46,
-          "account_stop_25x": 60436.96,
-          "price": 60076.5
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 60320.26,
+          "account_stop_25x": 60287.57,
+          "price": 59928.0
         }
       },
       "score_hint": {
-        "score": -6.0,
+        "score": -8.0,
         "verdict": "强烈做空",
-        "price": 60076.5
+        "price": 59928.0
       }
     },
     "ETH": {
-      "price": 1671.32,
+      "price": 1668.59,
       "funding": -7.5041504145e-06,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1695.43,
-          "account_stop_25x": 1661.29,
-          "price": 1671.32
+          "trail_stop": 1694.92,
+          "account_stop_25x": 1658.58,
+          "price": 1668.59
         },
         "short": {
-          "action": "平仓",
-          "reason": "价格新低而 RSI 没有新低；放量且这根 K 线对着持仓",
-          "trail_stop": 1688.63,
-          "account_stop_25x": 1681.35,
-          "price": 1671.32
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1692.15,
+          "account_stop_25x": 1678.6,
+          "price": 1668.59
         }
       },
       "score_hint": {
-        "score": -6.0,
+        "score": -7.0,
         "verdict": "强烈做空",
-        "price": 1671.32
+        "price": 1668.59
       }
     }
   }
