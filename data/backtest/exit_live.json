@@ -2,53 +2,53 @@
   "generated": "2026-11-26T23:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 60519.8,
-      "funding": 4.48840561709e-05,
+      "price": 60549.9,
+      "funding": 5.0310803122e-06,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 60349.01,
-          "account_stop_25x": 60156.68,
-          "price": 60519.8
+          "action": "减仓",
+          "reason": "KDJ 的 K 下穿 D",
+          "trail_stop": 60396.08,
+          "account_stop_25x": 60186.6,
+          "price": 60549.9
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 58528.79,
-          "account_stop_25x": 60882.92,
-          "price": 60519.8
+          "trail_stop": 58481.72,
+          "account_stop_25x": 60913.2,
+          "price": 60549.9
         }
       },
       "score_hint": {
         "score": -4.0,
         "verdict": "做空",
-        "price": 60519.8
+        "price": 60549.9
       }
     },
     "ETH": {
-      "price": 1692.81,
-      "funding": 6.10717588503e-05,
+      "price": 1688.96,
+      "funding": 8.01532748566e-05,
       "live": {
         "long": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1689.44,
-          "account_stop_25x": 1682.65,
-          "price": 1692.81
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 1689.95,
+          "account_stop_25x": 1678.83,
+          "price": 1688.96
         },
         "short": {
           "action": "平仓",
           "reason": "现价已经升破吊灯止损",
-          "trail_stop": 1647.92,
-          "account_stop_25x": 1702.97,
-          "price": 1692.81
+          "trail_stop": 1647.41,
+          "account_stop_25x": 1699.09,
+          "price": 1688.96
         }
       },
       "score_hint": {
-        "score": -4.0,
-        "verdict": "做空",
-        "price": 1692.81
+        "score": -6.0,
+        "verdict": "强烈做空",
+        "price": 1688.96
       }
     }
   }
