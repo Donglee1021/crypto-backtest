@@ -1,45 +1,45 @@
 {
-  "generated": "2026-11-28T14:00:00+00:00",
+  "generated": "2026-11-28T15:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59075.9,
+      "price": 59287.6,
       "funding": 3.61273158726e-05,
       "fng": 10,
       "horizons": {
         "15分钟": {
-          "score": 1.0,
+          "score": -2.0,
           "verdict": "观望",
-          "price": 59075.9
+          "price": 59287.6
         },
         "1小时": {
           "score": -6.0,
           "verdict": "强烈做空",
-          "price": 59075.9
+          "price": 59287.6
         },
         "4小时": {
           "score": -9.0,
           "verdict": "强烈做空",
-          "price": 59075.9
+          "price": 59287.6
         },
         "日线": {
           "score": -1.0,
           "verdict": "观望",
-          "price": 59075.9
+          "price": 59287.6
         },
         "超短线": {
-          "score": -0.9,
+          "score": -2.2,
           "verdict": "观望",
-          "price": 59075.9
+          "price": 59287.6
         },
         "中线": {
           "score": -0.4,
           "verdict": "观望",
-          "price": 59075.9
+          "price": 59287.6
         },
         "长线": {
           "score": -3.3,
           "verdict": "观望",
-          "price": 59075.9
+          "price": 59287.6
         }
       }
     },
@@ -49,8 +49,8 @@
       "fng": 10,
       "horizons": {
         "15分钟": {
-          "score": 0.0,
-          "verdict": "观望",
+          "score": -5.0,
+          "verdict": "做空",
           "price": 1646.87
         },
         "1小时": {
@@ -69,7 +69,7 @@
           "price": 1646.87
         },
         "超短线": {
-          "score": -0.4,
+          "score": -0.7,
           "verdict": "观望",
           "price": 1646.87
         },
