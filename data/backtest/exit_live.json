@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-28T07:00:00+00:00",
+  "generated": "2026-11-28T08:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59717.4,
-      "funding": 5.37361983208e-05,
+      "price": 59800.3,
+      "funding": 3.61273158726e-05,
       "live": {
         "long": {
           "action": "平仓",
           "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 61029.56,
-          "account_stop_25x": 59359.1,
-          "price": 59717.4
+          "trail_stop": 60965.5,
+          "account_stop_25x": 59441.5,
+          "price": 59800.3
         },
         "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 59899.24,
-          "account_stop_25x": 60075.7,
-          "price": 59717.4
-        }
-      },
-      "score_hint": {
-        "score": -9.0,
-        "verdict": "强烈做空",
-        "price": 59717.4
-      }
-    },
-    "ETH": {
-      "price": 1656.63,
-      "funding": 8.0429976009e-06,
-      "live": {
-        "long": {
-          "action": "平仓",
-          "reason": "现价已经跌破吊灯止损",
-          "trail_stop": 1715.81,
-          "account_stop_25x": 1646.69,
-          "price": 1656.63
-        },
-        "short": {
-          "action": "持有",
-          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 1671.26,
-          "account_stop_25x": 1666.57,
-          "price": 1656.63
+          "action": "减仓",
+          "reason": "价格新低而 RSI 没有新低",
+          "trail_stop": 59963.3,
+          "account_stop_25x": 60159.1,
+          "price": 59800.3
         }
       },
       "score_hint": {
         "score": -7.0,
         "verdict": "强烈做空",
-        "price": 1656.63
+        "price": 59800.3
+      }
+    },
+    "ETH": {
+      "price": 1651.8,
+      "funding": -3.6205580519e-06,
+      "live": {
+        "long": {
+          "action": "平仓",
+          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
+          "trail_stop": 1715.15,
+          "account_stop_25x": 1641.89,
+          "price": 1651.8
+        },
+        "short": {
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1671.92,
+          "account_stop_25x": 1661.71,
+          "price": 1651.8
+        }
+      },
+      "score_hint": {
+        "score": -9.0,
+        "verdict": "强烈做空",
+        "price": 1651.8
       }
     }
   }
