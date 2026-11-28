@@ -1,54 +1,54 @@
 {
-  "generated": "2026-11-28T06:00:00+00:00",
+  "generated": "2026-11-28T07:00:00+00:00",
   "coins": {
     "BTC": {
-      "price": 59710.2,
+      "price": 59717.4,
       "funding": 5.37361983208e-05,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 60999.12,
-          "account_stop_25x": 59351.94,
-          "price": 59710.2
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 61029.56,
+          "account_stop_25x": 59359.1,
+          "price": 59717.4
         },
         "short": {
           "action": "持有",
           "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
-          "trail_stop": 59929.68,
-          "account_stop_25x": 60068.46,
-          "price": 59710.2
+          "trail_stop": 59899.24,
+          "account_stop_25x": 60075.7,
+          "price": 59717.4
         }
       },
       "score_hint": {
         "score": -9.0,
         "verdict": "强烈做空",
-        "price": 59710.2
+        "price": 59717.4
       }
     },
     "ETH": {
-      "price": 1655.38,
+      "price": 1656.63,
       "funding": 8.0429976009e-06,
       "live": {
         "long": {
           "action": "平仓",
-          "reason": "现价已经跌破吊灯止损；KDJ 的 K 下穿 D",
-          "trail_stop": 1714.82,
-          "account_stop_25x": 1645.45,
-          "price": 1655.38
+          "reason": "现价已经跌破吊灯止损",
+          "trail_stop": 1715.81,
+          "account_stop_25x": 1646.69,
+          "price": 1656.63
         },
         "short": {
-          "action": "减仓",
-          "reason": "价格新低而 RSI 没有新低",
-          "trail_stop": 1672.25,
-          "account_stop_25x": 1665.31,
-          "price": 1655.38
+          "action": "持有",
+          "reason": "吊灯还在，动量、费率和量能都没有对着这笔仓位",
+          "trail_stop": 1671.26,
+          "account_stop_25x": 1666.57,
+          "price": 1656.63
         }
       },
       "score_hint": {
-        "score": -9.0,
+        "score": -7.0,
         "verdict": "强烈做空",
-        "price": 1655.38
+        "price": 1656.63
       }
     }
   }
