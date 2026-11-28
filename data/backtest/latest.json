@@ -1,13 +1,14 @@
 {
-  "generated": "2026-11-28T02:27:10.059073+00:00",
+  "generated": "2026-11-28T02:00:00+00:00",
   "coins": {
     "BTC": {
       "price": 60158.1,
-      "funding_points": 281,
+      "funding": 5.37361983208e-05,
+      "fng": 10,
       "horizons": {
         "15分钟": {
-          "score": 3.0,
-          "verdict": "做多",
+          "score": -5.0,
+          "verdict": "做空",
           "price": 60158.1
         },
         "1小时": {
@@ -26,8 +27,8 @@
           "price": 60158.1
         },
         "超短线": {
-          "score": -0.1,
-          "verdict": "观望",
+          "score": -5.5,
+          "verdict": "偏空",
           "price": 60158.1
         },
         "中线": {
@@ -40,50 +41,50 @@
           "verdict": "观望",
           "price": 60158.1
         }
-      },
-      "fng": 10
+      }
     },
     "ETH": {
-      "price": 1668.81,
-      "funding_points": 281,
+      "price": 1663.66,
+      "funding": 8.0429976009e-06,
+      "fng": 10,
       "horizons": {
         "15分钟": {
-          "score": -1.0,
-          "verdict": "观望",
-          "price": 1668.81
+          "score": -4.0,
+          "verdict": "做空",
+          "price": 1663.66
         },
         "1小时": {
           "score": -5.0,
           "verdict": "做空",
-          "price": 1668.81
+          "price": 1663.66
         },
         "4小时": {
           "score": -9.0,
           "verdict": "强烈做空",
-          "price": 1668.81
+          "price": 1663.66
         },
         "日线": {
           "score": -1.0,
           "verdict": "观望",
-          "price": 1668.81
+          "price": 1663.66
         },
         "超短线": {
-          "score": 0.0,
+          "score": 0.4,
           "verdict": "观望",
-          "price": 1668.81
+          "price": 1663.66
         },
         "中线": {
           "score": -1.4,
           "verdict": "观望",
-          "price": 1668.81
+          "price": 1663.66
         },
         "长线": {
           "score": -3.2,
           "verdict": "观望",
-          "price": 1668.81
+          "price": 1663.66
         }
-      },
-      "fng": 10
+      }
     }
-  }
+  },
+  "backtest_generated": null
 }
